@@ -69,6 +69,7 @@ Courier::Application.routes.draw do
 	match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
 	root :to => "courier#index"
 	get 'contenido' => 'courier#contenido'
+	match '*a', :to => 'errors#routing'
 
 # You can have the root of your site routed with "root"
 # just remember to delete public/index.html.
