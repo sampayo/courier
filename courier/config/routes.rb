@@ -1,5 +1,5 @@
 Courier::Application.routes.draw do
-  resources :paquetes
+	resources :paquetes
 
 	resources :compania
 
@@ -67,6 +67,10 @@ Courier::Application.routes.draw do
 	#   end
 	match 'contenido', :to => 'courier#contenido', :as => "cont"
 	match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
+	match 'enviar/:id', :to => 'enviar#index' ,:as => "enviar1" , :via => 'get'
+		match 'enviar/', :to => 'enviar#create' ,:as => "enviar" , :via => 'get'
+
+
 	root :to => "courier#index"
 	get 'contenido' => 'courier#contenido'
 	match '*a', :to => 'errors#routing'

@@ -15,13 +15,14 @@
     <td><%= orden.nombre + ' ' + orden.apellido %></td>
     <td><%= orden.estado %></td>
     <td><%= orden.fecha %></td>
-    <td><%= link_to 'Show', orden %></td>
-    <td><%= link_to 'Edit', edit_orden_path(orden) %></td>
-    <td><%= link_to 'Destroy', orden, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Enviar', enviar1_path(orden.id) %></td>
+    <td><%= link_to 'Ver', orden %></td>
+    <td><%= link_to 'Actualizar', edit_orden_path(orden) %></td>
+    <td><%= link_to 'Eliminar', orden, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Orden', new_orden_path %>
+<%= link_to 'nueva orden', new_orden_path %>

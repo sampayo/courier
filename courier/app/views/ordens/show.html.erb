@@ -15,7 +15,7 @@
 </p>
 <div id='paquetes'>
 <h3>Paquetes</h3>
-<table width="90%"
+<table width="90%">
   <tr>
     <th>Nombre</th>
     <th>Peso</th>
@@ -37,8 +37,21 @@
 <% end %>
 </table>
 </div>
+<%= link_to 'Agregar Paquetes', newpa_path(@orden.id) %>
 
+<div id="paquetes">
+	<h3>Direcciones</h3>
+	<table width="90%">
+		<tr>
+			<td width="15%"><%= link_to 'Destinatario', enviar1_path(@orden.id) %></td>
+			<td width="75%"></td>
+		</tr>
+		<tr>
+			<td width="15%"><%= link_to 'Destino', enviar1_path(@orden.id) %></td>
+			<td width="75%"></td>
+		</tr>		
+	</table>
+</div>
 
-<%= link_to 'Agregar Paquetes', newpa_path(@orden.id) %> <br/><br/>
 <%= link_to 'Edit', edit_orden_path(@orden) %> |
 <%= link_to 'Back', ordens_path %>
