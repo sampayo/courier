@@ -1,0 +1,23 @@
+<h1>Listing facturas</h1>
+
+<table>
+  <tr>
+    <th>Costototal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @facturas.each do |factura| %>
+  <tr>
+    <td><%= factura.costoTotal %></td>
+    <td><%= link_to 'Show', factura %></td>
+    <td><%= link_to 'Edit', edit_factura_path(factura) %></td>
+    <td><%= link_to 'Destroy', factura, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Factura', new_factura_path %>

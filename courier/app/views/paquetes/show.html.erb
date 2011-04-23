@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @paquete.nombre %>
+</p>
+
+<p>
+  <b>Peso:</b>
+  <%= @paquete.peso %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @paquete.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_paquete_path(@paquete) %> |
+<%= link_to 'Back', ordens_path %>

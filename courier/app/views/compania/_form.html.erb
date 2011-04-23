@@ -1,0 +1,33 @@
+<%= form_for(@companium) do |f| %>
+  <% if @companium.errors.any? %>
+    <!-- <div id="error_explanation">
+        <h2><%= pluralize(@companium.errors.count, "error") %> prohibited this companium from being saved:</h2>
+  
+        <ul>
+        <% @companium.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div> -->
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :Rif %><br />
+    <%= f.text_field :rif %>
+  </div>
+  <div class="field">
+    <%= f.label :Direccion_Fiscal %><br />
+    <%= f.text_field :direccionF %>
+  </div>
+  <div class="field">
+    <%= f.label :Telefono %><br />
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

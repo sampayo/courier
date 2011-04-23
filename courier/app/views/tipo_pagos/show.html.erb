@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @tipo_pago.nombre %>
+</p>
+
+<p>
+  <b>Ntdc:</b>
+  <%= @tipo_pago.nTDC %>
+</p>
+
+<p>
+  <b>Cseguridad:</b>
+  <%= @tipo_pago.cSeguridad %>
+</p>
+
+<p>
+  <b>Fvencimiento:</b>
+  <%= @tipo_pago.fVencimiento %>
+</p>
+
+
+<%= link_to 'Edit', edit_tipo_pago_path(@tipo_pago) %> |
+<%= link_to 'Back', tipo_pagos_path %>

@@ -1,0 +1,28 @@
+<%= form_for(@tipo_pago) do |f| %>
+  <% if @tipo_pago.errors.any? %>
+    <div id="error">
+
+           <h3><%= @tipo_pago.errors.full_messages.last %></h3>
+
+       </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :Num_targeta_de_credito %><br />
+    <%= f.text_field :nTDC %>
+  </div>
+  <div class="field">
+    <%= f.label :Codigo_Seguridad %><br />
+    <%= f.text_field :cSeguridad %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_Vencimiento %><br />
+    <%= f.date_select :fVencimiento %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

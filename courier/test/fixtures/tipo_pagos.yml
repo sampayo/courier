@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nombre: MyString
+  nTDC: MyString
+  cSeguridad: MyString
+  fVencimiento: 2011-04-20
+
+two:
+  nombre: MyString
+  nTDC: MyString
+  cSeguridad: MyString
+  fVencimiento: 2011-04-20

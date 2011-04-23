@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  avCalle: MyString
+  resCasa: MyString
+  aptoNumero: 1
+  urban: MyString
+  ciudad: MyString
+  pais: MyString
+  cPostal: MyString
+  lat: 1.5
+  lng: 1.5
+
+two:
+  avCalle: MyString
+  resCasa: MyString
+  aptoNumero: 1
+  urban: MyString
+  ciudad: MyString
+  pais: MyString
+  cPostal: MyString
+  lat: 1.5
+  lng: 1.5

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @companium.nombre %>
+</p>
+
+<p>
+  <b>Rif:</b>
+  <%= @companium.rif %>
+</p>
+
+<p>
+  <b>Direccionf:</b>
+  <%= @companium.direccionF %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @companium.telefono %>
+</p>
+
+
+<%= link_to 'Edit', edit_companium_path(@companium) %> |
+<%= link_to 'Back', compania_path %>

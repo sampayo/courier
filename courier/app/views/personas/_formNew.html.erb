@@ -1,0 +1,32 @@
+<%= form_for(@persona) do |f| %>
+  <% if @persona.errors.any? %>
+    <!-- <div id="error_explanation">
+          <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+    
+          <ul>
+          <% @persona.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div> -->
+  <% end %>
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.text_field :email, :value => @email, :readonly =>"true"%> 
+  </div>
+  <div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :nombre, :value => @nombre %> 
+  </div>
+  <div class="field">
+    <%= f.label :Apellido %><br />
+    <%= f.text_field :apellido, :value => @apellido %> 
+  </div>
+  <div class="field">
+    <%= f.label :Fecha_Nacimiento %><br />
+    <%= f.date_select :fNacimiento %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

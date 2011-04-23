@@ -1,0 +1,27 @@
+<h1>Lista targetas de credito</h1>
+
+<table width="80%">
+  <tr>
+    <th>Nombre</th>
+    <th>Ntdc</th>
+    <th>Fvencimiento</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_pagos.each do |tipo_pago| %>
+  <tr align="Center">
+    <td><%= tipo_pago.nombre %></td>
+    <td><%= tipo_pago.nTDC %></td>
+    <td><%= tipo_pago.fVencimiento %></td>
+    <td><%= link_to 'Show', tipo_pago %></td>
+    <td><%= link_to 'Edit', edit_tipo_pago_path(tipo_pago) %></td>
+    <td><%= link_to 'Destroy', tipo_pago, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo pago', new_tipo_pago_path %>

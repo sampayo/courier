@@ -1,0 +1,2 @@
+module CompaniaHelper
+end
