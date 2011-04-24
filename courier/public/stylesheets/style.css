@@ -451,3 +451,10 @@ a:hover {
 	padding-bottom: 20px;
 	padding-top: 20px;
 }
+
+form{
+	padding: 20px;
+}
+form h3{
+	padding-bottom: 15px;
+}

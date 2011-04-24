@@ -54,6 +54,8 @@ class OrdensController < ApplicationController
 	def create
 		@orden = Orden.new(params[:orden])
 		@orden.personas_id=session[:id]
+		@orden.fecha= Time.now
+		@orden.estado = 'Pendiente por enviar'
 		respond_to do |format|
 			if @orden.save
 				format.html { redirect_to(@orden, :notice => 'Orden was successfully created.') }
