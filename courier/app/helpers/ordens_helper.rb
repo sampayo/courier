@@ -6,6 +6,7 @@ module OrdensHelper
 			@historico = link_to 'Enviar', enviar_path(id)
 		else
 			@historico = 'Enviado'
-		end	
+		end
 	end
+	
 end
