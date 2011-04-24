@@ -17,6 +17,8 @@ Courier::Application.routes.draw do
 
 	resources :empleados
 
+	resources :enviar
+
 	get "courier/index"
 
 	# The priority is based upon order of creation:
@@ -65,11 +67,9 @@ Courier::Application.routes.draw do
 	#     # (app/controllers/admin/products_controller.rb)
 	#     resources :products
 	#   end
+
 	match 'contenido', :to => 'courier#contenido', :as => "cont"
 	match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
-	match 'enviar/:id', :to => 'enviar#index' ,:as => "enviar1" , :via => 'get'
-		match 'enviar/', :to => 'enviar#create' ,:as => "enviar" , :via => 'get'
-
 
 	root :to => "courier#index"
 	get 'contenido' => 'courier#contenido'

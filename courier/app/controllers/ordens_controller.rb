@@ -3,8 +3,7 @@ class OrdensController < ApplicationController
 	# GET /ordens
 	# GET /ordens.xml
 	def index
-		@ordens = Orden.where(:personas_id => session[:id])
-
+		@ordens = Orden.where(:personas_id => session[:id])	
 		respond_to do |format|
 			format.html # index.html.erb
 			format.xml  { render :xml => @ordens }
@@ -16,6 +15,14 @@ class OrdensController < ApplicationController
 	def show
 		@orden = Orden.find(params[:id])
 		@paquetes = Paquete.where(:ordens_id => params[:id] )
+		@destino = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='fin' and h.ordens_id=" + params[:id]).first
+		@salida = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='inicio' and h.ordens_id=" + params[:id]).first
+
+		if @salida && @destino
+			@salida=@salida.ciudad + ', ' + @salida.pais + ' Urbanizacion: ' + @salida.urban + ' Residencia: ' + @salida.resCasa
+			@destino=@destino.ciudad + ', ' + @destino.pais + ' Urbanizacion: ' + @destino.urban + ' Residencia: ' + @destino.resCasa
+		end
+
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @orden }

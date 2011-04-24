@@ -15,7 +15,7 @@
     <td><%= orden.nombre + ' ' + orden.apellido %></td>
     <td><%= orden.estado %></td>
     <td><%= orden.fecha %></td>
-    <td><%= link_to 'Enviar', enviar1_path(orden.id) %></td>
+    <td><%= link_to 'Enviar', enviar_path(orden.id) %></td>
     <td><%= link_to 'Ver', orden %></td>
     <td><%= link_to 'Actualizar', edit_orden_path(orden) %></td>
     <td><%= link_to 'Eliminar', orden, :confirm => 'Are you sure?', :method => :delete %></td>

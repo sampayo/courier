@@ -1,28 +1,30 @@
 <table width="80%" align="Center">
 	<tr>
 		<th></th>
+		<th></th>
 		<th>Pais</th>
 		<th>Ciudad</th>
 		<th>Avenida</th>
 		<th>Residencia</th>
 	</tr>
+	<%= form_for(:enviar, :url => {:action => 'create'}) do |f| %>
 	<% @direccions.each do |direccion| %>
 	<tr align="Center">
-	<%= form_for(enviar_path, :method => "post", :action => "create") do |f| %>
-		  <div class="field">
-	
-    <td><%= f.check_box :direccions_id, :value=>direccion.id %></td>
-    <%=f.hidden_field :ordens_id, :value=> @orden %>
-    <%= f.hidden_field :tipo, :value=>'ssss' %>
-  </div>			
+
+		<div class="field">
+
+			<td><%= radio_button("enviar", "direccions_id", direccion.id) %></td>			
+			<td><%= radio_button("enviar", "direccions", direccion.id) %></td>
+			<%=f.hidden_field :ordens_id, :value=> @orden %>
+		</div>
 		<td><%= direccion.pais %></td>
 		<td><%= direccion.ciudad %></td>
 		<td><%= direccion.avCalle %></td>
 		<td><%= direccion.resCasa %></td>
-		<td><%= f.submit %><td>
 	</tr>
-	<% end
-	end %>
-</table>
+	<% end %>
+
+</table>	<%= f.submit %>
+	<% end %>
 <br />
 <%= render ('maps') %>

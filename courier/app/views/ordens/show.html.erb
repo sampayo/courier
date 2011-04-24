@@ -1,41 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Receptor:</b>
-  <%= @orden.nombre + ' ' + @orden.apellido %>
+<p id="notice">
+	<%= notice %>
 </p>
 <p>
-  <b>Fecha:</b>
-  <%= @orden.fecha %>
+	<b>Receptor:</b>
+	<%= @orden.nombre + ' ' + @orden.apellido %>
 </p>
-
 <p>
-  <b>Estado:</b>
-  <%= @orden.estado %>
+	<b>Fecha:</b>
+	<%= @orden.fecha %>
+</p>
+<p>
+	<b>Estado:</b>
+	<%= @orden.estado %>
 </p>
 <div id='paquetes'>
-<h3>Paquetes</h3>
-<table width="90%">
-  <tr>
-    <th>Nombre</th>
-    <th>Peso</th>
-    <th>Descripcion</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @paquetes.each do |paquete| %>
-  <tr align="center">
-    <td><%= paquete.nombre %></td>
-    <td><%= paquete.peso %></td>
-    <td><%= paquete.descripcion %></td>
-    <td><%= link_to 'Show', paquete %></td>
-    <td><%= link_to 'Edit', edit_paquete_path(paquete) %></td>
-    <td><%= link_to 'Destroy', paquete, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<h3>Paquetes</h3>
+	<table width="90%">
+		<tr>
+			<th>Nombre</th>
+			<th>Peso</th>
+			<th>Descripcion</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<% @paquetes.each do |paquete| %>
+		<tr align="center">
+			<td><%= paquete.nombre %></td>
+			<td><%= paquete.peso %></td>
+			<td><%= paquete.descripcion %></td>
+			<td><%= link_to 'Show', paquete %></td>
+			<td><%= link_to 'Edit', edit_paquete_path(paquete) %></td>
+			<td><%= link_to 'Destroy', paquete, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+		<% end %>
+	</table>
 </div>
 <%= link_to 'Agregar Paquetes', newpa_path(@orden.id) %>
 
@@ -43,15 +42,14 @@
 	<h3>Direcciones</h3>
 	<table width="90%">
 		<tr>
-			<td width="15%"><%= link_to 'Destinatario', enviar1_path(@orden.id) %></td>
-			<td width="75%"></td>
+			<td width="25%">Destinatario</td>
+			<td width="65%" align="left"><%= @salida %></td>
 		</tr>
 		<tr>
-			<td width="15%"><%= link_to 'Destino', enviar1_path(@orden.id) %></td>
-			<td width="75%"></td>
-		</tr>		
+			<td width="25%">Destino</td>
+			<td width="65%" align="left"><%= @destino %></td>
+		</tr>
 	</table>
 </div>
-
 <%= link_to 'Edit', edit_orden_path(@orden) %> |
 <%= link_to 'Back', ordens_path %>
