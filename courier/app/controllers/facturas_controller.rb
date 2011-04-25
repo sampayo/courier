@@ -3,7 +3,7 @@ class FacturasController < ApplicationController
 	# GET /facturas
 	# GET /facturas.xml
 	def index
-		@facturas = Factura.all
+		@facturas = Factura.find_by_sql("SELECT f.id, o.id as numOrden, (f.costoTotal + f.iva) as monto, o.fecha from facturas f, ordens o where o.id=f.ordens_id")
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -15,7 +15,9 @@ class FacturasController < ApplicationController
 	# GET /facturas/1.xml
 	def show
 		@factura = Factura.find(params[:id])
-
+		@orden = Orden.where(:id => @factura.ordens_id).first
+		@paquete = Paquete.where(:ordens_id => @factura.ordens_id)
+		@compania = Companium.find(@factura.companias_id)
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @factura }

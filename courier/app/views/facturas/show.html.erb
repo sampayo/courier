@@ -1,10 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Costototal:</b>
-  <%= @factura.costoTotal %>
-</p>
 
 
-<%= link_to 'Edit', edit_factura_path(@factura) %> |
+
+<h2><%= @compania.nombre %></h2>
+<h5><%= @compania.rif %></h5>
+<p> Direccion Fiscal: <%=" " + @compania.direccionF %></p></br>
+<p>---------------------------------------------------------------------------------------------------------</p>
+<p>Orden numero:<%= @orden.id %> </p>
+<p>Reseptor:<%= " " + @orden.nombre + ' ' + @orden.apellido %> </p>
+<p>Fecha:<%= @orden.fecha %> </p>
+
+
+<div id="paquetes"  >
+		<h3>Paquetes</h3>
+   	<table width="90%">
+   		<tr>
+   			<td><b>Nombre</b></td><td><b>Peso</b></td><td><b>Descripcion</b></td>
+   		</tr>
+<% @paquete.each do |paquete| %>
+		<tr align="center">
+			<td><%= paquete.nombre %></td>
+			<td><%= paquete.peso %></td>
+			<td><%= paquete.descripcion %></td>
+		</tr>
+		<% end %>
+	</table>
+  
+</div>
+
+<div id="paquetes">
+<table width="90%">
+	<tr>
+		<td>
+			<p><b>Costo:</b></p>
+		</td>
+		<td><%= @factura.costoTotal %></td>
+	</tr>
+		<tr>
+		<td>
+			<p><b>iva:</b></p>
+		</td>
+		<td><%= @factura.iva.round(2) %></td>
+	</tr>
+		<tr>
+		<td>
+			<p><b>Costo Total:<b></p>
+		</td>
+		<td><b><%= (@factura.costoTotal + @factura.iva).round(2) %></b></td>
+	</tr>
+</table>
+</div>
+
+
+
+
 <%= link_to 'Back', facturas_path %>
