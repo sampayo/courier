@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 
-
+<div id="encabezado">
 
 <h2><%= @compania.nombre %></h2>
 <h5><%= @compania.rif %></h5>
 <p> Direccion Fiscal: <%=" " + @compania.direccionF %></p></br>
-<p>---------------------------------------------------------------------------------------------------------</p>
+</div>
+<dir id 'Contenido'>
+
 <p>Orden numero:<%= @orden.id %> </p>
 <p>Reseptor:<%= " " + @orden.nombre + ' ' + @orden.apellido %> </p>
 <p>Fecha:<%= @orden.fecha %> </p>
@@ -51,8 +53,11 @@
 	</tr>
 </table>
 </div>
-
-
+</dir>
+<div id="QR">
+	
+	<a href=""><img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://10.0.1.9:3000/facturas/<%= @id %>" ></img></a>
+</div>
 
 
 <%= link_to 'Back', facturas_path %>

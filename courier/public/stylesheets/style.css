@@ -458,3 +458,10 @@ form{
 form h3{
 	padding-bottom: 15px;
 }
+#encabezado{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+#QR{
+	text-align: center;
+}
