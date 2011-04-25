@@ -39,34 +39,40 @@ class EnviarController < ApplicationController
 			format.xml  { render :xml => @tipo_pagos }
 		end
 	end
-	
+
 	def montoTotal(id)
 		@orden = Orden.find(id)
-		@monto=0
+		@peso=0
+		@contador=0
 		@paquetes = Paquete.where(:ordens_id => id)
 		@paquetes.each do |paquete|
-			@monto=paquete.peso + @monto
+			@peso=paquete.peso + @peso
+			@contador = 1 + @contador
 		end
-		
+		@direccion1= Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='inicio' and h.ordens_id=" + id).first
+		@direccion2= Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='fin' and h.ordens_id=" + id).first
+		@distancia=(Math.sqrt((@direccion1.lat-@direccion2.lat)**2 + (@direccion1.lng-@direccion2.lng)**2))*10
+		@monto = (60*@contador) + (( @peso + @distancia )* @contador) *10
 		@lala=@monto
 	end
 
 	def factura
 		@enviar = params[:enviar]
 		montoTotal(@enviar['ordens_id'])
-		
-		# @tipo_pago = Facturas.new(:ordens_id => @enviar['ordens_id'], :direccions_id => @enviar['direccions_id'], :tipo => 'inicio', :fecha=> Time.now)
+		@iva = @monto * 0.12
+		@factura = Factura.new(:ordens_id => @enviar['ordens_id'], :companias_id => 1, :tipo_pagos_id => @enviar['tipo_pagos_id'], :costoTotal => @monto ,:iva => @iva)
+		@orden = Orden.find(@enviar['ordens_id'])	
+		@orden.estado = "Pendiente por Recoleccion"
 
-		#respond_to do |format|
-			#@tipo_pago.personas_id=session[:id]
-			# if @tipo_pago.save
-			# 	# format.html { redirect_to(@tipo_pago, :notice => 'Tipo pago was successfully created.') }
-			# 	format.xml  { render :xml => @tipo_pago, :status => :created, :location => @tipo_pago }
-			# else
-			# 	format.html { render :action => "new" }
-			# 	format.xml  { render :xml => @tipo_pago.errors, :status => :unprocessable_entity }
-			# end
-		#end
+	respond_to do |format|
+	if @factura.save && @orden.save
+		format.html { redirect_to(@factura, :notice => 'Tipo pago was successfully created.') }
+		format.xml  { render :xml => @factura, :status => :created, :location => @tipo_pago }
+	else
+		format.html { render :action => "new" }
+		format.xml  { render :xml => @factura.errors, :status => :unprocessable_entity }
+	end
+	end
 	end
 
 end

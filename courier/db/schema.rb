@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
   end
 
   create_table "facturas", :force => true do |t|
-    t.string   "costoTotal"
+    t.float    "costoTotal"
+    t.float    "iva"
     t.integer  "companias_id"
     t.integer  "ordens_id"
     t.integer  "tipo_pagos_id"

@@ -18,8 +18,6 @@ class CourierController < ApplicationController
 			if  (@email)
 				if !(@persona = Persona.where(:email => @email).first)
 					@persona = Persona.new
-					# $email=""
-					# $nombre=""
 					render 'personas/new'
 				else
 					@persona = Persona.where(:email => @email).first
