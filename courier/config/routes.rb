@@ -69,16 +69,18 @@ Courier::Application.routes.draw do
 	#   end
 
 	match 'contenido', :to => 'courier#contenido', :as => "cont"
+
 	match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
+	match 'enviar/tipoPago/:id', :to => 'enviar#tipoPago', :via => 'get', :as => "tipoPago"
 
 	root :to => "courier#index"
 	get 'contenido' => 'courier#contenido'
-	match '*a', :to => 'errors#routing'
+	# match '*a', :to => 'errors#routing'
 
-# You can have the root of your site routed with "root"
-# just remember to delete public/index.html.
-# root :to => "welcome#index"
-
+	# You can have the root of your site routed with "root"
+	# just remember to delete public/index.html.
+	# root :to => "welcome#index"
+	match ':controller(/:action(/:id(.:format)))'
 # See how all your routes lay out with "rake routes"
 
 # This is a legacy wild controller route that's not recommended for RESTful applications.

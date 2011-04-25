@@ -1,0 +1,28 @@
+<h1>Lista targetas de credito</h1>
+
+<table width="80%">
+  <tr>
+  	<th></th>
+    <th>Nombre</th>
+    <th>Ntdc</th>
+    <th>Fvencimiento</th>
+  </tr>
+
+<%= form_for(:enviar, :url => {:action => 'factura'}) do |f| %>
+<% @tipo_pagos.each do |tipo_pago| %>
+  <tr align="Center">
+  			<div class="field">
+
+			<td><%= radio_button("enviar", "tipo_pagos_id", tipo_pago.id) %></td>			
+			<%=f.hidden_field :ordens_id, :value=> @orden %>
+		</div>
+    <td><%= tipo_pago.nombre %></td>
+    <td><%= tipo_pago.nTDC %></td>
+    <td><%= tipo_pago.fVencimiento %></td>
+  </tr>
+	<% end %>
+
+</table>	<%= f.submit %>
+	<% end %>
+<br />
+
