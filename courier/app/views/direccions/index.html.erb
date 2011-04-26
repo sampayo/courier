@@ -1,11 +1,11 @@
-<h1>Listing direccions</h1>
+<h1>Lista de direcciones</h1>
 
 <table width="80%" align="Center">
   <tr>
+    <th>Nombre</th>  	
   	<th>Pais</th>
   	<th>Ciudad</th>
   	<th>Avenida</th>
-    <th>Residencia</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +13,10 @@
 
 <% @direccions.each do |direccion| %>
   <tr align="Center">
+    <td><%= direccion.nombre %></td>  	
   	<td><%= direccion.pais %></td>
   	<td><%= direccion.ciudad %></td>
     <td><%= direccion.avCalle %></td>
-    <td><%= direccion.resCasa %></td>
     <td><%= link_to 'Show', direccion %></td>
     <td><%= link_to 'Edit', edit_direccion_path(direccion) %></td>
     <td><%= link_to 'Destroy', direccion, :confirm => 'Are you sure?', :method => :delete %></td>

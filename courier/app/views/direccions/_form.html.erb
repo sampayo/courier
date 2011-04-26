@@ -13,6 +13,14 @@
 <div id="formdir">
 	<table width="100%">
 		<tr>
+
+			<td>
+			<div class="field">
+				<%= f.label :Nombre%>
+				<br />
+				<%= f.text_field :nombre %>
+			</div>
+			</td>
 			<td>
 			<div class="field">
 				<%= f.label :Avenida_o_Calle%>
@@ -20,20 +28,13 @@
 				<%= f.text_field :avCalle %>
 			</div>
 			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Residencia_o_calle %>
-				<br />
-				<%= f.text_field :resCasa %>
-			</div>
-			</td>
 		</tr>
 		<tr>
 			<td>
 			<div class="field">
-				<%= f.label :Apartamento_o_Casa %>
+				<%= f.label :Residencia_o_casa %>
 				<br />
-				<%= f.text_field :aptoNumero %>
+				<%= f.text_field :resCasa %>
 			</div>
 			</td>
 			<td>
@@ -47,11 +48,20 @@
 		<tr>
 			<td>
 			<div class="field">
+				<%= f.label :Apartamento_o_Casa %>
+				<br />
+				<%= f.text_field :aptoNumero %>
+			</div>
+			</td>
+			<td>
+			<div class="field">
 				<%= f.label :Ciudad %>
 				<br />
 				<%= f.text_field :ciudad %>
 			</div>
 			</td>
+		</tr>
+		<tr>
 			<td>
 			<div class="field">
 				<%= f.label :Pais %>
@@ -59,20 +69,11 @@
 				<%= f.text_field :pais %>
 			</div>
 			</td>
-		</tr>
-		<tr>
 			<td>
 			<div class="field">
 				<%= f.label :codigo_Postal %>
 				<br />
 				<%= f.text_field :cPostal %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Latitud  %>
-				<br />
-				<%= f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true" %>
 			</div>
 			</td>
 		</tr>
@@ -84,6 +85,15 @@
 				<%= f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true" %>
 			</div>
 			</td>
+			<td>
+			<div class="field">
+				<%= f.label :Latitud  %>
+				<br />
+				<%= f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true" %>
+			</div>
+			</td>
+		</tr>
+		<tr>
 			<td>
 			<div class="actions">
 				<%= f.submit %>
