@@ -1,6 +1,7 @@
 class CreateDireccions < ActiveRecord::Migration
 	def self.up
 		create_table :direccions do |t|
+			t.string :nombre
 			t.string :avCalle
 			t.string :resCasa
 			t.integer :aptoNumero

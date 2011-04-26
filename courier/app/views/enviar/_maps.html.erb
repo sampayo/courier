@@ -7,7 +7,6 @@
 				</div>
 			</div>
 		</div>
-
 	</body>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
 	</script>
@@ -19,28 +18,31 @@
 	function initialize() {
 		var myLatlng = new google.maps.LatLng(10.5,-66.91667);
 		var myOptions = {
-			zoom: 12,
-			center: myLatlng,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		}
-		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		zoom: 12,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-		google.maps.event.addListener(map, 'click', function(event) {
-			placeMarker(event.latLng);
-		});
 	}
 
-	function placeMarker(location) {
-		var clickedLocation = new google.maps.LatLng(location);
+	function marca(lat,lng,ciudad) {
+		var myLatlng = new google.maps.LatLng(lat,lng);
 		var marker = new google.maps.Marker({
-			position: location,
-			map: map
+			position: myLatlng,
+			map: map,
+			title: ciudad
 		});
-		// alert (marker.getPosition().toString());
-		document.getElementById("direccion_lat").value = marker.getPosition().lat();
-		document.getElementById("direccion_lng").value = marker.getPosition().lng();
 
-		map.setCenter(location);
+		var infowindow = new google.maps.InfoWindow(
+		{ content: '<div id="InfoWindow"><h3>' + ciudad + '</h3></div>',
+			size: new google.maps.Size(50,50)
+		});
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map,marker);
+		});
+		map.setCenter(myLatlng);
 	}
 
 	</script>

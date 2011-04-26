@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
   end
 
   create_table "direccions", :force => true do |t|
+    t.string   "nombre"
     t.string   "avCalle"
     t.string   "resCasa"
     t.integer  "aptoNumero"

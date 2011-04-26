@@ -219,7 +219,7 @@ a:hover {
 }
 
 #page-bgtop {
-	padding: 20px px;
+	padding: 20px;
 }
 
 #page-bgbtm {
@@ -465,3 +465,7 @@ form h3{
 #QR{
 	text-align: center;
 }
+#infoWindow{
+text-align: center;
+}
+
