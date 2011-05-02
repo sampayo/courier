@@ -45,7 +45,6 @@ class FacturasController < ApplicationController
 	# POST /facturas.xml
 	def create
 		@factura = Factura.new(params[:factura])
-
 		respond_to do |format|
 			if @factura.save
 				format.html { redirect_to(@factura, :notice => 'Factura was successfully created.') }
