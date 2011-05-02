@@ -2,9 +2,9 @@ xml.instruct! :xml, :version=>"1.0"
 
 xml.Tracking{
 	xml.info do
-		xml.tracking(@addresses.id)
-		xml.fecha(@addresses.fecha)
-		xml.Estatus(@addresses.estado)
+		xml.tracking(@factura.id)
+		xml.fecha(@factura.fecha)
+		xml.Estatus(@factura.estado)
 	end
 
 }
