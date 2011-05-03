@@ -1,63 +1,105 @@
-<p id="notice"><%= notice %></p>
+<div id="page-wrap">
 
+	<div id="identity">
+		<div class="company">
+			<h2><%= @compania.nombre %></h2>
+			<h5><%= @compania.rif %></h5>
+			Direccion:<%= " " + @compania.direccionF %>
+			<br/>
+			telefono:<%= " " + @compania.telefono %></br>
+		</div>
+	</div>
+	<div style="clear:both">
+	</div>
+	<div id="customer">
+<br/><br/>
 
-<div id="encabezado">
+		<div class="dues">
+			<h3><%= @cliente.nombre + " " + @cliente.apellido %></h3><h5><%= @cliente.email %></h5>
+			<br/>
+		</div>
+		<table id="meta">
+			<tr>
+				<td class="meta-head">Orden #</td>
+				<td>
+				<div class="due">
+					<%= @orden.id %>
+				</div>
+				</td>
+			</tr>
+			<tr>
 
-<h2><%= @compania.nombre %></h2>
-<h5><%= @compania.rif %></h5>
-<p> Direccion Fiscal: <%=" " + @compania.direccionF %></p></br>
-</div>
-<dir id 'Contenido'>
+				<td class="meta-head">Fecha</td>
+				<td>
+				<div class="due">
+					<%= @orden.fecha %>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="meta-head">Reseptor</td>
+				<td>
+				<div class="due">
+					<%= @orden.nombre + ' ' + @orden.apellido %>
+				</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<table id="items">
 
-<p>Orden numero:<%= @orden.id %> </p>
-<p>Reseptor:<%= " " + @orden.nombre + ' ' + @orden.apellido %> </p>
-<p>Fecha:<%= @orden.fecha %> </p>
-
-
-<div id="paquetes"  >
-		<h3>Paquetes</h3>
-   	<table width="90%">
-   		<tr>
-   			<td><b>Nombre</b></td><td><b>Peso</b></td><td><b>Descripcion</b></td>
-   		</tr>
-<% @paquete.each do |paquete| %>
-		<tr align="center">
+		<tr>
+			<th>Item</th>
+			<th>Description</th>
+			<th>peso</th>
+		</tr>
+		<% @paquete.each do |paquete| %>
+		<tr class="item-row">
 			<td><%= paquete.nombre %></td>
-			<td><%= paquete.peso %></td>
 			<td><%= paquete.descripcion %></td>
+			<td><%= paquete.peso %> g</td>
 		</tr>
 		<% end %>
+
+		<tr>
+			<td colspan="2" class="blank"> </td>
+			<td colspan="2" class="total-line">Subtotal</td>
+			<td class="total-value">
+			<div id="subtotal">
+				<%= @factura.costoTotal %>
+			</div>
+			</td>
+		</tr>
+		<tr>
+
+			<td colspan="2" class="blank"> </td>
+			<td colspan="2" class="total-line">Iva</td>
+			<td class="total-value">
+			<div id="total">
+				<%= @factura.iva.round(2) %>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="blank"> </td>
+			<td colspan="2" class="total-line balance">Total</td>
+			<td class="total-value balance">
+			<div class="due">
+				<%= (@factura.costoTotal + @factura.iva).round(2) %>
+			</div>
+			</td>
+		</tr>
 	</table>
-  
-</div>
+	<div id="terms">
+		<h5>Codigo</h5>
+		<div id="QR">
 
-<div id="paquetes">
-<table width="90%">
-	<tr>
-		<td>
-			<p><b>Costo:</b></p>
-		</td>
-		<td><%= @factura.costoTotal %></td>
-	</tr>
-		<tr>
-		<td>
-			<p><b>iva:</b></p>
-		</td>
-		<td><%= @factura.iva.round(2) %></td>
-	</tr>
-		<tr>
-		<td>
-			<p><b>Costo Total:<b></p>
-		</td>
-		<td><b><%= (@factura.costoTotal + @factura.iva).round(2) %></b></td>
-	</tr>
-</table>
-</div>
-</dir>
-<div id="QR">
-	
-	<a href="http://10.0.7.3:3000/gen_xml/<%= @id %>"><img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://10.0.7.3:3000/gen_xml/<%= @id %>" ></img></a>
-</div>
-
-
+			<a href="http://10.0.7.3:3000/gen_xml/<%= @id %>">
+			<img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://10.0.7.3:3000/gen_xml/<%= @id %>" >
+			</img>
+			</a>
+		</div>
+	</div>
 <%= link_to 'Back', facturas_path %>
+</div>
+

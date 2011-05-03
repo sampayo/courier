@@ -18,6 +18,7 @@ class FacturasController < ApplicationController
 		@orden = Orden.where(:id => @factura.ordens_id).first
 		@paquete = Paquete.where(:ordens_id => @factura.ordens_id)
 		@compania = Companium.find(@factura.companias_id)
+		@cliente = Persona.find(@orden.personas_id)
 		@id= params[:id]
 		respond_to do |format|
 			format.html # show.html.erb
