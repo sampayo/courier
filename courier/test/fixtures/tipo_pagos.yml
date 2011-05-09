@@ -4,10 +4,10 @@ one:
   nombre: MyString
   nTDC: MyString
   cSeguridad: MyString
-  fVencimiento: 2011-04-20
+  fVencimiento: 2010-04-20
 
 two:
-  nombre: MyString
-  nTDC: MyString
-  cSeguridad: MyString
-  fVencimiento: 2011-04-20
+  nombre: MyString1
+  nTDC: MyString1
+  cSeguridad: MyString1
+  fVencimiento: 2012-04-21

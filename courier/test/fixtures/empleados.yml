@@ -4,4 +4,4 @@ one:
   cargo: MyString
 
 two:
-  cargo: MyString
+  cargo: MyString1

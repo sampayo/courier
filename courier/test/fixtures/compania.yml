@@ -7,7 +7,7 @@ one:
   telefono: MyString
 
 two:
-  nombre: MyString
-  rif: MyString
-  direccionF: MyString
-  telefono: MyString
+  nombre: MyString1
+  rif: MyString1
+  direccionF: MyString1
+  telefono: MyString1

@@ -12,12 +12,12 @@ one:
   lng: 1.5
 
 two:
-  avCalle: MyString
-  resCasa: MyString
-  aptoNumero: 1
-  urban: MyString
-  ciudad: MyString
-  pais: MyString
-  cPostal: MyString
-  lat: 1.5
-  lng: 1.5
+  avCalle: MyString1
+  resCasa: MyString1
+  aptoNumero: 11
+  urban: MyString1
+  ciudad: MyString1
+  pais: MyString1
+  cPostal: MyString1
+  lat: 1.51
+  lng: 1.51

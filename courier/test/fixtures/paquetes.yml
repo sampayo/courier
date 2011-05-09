@@ -6,6 +6,6 @@ one:
   descripcion: MyString
 
 two:
-  nombre: MyString
-  peso: 1
-  descripcion: MyString
+  nombre: MyString1
+  peso: 11
+  descripcion: MyString1
