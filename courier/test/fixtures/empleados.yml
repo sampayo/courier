@@ -2,6 +2,8 @@
 
 one:
   cargo: MyString
+  personas_id: 2
 
 two:
   cargo: MyString1
+  personas_id: 1

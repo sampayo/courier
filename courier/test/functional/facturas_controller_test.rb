@@ -3,6 +3,8 @@ require 'test_helper'
 class FacturasControllerTest < ActionController::TestCase
   setup do
     @factura = facturas(:one)
+        $email = 'adffa'
+    $nombre = 'refeer'
   end
 
   test "should get index" do

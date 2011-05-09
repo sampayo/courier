@@ -1,6 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1  	
+  nombre: Mysajdh	
   avCalle: MyString
   resCasa: MyString
   aptoNumero: 1
@@ -10,8 +12,11 @@ one:
   cPostal: MyString
   lat: 1.5
   lng: 1.5
+  personas_id: 1
 
 two:
+  id: 2	
+  nombre: Mysajdh2	
   avCalle: MyString1
   resCasa: MyString1
   aptoNumero: 11
@@ -21,3 +26,4 @@ two:
   cPostal: MyString1
   lat: 1.51
   lng: 1.51
+  personas_id: 2

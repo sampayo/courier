@@ -3,6 +3,7 @@ require 'test_helper'
 class EmpleadosControllerTest < ActionController::TestCase
   setup do
     @empleado = empleados(:one)
+    @personas = personas(:one)
   end
 
   test "should get index" do

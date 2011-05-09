@@ -1,4 +1,5 @@
 class CompaniaController < ApplicationController
+
   # GET /compania
   # GET /compania.xml
   def index
