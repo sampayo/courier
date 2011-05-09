@@ -83,7 +83,7 @@
 		<tr>
 			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line balance">Total</td>
-			<td class="total-value balance">
+			<td class="total-value balance"><%= @remote_ip %>
 			<div class="due">
 				<%= (@factura.costoTotal + @factura.iva).round(2) %>
 			</div>
@@ -94,8 +94,8 @@
 		<h5>Codigo</h5>
 		<div id="QR">
 
-			<a href="http://10.0.7.3:3000/gen_xml/<%= @id %>">
-			<img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://10.0.7.3:3000/gen_xml/<%= @id %>" >
+			<a href="<%=genxml_path%>">
+			<img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=<%= $ip %>:3000/gen_xml/<%= @id %>" >
 			</img>
 			</a>
 		</div>

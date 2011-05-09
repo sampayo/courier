@@ -79,11 +79,13 @@ class EnviarController < ApplicationController
     # @xml = Builder::XmlMarkup.new
     @id = params[:id]
     @orden = Orden.find(params[:id])
-    @orden.estado = "Recolectada"
-    @historico = Historico.where(:ordens_id => @id , :tipo => 'fin').first
-    @historico.fecha = Time.now
-    @historico.save
-    @orden.save 
+    unless @orden.estado == "Recolectada"
+      @orden.estado = "Recolectada"
+      @historico = Historico.where(:ordens_id => @id , :tipo => 'fin').first
+      @historico.fecha = Time.now
+      @historico.save
+      @orden.save
+    end
     @factura = Factura.find_by_sql("select h.fecha, o.id, o.estado from historicos h , ordens o where o.id = h.ordens_id and h.tipo='fin' AND o.id=" + @id).first
     render :layout => false
   end

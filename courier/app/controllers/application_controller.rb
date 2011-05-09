@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
+	
+	$ip = "10.0.1.9"
+	
 	def iniciarSesion (email,nombre,apellido,id)
 		session[:email] = email
 		session[:nombre] = nombre
