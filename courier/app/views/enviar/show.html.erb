@@ -2,25 +2,23 @@
 	<tr>
 		<th></th>
 		<th></th>
-				<th>Nombre</th>
+		<th>Nombre</th>
 		<th>Pais</th>
 		<th>Ciudad</th>
 		<th>Avenida</th>
-
 	</tr>
-	<%= form_for(:enviar, :url => {:action => 'create'}) do |f| %>
+	<%= form_for(:enviar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
 	<% @direccions.each do |direccion| %>
 	<tr align="Center">
 
 		<div class="field">
-
 			<td><%= radio_button("enviar", "direccions_id", direccion.id, :onclick => "marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre +  '")') %></td>
 			<td><%= radio_button("enviar", "direccions", direccion.id, :onclick =>"marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre + '")') %></td>
 			<%= #f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lat
-			%>
+%>
 			<%= #f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lng
-			%>
-			<%=f.hidden_field :ordens_id, :value=> @orden %>
+%>
+			<%= f.hidden_field :ordens_id, :value=> @orden %>
 		</div>
 		<td><%= direccion.nombre %></td>
 		<td><%= direccion.pais %></td>
@@ -28,7 +26,7 @@
 		<td><%= direccion.avCalle %></td>
 	</tr>
 	<% end %>
-</table>	
+</table>
 <%= f.submit %>
 <% end %>
 <br />

@@ -34,12 +34,12 @@
 						<div class="post">
 							<div id='error'><h3><%=flash[:error]%></h3></div>
 							<h2 class="title">
-							Welcome to Vertebrate 
+							Welcome to Vertebrate
 														</h2>
 							<p class="meta">
 								<span class="date">September 10, 2009</span>
 								<span class="posted">
-									Posted by
+									Posted by 
 									<a href="#">Someone </a>
 								</span>
 							</p>
@@ -58,7 +58,7 @@
 							<p class="meta">
 								<span class="date">September 10, 2009</span>
 								<span class="posted">
-									Posted by
+									Posted by 
 									<a href="#">Someone </a>
 								</span>
 							</p>
@@ -105,8 +105,8 @@
 									&openid.ns.max_auth_age=300
 									&openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select
 									&openid.identity=http://specs.openid.net/auth/2.0/identifier_select
-									&openid.return_to=http://<%= $ip %>:3000/contenido
-									&openid.realm=http://<%= $ip %>:3000
+									&openid.return_to=http://<%= @remote_ip %>:3000/contenido
+									&openid.realm=http://<%= @remote_ip %>:3000
 									&openid.assoc_handle=ABSmpf6DNMw
 									&openid.mode=checkid_setup
 									&openid.ui.ns=http://specs.openid.net/extensions/ui/1.0

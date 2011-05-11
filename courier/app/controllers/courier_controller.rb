@@ -2,7 +2,7 @@ class CourierController < ApplicationController
 	layout "enSistema" , :except => [:index]
 	def index
 		destruir
-	  @remote_ip = request.ip
+	  @remote_ip = ip
 	end
 
 	def contenido

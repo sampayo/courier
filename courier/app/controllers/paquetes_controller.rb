@@ -79,7 +79,7 @@ class PaquetesController < ApplicationController
     @paquete.destroy
 
     respond_to do |format|
-      format.html { redirect_to(paquetes_url) }
+      format.html { redirect_to(ordens_path) }
       format.xml  { head :ok }
     end
   end
