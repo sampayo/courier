@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'prawn'
+require 'prawn/security'
+require "prawn/layout"
 class FacturasController < ApplicationController
   
   #Llamamos al layout enSistema que se encuentra en la carpeta layouts.
@@ -26,9 +30,13 @@ class FacturasController < ApplicationController
     @paquete = Paquete.where(:ordens_id => @factura.ordens_id)
     @compania = Companium.find(@factura.companias_id)
     @cliente = Persona.find(@orden.personas_id)
+    @total = @factura.costoTotal + @factura.iva
+    @dirQR = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://" + @remote_ip.to_s + ":3000/gen_xml/" + @orden.id.to_s
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @factura }
+      format.pdf { render :format=>false, :attachment=>false}
+      #format.pdf {render :pdf => "filename", :stylesheets => "factura"} 
     end
   end
   

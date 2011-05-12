@@ -11,6 +11,8 @@ gem 'mysql2'
 # Gem del servidor thin.
 gem 'thin'
 
+# Gem prawn para generar pdf.
+gem 'prawn'
 # Use unicorn as the web server
 # gem 'unicorn'
 
