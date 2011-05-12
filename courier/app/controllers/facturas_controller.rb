@@ -1,7 +1,12 @@
+require 'rubygems'
+require 'prawn'
+require 'prawn/security'
+require "prawn/layout"
 class FacturasController < ApplicationController
   layout "enSistema"
   # GET /facturas
   # GET /facturas.xml
+  
   def index
     @facturas = Factura.find_by_sql('SELECT f.id, o.id as numOrden, (f.costoTotal + f.iva) as monto, o.fecha from facturas f, ordens o where o.id=f.ordens_id and o.personas_id='+session[:id].to_s)
 
@@ -14,15 +19,19 @@ class FacturasController < ApplicationController
   # GET /facturas/1
   # GET /facturas/1.xml
   def show
-   @remote_ip = ip
+    @remote_ip = ip
     @factura = Factura.find(params[:id])
     @orden = Orden.where(:id => @factura.ordens_id).first
     @paquete = Paquete.where(:ordens_id => @factura.ordens_id)
     @compania = Companium.find(@factura.companias_id)
     @cliente = Persona.find(@orden.personas_id)
+    @total = @factura.costoTotal + @factura.iva
+    @dirQR = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=http://" + @remote_ip.to_s + ":3000/gen_xml/" + @orden.id.to_s
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @factura }
+      format.pdf { render :format=>false, :attachment=>false}
+      #format.pdf {render :pdf => "filename", :stylesheets => "factura"} 
     end
   end
 
