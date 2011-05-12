@@ -1,4 +1,6 @@
 class Orden < ActiveRecord::Base
+  
+  # Validamos los formularios de la pagina Orden, y relacionamos la tabla.
 	validates :nombre	 , :presence => true
 	validates :apellido, :presence => true
 	validates :estado	 , :presence => true

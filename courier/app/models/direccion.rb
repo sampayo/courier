@@ -1,4 +1,6 @@
 class Direccion < ActiveRecord::Base
+  
+  # Validaoms los formularios de la pagina direccion, y relacionamos la tabla.
 	validates :avCalle, :presence => true
 	validates :resCasa, :presence => true
 	validates :aptoNumero, :presence => true

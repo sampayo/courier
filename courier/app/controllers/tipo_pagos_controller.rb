@@ -1,5 +1,9 @@
 class TipoPagosController < ApplicationController
+  
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
 	layout "enSistema"
+		
+	# Metodo llamado al iniciar la pagina index, y muestra la pagina unicamente si existe session.
 	# GET /tipo_pagos
 	# GET /tipo_pagos.xml
 	def index
@@ -10,6 +14,7 @@ class TipoPagosController < ApplicationController
 		end
 	end
 
+  # llamada a motrar de tipo_pagos, pasandole un parametro.
 	# GET /tipo_pagos/1
 	# GET /tipo_pagos/1.xml
 	def show
@@ -21,6 +26,7 @@ class TipoPagosController < ApplicationController
 		end
 	end
 
+  # llamada a la pagina new de tipo_pago.
 	# GET /tipo_pagos/new
 	# GET /tipo_pagos/new.xml
 	def new
@@ -32,11 +38,13 @@ class TipoPagosController < ApplicationController
 		end
 	end
 
+  # Llamamos a la pagina editar de tipo_pago.
 	# GET /tipo_pagos/1/edit
 	def edit
 		@tipo_pago = TipoPago.find(params[:id])
 	end
 
+  # llamada a crear un tipo_pago, pasandole un parametro.
 	# POST /tipo_pagos
 	# POST /tipo_pagos.xml
 	def create

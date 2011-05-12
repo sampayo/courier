@@ -1,4 +1,6 @@
 class PersonasController < ApplicationController
+  
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
 	layout "enSistema"
   # GET /personas
   # GET /personas.xml

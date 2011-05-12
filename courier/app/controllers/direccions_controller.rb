@@ -1,5 +1,9 @@
 class DireccionsController < ApplicationController
+  
+  #Llamamos al layout enSistema que se encuentra en la carpeta layouts.
 	layout "enSistema"
+	
+	# Llamada a la pagina index de direccion, siempre y cuando exista una sesion.
 	# GET /direccions
 	# GET /direccions.xml
 	def index
@@ -10,7 +14,7 @@ class DireccionsController < ApplicationController
 			format.xml  { render :xml => @direccions }
 		end
 	end
-
+  # llamada a motrar una direccion, pasandole un parametro.
 	# GET /direccions/1
 	# GET /direccions/1.xml
 	def show
@@ -21,7 +25,7 @@ class DireccionsController < ApplicationController
 			format.xml  { render :xml => @direccion }
 		end
 	end
-
+  # llamada a la pagina new de direccion.
 	# GET /direccions/new
 	# GET /direccions/new.xml
 	def new
@@ -32,12 +36,12 @@ class DireccionsController < ApplicationController
 			format.xml  { render :xml => @direccion }
 		end
 	end
-
+  # llamada a la pagina edit de direccion.
 	# GET /direccions/1/edit
 	def edit
 		@direccion = Direccion.find(params[:id])
 	end
-
+  # Metodo utilizado para crear una direccion.
 	# POST /direccions
 	# POST /direccions.xml
 	def create
@@ -54,7 +58,7 @@ class DireccionsController < ApplicationController
 			end
 		end
 	end
-
+  # Buscamos la direccion por el parametro dado y la mostramos.
 	# PUT /direccions/1
 	# PUT /direccions/1.xml
 	def update
@@ -70,7 +74,7 @@ class DireccionsController < ApplicationController
 			end
 		end
 	end
-
+  # Destruimos una direccion bajo un parametro dado.
 	# DELETE /direccions/1
 	# DELETE /direccions/1.xml
 	def destroy

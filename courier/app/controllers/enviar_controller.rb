@@ -1,8 +1,14 @@
 class EnviarController < ApplicationController
+  
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
   layout "enSistema"
+  
+  # Incluimos el helper que se encuentra en helpers/enviar_helper.rb
   include EnviarHelper
   # POST /historicos
   # POST /historicos.xml
+  
+  # Metodo create
   def create
     @enviar = params[:enviar]
     @historico1= Historico.new(:ordens_id => @enviar['ordens_id'], :direccions_id => @enviar['direccions_id'], :tipo => 'inicio', :fecha=> Time.now)
@@ -20,6 +26,7 @@ class EnviarController < ApplicationController
     end
   end
 
+  # llamada a motrar una direccion, pasandole un parametro.
   def show
     @direccions = Direccion.where(:personas_id => session[:id])
     @enviar = Historico.new

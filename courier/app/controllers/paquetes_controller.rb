@@ -1,9 +1,11 @@
 class PaquetesController < ApplicationController
-		layout "enSistema"
+  
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
+	layout "enSistema"
 
+  # Metodo utilizado cuando se accede a la pagina index.
   # GET /paquetes
   # GET /paquetes.xml
- 
   def index
     @paquetes = Paquete.all
 
@@ -13,6 +15,7 @@ class PaquetesController < ApplicationController
     end
   end
 
+  # llamada a motrar una paquete, pasandole un parametro.
   # GET /paquetes/1
   # GET /paquetes/1.xml
   def show
@@ -24,6 +27,7 @@ class PaquetesController < ApplicationController
     end
   end
 
+  # llamada a la pagina new de paquete, pasandole un parametro
   # GET /paquetes/new
   # GET /paquetes/new.xml
   def new
@@ -35,12 +39,14 @@ class PaquetesController < ApplicationController
       format.xml  { render :xml => @paquete }
     end
   end
-
+  
+  # Llamamos a la pagina editar de paquete.
   # GET /paquetes/1/edit
   def edit
     @paquete = Paquete.find(params[:id])
   end
-
+  
+  # llamada a crear una paquete, pasandole un parametro.
   # POST /paquetes
   # POST /paquetes.xml
   def create
@@ -56,6 +62,7 @@ class PaquetesController < ApplicationController
     end
   end
 
+  # Llamamos al metodo para acualizar la paquete pasandole un parametro.
   # PUT /paquetes/1
   # PUT /paquetes/1.xml
   def update
@@ -71,7 +78,8 @@ class PaquetesController < ApplicationController
       end
     end
   end
-
+  
+  # Llamada al metodo destruir un paquete, pasandole un parametro.
   # DELETE /paquetes/1
   # DELETE /paquetes/1.xml
   def destroy

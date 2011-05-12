@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-# Companium.new([{:id => 1}, {:nombre => 'compania1'}, {:rif => 1234567},
-  # {:direccionF => 'aqui esta'}, {:telefono => '5555444'}])
+
+#Llenamos una tupla de la tabla compa–ia(Mysql).
 Companium.create! :id => 1,
                   :nombre => 'compania1',
                   :rif => 1234567,

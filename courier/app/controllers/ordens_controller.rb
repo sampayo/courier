@@ -1,7 +1,11 @@
 class OrdensController < ApplicationController
+  
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
 	layout "enSistema"
 	# GET /ordens
 	# GET /ordens.xml
+	
+	# Metodo llamado al iniciar la pagina index, y muestra la pagina unicamente si existe session.
 	def index
 		@ordens = Orden.where(:personas_id => session[:id])	
 		respond_to do |format|
@@ -10,14 +14,18 @@ class OrdensController < ApplicationController
 		end
 	end
 
+  # llamada a motrar una orden, pasandole un parametro, y buscando un paquete que use este parametro.
 	# GET /ordens/1
 	# GET /ordens/1.xml
 	def show
 		@orden = Orden.find(params[:id])
 		@paquetes = Paquete.where(:ordens_id => params[:id] )
+		
+		# Realizamos dos llamadas a buscar en base de datos para poder crear las facturas del usuario.
 		@destino = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='fin' and h.ordens_id=" + params[:id]).first
 		@salida = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='inicio' and h.ordens_id=" + params[:id]).first
 
+    # Comparamos que ambas llamadas a base de datos sean iguales y creamos dos salidas para la factura.
 		if @salida && @destino
 			@salida=@salida.ciudad + ', ' + @salida.pais + ' Urbanizacion: ' + @salida.urban + ' Residencia: ' + @salida.resCasa
 			@destino=@destino.ciudad + ', ' + @destino.pais + ' Urbanizacion: ' + @destino.urban + ' Residencia: ' + @destino.resCasa
@@ -29,6 +37,7 @@ class OrdensController < ApplicationController
 		end
 	end
 
+  # llamada a la pagina new de orden, pasandole un parametro y preguntando un parametro de la session del usuario.
 	# GET /ordens/new
 	# GET /ordens/new.xml
 	def new
@@ -39,16 +48,20 @@ class OrdensController < ApplicationController
 				format.xml  { render :xml => @orden }
 			end
 		else
+		  # Mostramos un error, de no existir una tarjeta de credito y una direcion.
 			flash[:error] = "Para hacer una orden debe tener al menos una direccion y una tarjeta de credito"
 			redirect_to cont_path
 		end
 	end
 
+  # Llamamos a la pagina editar de orden.
 	# GET /ordens/1/edit
 	def edit
 		@orden = Orden.find(params[:id])
 	end
 
+  # llamada a crear una orden, pasandole un parametro, y preguntando por la sesion del usuario, la fecha actual,
+  # fijamos un estado de la orden.
 	# POST /ordens
 	# POST /ordens.xml
 	def create
@@ -67,6 +80,7 @@ class OrdensController < ApplicationController
 		end
 	end
 
+  # Llamamos al metodo para acualiar la orden pasandole un parametro.
 	# PUT /ordens/1
 	# PUT /ordens/1.xml
 	def update
@@ -83,6 +97,7 @@ class OrdensController < ApplicationController
 		end
 	end
 
+  # Llamada al metodo destruir, para borrar una orden, pasandole un parametro.
 	# DELETE /ordens/1
 	# DELETE /ordens/1.xml
 	def destroy

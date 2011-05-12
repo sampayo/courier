@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	
-	
+#Metodo con el cual iniciamos sesion.
+#Necesitamos de 4 atributos los cuales los recibimos del session
+#Colocamos el email del usuario y el nombre en la pagina una vez que se inicia la sesion.	
 	def iniciarSesion (email,nombre,apellido,id)
 		session[:email] = email
 		session[:nombre] = nombre
@@ -11,6 +13,8 @@ class ApplicationController < ActionController::Base
 		$nombre = nombre +" "+ apellido
 	end
 
+#Metodo para destruir la sesion una vez que el usuario utiliza el boton de salir.
+#Colocamos todos los atributos de sesion en null.
 	def destruir
 		session[:email]=nil
 		session[:nombre]=nil
@@ -18,7 +22,7 @@ class ApplicationController < ActionController::Base
 		$email=''
 		$nombre=''
 	end
-
+#Metodo para validar si existe una session activa.
 	def validarSesion
 		if  session[:email].nil?
 			flash[:error] = "Debe iniciar sesion"
@@ -26,6 +30,8 @@ class ApplicationController < ActionController::Base
 		end
 	end
 	
+#Metodo para que la IP del servidor cambie automaticamente al de la maquina donde se esta desarrollando
+#Esto para que la IP a la cual el OpenID retorna la informacion del usuario concuerde con el de nosotros.	
 	 def ip
       orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true # turn off reverse DNS resolution temporarily
       UDPSocket.open do |s|
@@ -35,6 +41,4 @@ class ApplicationController < ActionController::Base
       ensure
       Socket.do_not_reverse_lookup = orig
     end
-	
-
 end

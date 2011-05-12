@@ -67,14 +67,23 @@ Courier::Application.routes.draw do
 	#     # (app/controllers/admin/products_controller.rb)
 	#     resources :products
 	#   end
-
+  
+  # Redirecciona a la pagina contenido como cont.
 	match 'contenido', :to => 'courier#contenido', :as => "cont"
-
+  
+  # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
 	match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
+	
+	# Crea el Url para tipo_pagos, llamando al metodo tipo_pago.enviar, y lo manda como get.
 	match 'enviar/tipoPago/:id', :to => 'enviar#tipoPago', :via => 'get', :as => "tipoPago"
+	
+	# Genera el xml de los paquetes.
 	match 'gen_xml/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
 
+  # Pagina principal del proyecto.
 	root :to => "courier#index"
+	
+  # Busca por get courier/contenido.
 	get 'contenido' => 'courier#contenido'
 
 	# match '*a', :to => 'errors#routing'

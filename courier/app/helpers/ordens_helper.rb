@@ -1,5 +1,6 @@
 module OrdensHelper
 	
+	# Metodo para validar que el ID de la orden concuerde con el usuario.
 	def validarOrden (id)
 		@historico = Historico.where(:ordens_id => id , :tipo => 'inicio').first
 		if @historico.nil?

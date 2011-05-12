@@ -1,4 +1,6 @@
 class TipoPago < ActiveRecord::Base
+  
+  # Validamos los formularios de la pagina TipoPago, y relacionamos la tabla.
 	belongs_to :personas
 	validates :nombre		 , :presence => true
 	validates :nTDC		 , :presence => true
@@ -11,7 +13,8 @@ class TipoPago < ActiveRecord::Base
 	
 	
 	validate :validarTdc
- 
+  
+  # Metodo para verifar las fechas de la tarjetas. 
   def validarTdc
     errors.add(:fVencimiento, "La fecha esta vencida") if
       !fVencimiento.blank? and fVencimiento < Date.today
