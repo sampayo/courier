@@ -1,105 +1,96 @@
 <%= form_for(@direccion) do |f| %>
 <% if @direccion.errors.any? %>
-<!-- <div id="error_explanation">
-<h2><%= pluralize(@direccion.errors.count, "error") %> prohibited this direccion from being saved:</h2>
-
-<ul>
-<% @direccion.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-</div> -->
 <% end %>
 <div id="formdir">
-	<table width="100%">
-		<tr>
+  <table width="100%">
+    <tr>
 
-			<td>
-			<div class="field">
-				<%= f.label :Nombre%>
-				<br />
-				<%= f.text_field :nombre %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Avenida_o_Calle%>
-				<br />
-				<%= f.text_field :avCalle %>
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="field">
-				<%= f.label :Residencia_o_casa %>
-				<br />
-				<%= f.text_field :resCasa %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Urbanizacion %>
-				<br />
-				<%= f.text_field :urban %>
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="field">
-				<%= f.label :Apartamento_o_Casa %>
-				<br />
-				<%= f.text_field :aptoNumero %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Ciudad %>
-				<br />
-				<%= f.text_field :ciudad %>
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="field">
-				<%= f.label :Pais %>
-				<br />
-				<%= f.text_field :pais %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :codigo_Postal %>
-				<br />
-				<%= f.text_field :cPostal %>
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="field">
-				<%= f.label :Longitud %>
-				<br />
-				<%= f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true" %>
-			</div>
-			</td>
-			<td>
-			<div class="field">
-				<%= f.label :Latitud  %>
-				<br />
-				<%= f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true" %>
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="actions">
-				<%= f.submit %>
-			</div>
-			</td>
-		</tr>
-	</table>
+      <td>
+      <div class="field">
+        <%= f.label :Nombre%>
+        <br />
+        <%= f.text_field :nombre %>
+      </div>
+      </td>
+      <td>
+      <div class="field">
+        <%= f.label :Calle_o_Avenida%>
+        <br />
+        <%= f.text_field :avCalle %>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div class="field">
+        <%= f.label :Nombre_de_la_casa %>
+        <br />
+        <%= f.text_field :resCasa %>
+      </div>
+      </td>
+      <td>
+      <div class="field">
+        <%= f.label :Urbanizacion %>
+        <br />
+        <%= f.text_field :urban %>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div class="field">
+        <%= f.label :Numero_de_la_casa %>
+        <br />
+        <%= f.text_field :aptoNumero %>
+      </div>
+      </td>
+      <td>
+      <div class="field">
+        <%= f.label :Ciudad %>
+        <br />
+        <%= f.text_field :ciudad %>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div class="field">
+        <%= f.label :Pais %>
+        <br />
+        <%= f.text_field :pais %>
+      </div>
+      </td>
+      <td>
+      <div class="field">
+        <%= f.label :Codigo_Postal %>
+        <br />
+        <%= f.text_field :cPostal %>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div class="field">
+        <%= f.label :Longitud %>
+        <br />
+        <%= f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true" %>
+      </div>
+      </td>
+      <td>
+      <div class="field">
+        <%= f.label :Latitud  %>
+        <br />
+        <%= f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true" %>
+      </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+      </td>
+    </tr>
+  </table>
 </div>
 <% end %>

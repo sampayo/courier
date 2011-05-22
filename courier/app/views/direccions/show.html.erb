@@ -1,59 +1,45 @@
-<p id="notice"><%= notice %></p>
-
+<p id="notice">
+  <%= notice %>
+</p>
 <p>
   <b>Nombre:</b>
   <%= @direccion.nombre %>
 </p>
 <p>
-  <b>Avcalle:</b>
+  <b>Calle o Avenida:</b>
   <%= @direccion.avCalle %>
 </p>
-
 <p>
-  <b>Rescasa:</b>
+  <b>Nombre de la Casa:</b>
   <%= @direccion.resCasa %>
 </p>
-
 <p>
-  <b>Aptonumero:</b>
+  <b>N&uacute;mero de Casa:</b>
   <%= @direccion.aptoNumero %>
 </p>
-
 <p>
-  <b>Avcalle:</b>
-  <%= @direccion.avCalle %>
-</p>
-
-<p>
-  <b>Urban:</b>
+  <b>Urbanizaci&oacute;n:</b>
   <%= @direccion.urban %>
 </p>
-
 <p>
   <b>Ciudad:</b>
   <%= @direccion.ciudad %>
 </p>
-
 <p>
-  <b>Pais:</b>
+  <b>Pa&iacute;s:</b>
   <%= @direccion.pais %>
 </p>
-
 <p>
-  <b>Cpostal:</b>
+  <b>C&oacute;digo postal:</b>
   <%= @direccion.cPostal %>
 </p>
-
 <p>
-  <b>Lat:</b>
+  <b>Latitud:</b>
   <%= @direccion.lat %>
 </p>
-
 <p>
-  <b>Lng:</b>
+  <b>Longitud:</b>
   <%= @direccion.lng %>
 </p>
-
-
-<%= link_to 'Edit', edit_direccion_path(@direccion) %> |
-<%= link_to 'Back', direccions_path %>
+<%= link_to 'Editar', edit_direccion_path(@direccion) %> |
+<%= link_to 'Regresar', direccions_path %>

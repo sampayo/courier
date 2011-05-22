@@ -1,9 +1,9 @@
-<h1>Lista de direcciones</h1>
+<h1>Listado de mis direcciones</h1>
 
 <table width="80%" align="Center">
   <tr>
     <th>Nombre</th>  	
-  	<th>Pais</th>
+  	<th>Pa&iacute;s</th>
   	<th>Ciudad</th>
   	<th>Avenida</th>
     <th></th>
@@ -17,13 +17,13 @@
   	<td><%= direccion.pais %></td>
   	<td><%= direccion.ciudad %></td>
     <td><%= direccion.avCalle %></td>
-    <td><%= link_to 'Show', direccion %></td>
-    <td><%= link_to 'Edit', edit_direccion_path(direccion) %></td>
-    <td><%= link_to 'Destroy', direccion, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Mostar', direccion %></td>
+    <td><%= link_to 'Editar', edit_direccion_path(direccion) %></td>
+    <td><%= link_to 'Borrar', direccion, :confirm => 'Esta seguro que desea Borrarla?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Direccion', new_direccion_path %>
+<%= link_to 'Agregar Direccion', new_direccion_path %>
