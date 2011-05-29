@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
 
   create_table "empleados", :force => true do |t|
     t.string   "cargo"
-    t.integer  "personas_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -86,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
     t.integer  "peso"
     t.string   "descripcion"
     t.integer  "ordens_id"
+    t.integer  "personas_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
     t.string   "nombre"
     t.string   "apellido"
     t.date     "fNacimiento"
+    t.integer  "empleados_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

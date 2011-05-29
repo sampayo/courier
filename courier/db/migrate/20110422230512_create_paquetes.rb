@@ -5,6 +5,7 @@ class CreatePaquetes < ActiveRecord::Migration
       t.integer :peso
       t.string :descripcion
       t.references :ordens
+      t.references :personas
 
       t.timestamps
     end

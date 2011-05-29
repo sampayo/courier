@@ -1,33 +1,125 @@
-<table width="80%" align="Center">
-	<tr>
-		<th></th>
-		<th></th>
-		<th>Nombre</th>
-		<th>Pais</th>
-		<th>Ciudad</th>
-		<th>Avenida</th>
-	</tr>
-	<%= form_for(:enviar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
-	<% @direccions.each do |direccion| %>
-	<tr align="Center">
+<div id="form_container">
 
-		<div class="field">
-			<td><%= radio_button("enviar", "direccions_id", direccion.id, :onclick => "marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre +  '")') %></td>
-			<td><%= radio_button("enviar", "direccions", direccion.id, :onclick =>"marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre + '")') %></td>
-			<%= #f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lat
-%>
-			<%= #f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lng
-%>
-			<%= f.hidden_field :ordens_id, :value=> @orden %>
+	<h1>
+	<a>.</a>
+	</h1>
+	<div id="form">
+		<%= form_for(:enviar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
+		<div class="form_description">
+			<h2>Datos para facturacion</h2>
+			<p>
+				Indique datos del receptor de la orden, y seleccione las direcciones
+			</p>
 		</div>
-		<td><%= direccion.nombre %></td>
-		<td><%= direccion.pais %></td>
-		<td><%= direccion.ciudad %></td>
-		<td><%= direccion.avCalle %></td>
-	</tr>
-	<% end %>
-</table>
-<%= f.submit %>
+		<ul >
+
+			<li id="li_1" >
+				<label class="description" for="element_1">
+					Nombre receptor
+				</label>
+				<span>
+					<%= f.text_field :nombre,:size =>8 %>
+					<label>
+						Nombre
+					</label>
+				</span>
+				<span>
+					<%= f.text_field :apellido,:size =>14 %>
+					<label>
+						Apellido
+					</label>
+				</span>
+			</li>
+			<li id="li_2" >
+				<label class="description" for="element_2">
+					Tarjeta de credito
+				</label>
+				<div>
+					<%= f.select(:tdc, @tdc.collect {|p| [ p.nombre + " " + p.nTDC, p.id ] }, {:include_blank => false}, {:class=>'element select medium'})
+%>
+				</div>
+			</li>
+			<li id="li_3" >
+				<label class="description" for="element_3">
+					Direcciones
+				</label>
+				<div class="form_description">
+					<p>
+						Seleccione la direccion de recoleccion de su orden, y la direccion a donde va a ser enviado
+					</p>
+				</div>
+				<% @direccions.each do |direccion| %>
+
+				<span>
+					<td><%= radio_button("enviar", "direccion1", direccion.id, :onclick => "marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre +  '")') %>
+					<%= radio_button("enviar", "direccion2", direccion.id, :onclick =>"marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre + '")') %></td>
+					<%= #f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lat
+%>
+					<label class="choice" for="element_3_1">
+						<%= direccion.nombre + ": " + direccion.ciudad + ', ' + direccion.pais  %>
+					</label>
+					<% end %>
+				</span>
+			</li>
+			<li class="buttons">
+				<input type="hidden" name="form_id" value="178611" />
+
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+			</li>
+		</ul>
+		<% end %>
+	</div>
+	<div id="mapas">
+		<%= render ('maps') %>
+	</div>
+</div>
+<!--
+<div class="post">
+<table id="dir" width="40%" align="left">
+<h2>Direcciones</h2>
+<div style="clear: both;">
+&nbsp;
+<h4>Seleccione la direccion donde se va a recoger la orden y la direccion de destino</h4>
+<tr>
+<th width="30px">Emisor</th>
+<th>Nombre</th>
+</tr>
+<%= form_for(:enviar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
+<% @direccions.each do |direccion| %>
+<tr align="Center">
+
+<div class="field">
+<td><%= radio_button("enviar", "direccions_id", direccion.id, :onclick => "marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre +  '")') %>
+<%= radio_button("enviar", "direccions", direccion.id, :onclick =>"marca(" + direccion.lat.to_s + ',' + direccion.lng.to_s + ',"' + direccion.nombre + '")') %></td>
+<%= #f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lat
+%>
+<%= #f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true", :value => direccion.lng
+%>
+<%= f.hidden_field :ordens_id, :value=> @orden %>
+</div>
+<td><%= direccion.nombre + ": " + direccion.ciudad + ', ' + direccion.pais  %></td>
+</tr>
 <% end %>
+</div>
+<div class="entry" >
+</div>
+<%= f.submit %>
+<div class="field">
+<%= f.label :Nombre_del_Receptor %>
 <br />
-<%= render ('maps') %>
+<%= f.text_field :direccions %>
+</div>
+<div class="field">
+<%= f.label :Apellido_del_Receptor %>
+<br />
+<%= f.text_field :direccions %>
+</div>
+<div class="field">
+<%= f.label :tarjeta %>
+<br />
+<%= collection_select(:enviar, :direccions, @tdc, :id, :nombre, :prompt => false)%>
+</div>
+<% end %>
+</table>
+</div>
+<br /> -->

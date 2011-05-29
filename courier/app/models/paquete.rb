@@ -5,4 +5,6 @@ class Paquete < ActiveRecord::Base
 	validates :peso         , :presence => true
 	validate :descripcion , :presence => true
 	belongs_to :ordens
+  belongs_to :personas
+  
 end

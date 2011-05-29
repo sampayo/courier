@@ -1,13 +1,13 @@
 class PaquetesController < ApplicationController
-  
-  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
-	layout "enSistema"
 
+  # Llamamos al layout enSistema que se encuentra en la carpeta layouts.
+  layout "enSistema"
   # Metodo utilizado cuando se accede a la pagina index.
   # GET /paquetes
   # GET /paquetes.xml
   def index
-    @paquetes = Paquete.all
+    @id=session[:id]
+    @paquetes = Paquete.where(:personas_id => @id,:ordens_id => nil)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +31,7 @@ class PaquetesController < ApplicationController
   # GET /paquetes/new
   # GET /paquetes/new.xml
   def new
-  	
+
     @paquete = Paquete.new
     @orden = params[:id]
     respond_to do |format|
@@ -39,19 +39,20 @@ class PaquetesController < ApplicationController
       format.xml  { render :xml => @paquete }
     end
   end
-  
+
   # Llamamos a la pagina editar de paquete.
   # GET /paquetes/1/edit
   def edit
     @paquete = Paquete.find(params[:id])
   end
-  
+
   # llamada a crear una paquete, pasandole un parametro.
   # POST /paquetes
   # POST /paquetes.xml
   def create
     @paquete = Paquete.new(params[:paquete])
     respond_to do |format|
+      @paquete.personas_id=session[:id]
       if @paquete.save
         format.html { redirect_to(@paquete, :notice => 'Paquete was successfully created.') }
         format.xml  { render :xml => @paquete, :status => :created, :location => @paquete }
@@ -78,7 +79,7 @@ class PaquetesController < ApplicationController
       end
     end
   end
-  
+
   # Llamada al metodo destruir un paquete, pasandole un parametro.
   # DELETE /paquetes/1
   # DELETE /paquetes/1.xml
@@ -87,7 +88,7 @@ class PaquetesController < ApplicationController
     @paquete.destroy
 
     respond_to do |format|
-      format.html { redirect_to(ordens_path) }
+      format.html { redirect_to(@paquete) }
       format.xml  { head :ok }
     end
   end
