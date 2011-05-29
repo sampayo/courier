@@ -1,3 +1,4 @@
+
 <html>
 	<html>
 <head>
@@ -27,15 +28,36 @@
 			<div id="page-bgtop">
 				<div id="page-bgbtm">
 					<div id="content">
-						<div class="post">
-							<div id='error'><h3><%= flash[:error]%></h3></div>
-							<div style="clear: both;">
-								&nbsp;
-							</div>
-							<div class="entry" >
-								
-							</div>
-						</div>
+						<div id="form_container">
+
+	<h1>
+	<a>Seguimiento</a>
+	</h1>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+		<div class="form_description">
+			<h2>Seguimiento</h2>
+
+		</div>
+		<ul >
+
+			<li id="li_1" >
+				<span>Numero de orden: <%= " " + @orden.id.to_s %> </br>
+					Estado: <%= " " + @orden.estado %></span>
+			</li></br>
+			<li id="li_3" >
+				<label class="description" for="element_3">
+					Resultados detallados
+				</label>
+			</li>
+			<li id="li_1" >
+				<span>
+					<% @historico.each do |historico| %>
+					<%= historico.tipo + " - " + historico.fecha.to_s + ".  " + historico.ciudad + ", " + historico.cPostal  %></br>
+					<% end %>
+			</li>
+		</ul>
+	</form>
+</div>
 						<div style="clear: both;">
 							&nbsp;
 						</div>
@@ -101,9 +123,4 @@
 		<!-- end #footer -->
 	</body>
 </html>
-
-
-
-
-
 

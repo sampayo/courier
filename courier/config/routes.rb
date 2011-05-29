@@ -74,6 +74,9 @@ Courier::Application.routes.draw do
 
   # Redirecciona a la pagina contenido como cont.
   match '/:locale/contenido', :to => 'courier#contenido', :as => "cont"
+  
+    match '/:locale/seguimiento', :to => 'courier#seguimiento', :as => "seg"
+
 
   # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
   match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
