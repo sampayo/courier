@@ -86,7 +86,7 @@ Courier::Application.routes.draw do
   match 'enviar/tipoPago/:id', :to => 'enviar#tipoPago', :via => 'get', :as => "tipoPago"
 
   # Genera el xml de los paquetes.
-  match 'gen_xml/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
+  match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
 
   # Pagina principal del proyecto.
   root :to => "courier#index"

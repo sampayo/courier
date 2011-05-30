@@ -54,44 +54,12 @@ class EnviarController < ApplicationController
     end
   end
 
-  # def tipoPago
-  # @orden=params[:id]
-  # @tipo_pagos = TipoPago.where(:personas_id => session[:id])
-  # respond_to do |format|
-  # format.html # index.html.erb
-  # format.xml  { render :xml => @tipo_pagos }
-  # end
-  # end
-
-  # def factura
-    # @enviar = params[:enviar]
-    # montoTotal(@enviar['ordens_id'])
-    # @iva = @monto * 0.12
-    # @factura = Factura.new(:ordens_id => @enviar['ordens_id'], :companias_id => 1, :tipo_pagos_id => @enviar['tipo_pagos_id'], :costoTotal => @monto ,:iva => @iva)
-    # @orden = Orden.find(@enviar['ordens_id'])
-    # @orden.estado = "Pendiente por Recoleccion"
-# 
-    # respond_to do |format|
-      # if @factura.save && @orden.save
-        # format.html { redirect_to(@factura, :notice => 'Tipo pago was successfully created.') }
-        # format.xml  { render :xml => @factura, :status => :created }
-      # else
-        # format.html { render :action => "new" }
-        # format.xml  { render :xml => @factura.errors, :status => :unprocessable_entity }
-      # end
-    # end
-  # end
-
   def gen_xml
     # @xml = Builder::XmlMarkup.new
     @id = params[:id]
     @orden = Orden.find(params[:id])
     unless @orden.estado == "Recolectada"
-      @orden.estado = "Recolectada"
-      @historico = Historico.where(:ordens_id => @id , :tipo => 'Recolectada').first
-    @historico.fecha = Time.now
-    @historico.save
-    @orden.save
+      Enviar.validarRecoleccion(@orden.id)
     end
     @factura = Factura.find_by_sql("select h.fecha, o.id, o.estado from historicos h , ordens o where o.id = h.ordens_id and h.tipo='Recolectada' AND o.id=" + @id).first
     render :layout => false

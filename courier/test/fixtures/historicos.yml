@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  tipo: MyString
+  tipo: Entregada
   fecha: 2011-04-20 01:16:01
+  ordens_id: 298486374
+  direccions_id: 1
 
 two:
-  tipo: MyString1
+  tipo: Recolectada
   fecha: 2011-04-21 01:16:11
+  ordens_id: 298486374
+  direccions_id: 2
