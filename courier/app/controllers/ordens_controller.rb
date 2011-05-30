@@ -7,7 +7,7 @@ class OrdensController < ApplicationController
 	
 	# Metodo llamado al iniciar la pagina index, y muestra la pagina unicamente si existe session.
 	def index
-		@ordens = Orden.where(:personas_id => session[:id])	
+		@ordens = Orden.where(:personas_id => session[:id]).order("created_at DESC")
 		respond_to do |format|
 			format.html # index.html.erb
 			format.xml  { render :xml => @ordens }
@@ -22,9 +22,7 @@ class OrdensController < ApplicationController
 		@paquetes = Paquete.where(:ordens_id => params[:id] )
 		
 		# Realizamos dos llamadas a buscar en base de datos para poder crear las facturas del usuario.
-		@destino = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='fin' and h.ordens_id=" + params[:id]).first
-		@salida = Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='inicio' and h.ordens_id=" + params[:id]).first
-
+      @historico = Historico.find_by_sql('Select h.fecha, h.tipo , d.ciudad, d.cPostal from historicos h, direccions d where h.direccions_id=d.id and h.fecha is not null and h.ordens_id=' + @orden.id.to_s + ' order by h.fecha DESC')
     # Comparamos que ambas llamadas a base de datos sean iguales y creamos dos salidas para la factura.
 		if @salida && @destino
 			@salida=@salida.ciudad + ', ' + @salida.pais + ' Urbanizacion: ' + @salida.urban + ' Residencia: ' + @salida.resCasa

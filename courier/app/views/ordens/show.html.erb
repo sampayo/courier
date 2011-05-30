@@ -20,36 +20,28 @@
 			<th>Nombre</th>
 			<th>Peso</th>
 			<th>Descripcion</th>
-			<th></th>
-			<th></th>
-			<th></th>
 		</tr>
 		<% @paquetes.each do |paquete| %>
 		<tr align="center">
 			<td><%= paquete.nombre %></td>
 			<td><%= paquete.peso %></td>
 			<td><%= paquete.descripcion %></td>
-			<td><%= link_to 'Show', paquete %></td>
-			<td><%= link_to 'Edit', edit_paquete_path(paquete) %></td>
-			<td><%= link_to 'Destroy', paquete, :confirm => 'Are you sure?', :method => :delete %></td>
 		</tr>
 		<% end %>
 	</table>
 </div>
-<%= link_to 'Agregar Paquetes', newpa_path(@orden.id) %>
-
+<h3>Seguimiento</h3>
 <div id="paquetes">
-	<h3>Direcciones</h3>
-	<table width="90%">
-		<tr>
-			<td width="25%">Destinatario</td>
-			<td width="65%" align="left"><%= @salida %></td>
-		</tr>
-		<tr>
-			<td width="25%">Destino</td>
-			<td width="65%" align="left"><%= @destino %></td>
-		</tr>
-	</table>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+
+		<ul>
+			<li id="li_1" >
+				<span><% @historico.each do |historico| %>
+					<%= historico.tipo + " - " + historico.fecha.to_s + ".  " + historico.ciudad + ", " + historico.cPostal  %></br>
+					<% end %></span>
+			</li>
+		</ul>
+	</form>
 </div>
 <%= link_to 'Edit', edit_orden_path(@orden) %> |
 <%= link_to 'Back', ordens_path %>
