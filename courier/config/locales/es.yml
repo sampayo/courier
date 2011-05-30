@@ -4,10 +4,6 @@
 #  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
 
 "es":
-	direccions:
-		index:
-			title: 'asdasdasdasd'
-	
   date:
     formats:
       default: "%d/%m/%Y"

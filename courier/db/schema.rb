@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
 
   create_table "paquetes", :force => true do |t|
     t.string   "nombre"
-    t.integer  "peso"
+    t.float    "peso"
     t.string   "descripcion"
     t.integer  "ordens_id"
     t.integer  "personas_id"

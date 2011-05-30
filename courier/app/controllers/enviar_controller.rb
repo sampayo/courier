@@ -6,20 +6,7 @@ class EnviarController < ApplicationController
   # Incluimos el helper que se encuentra en helpers/enviar_helper.rb
   include EnviarHelper
 
-  def montoTotal(id)
-    @orden = Orden.find(id)
-    @peso=0
-    @contador=0
-    @paquetes = Paquete.where(:ordens_id => id)
-    @paquetes.each do |paquete|
-      @peso=paquete.peso + @peso
-      @contador = 1 + @contador
-    end
-    @direccion1= Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='inicio' and h.ordens_id=" + id.to_s).first
-    @direccion2= Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='fin' and h.ordens_id=" + id.to_s).first
-    @distancia=(Math.sqrt((@direccion1.lat-@direccion2.lat)**2 + (@direccion1.lng-@direccion2.lng)**2))*10
-    @monto = ((60*@contador) + (( @peso + @distancia )* @contador) *10)+50
-  end
+
   # POST /historicos
   # POST /historicos.xml
   # Metodo create
@@ -39,7 +26,7 @@ class EnviarController < ApplicationController
     @historico= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion2'], :tipo => 'Entregada')
     @historico1.save
     @historico.save
-    montoTotal(@orden.id)
+    @monto = Enviar.montoTotal(@orden.id)
     @iva = @monto * 0.12
     @factura = Factura.new(:companias_id => 1, :ordens_id =>@orden.id , :tipo_pagos_id => @enviar['tdc'], :costoTotal => @monto ,:iva => @iva)
 
