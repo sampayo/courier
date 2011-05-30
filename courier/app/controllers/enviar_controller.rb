@@ -35,8 +35,8 @@ class EnviarController < ApplicationController
       @paquete.ordens_id = @orden.id
       @paquete.save
     end
-    @historico1= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion1'], :tipo => 'inicio', :fecha=> Time.now)
-    @historico= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion2'], :tipo => 'fin')
+    @historico1= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion1'], :tipo => 'Recolectada')
+    @historico= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion2'], :tipo => 'Entregada')
     @historico1.save
     @historico.save
     montoTotal(@orden.id)
@@ -101,7 +101,7 @@ class EnviarController < ApplicationController
     @orden = Orden.find(params[:id])
     unless @orden.estado == "Recolectada"
       @orden.estado = "Recolectada"
-      @historico = Historico.where(:ordens_id => @id , :tipo => 'fin').first
+      @historico = Historico.where(:ordens_id => @id , :tipo => 'Recolectada').first
     @historico.fecha = Time.now
     @historico.save
     @orden.save
