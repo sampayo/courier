@@ -1,0 +1,23 @@
+<h1>Lista de ordenes</h1>
+<table width="90%">
+	<tr>
+		<th>Numero</th>
+		<th>Receptor</th>
+		<th>Estado</th>
+		<th>Fecha</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @ordens.each do |orden| %>
+	<tr align="center">
+		<td><%= orden.id %></td>
+		<td><%= orden.nombre + ' ' + orden.apellido %></td>
+		<td><%= orden.estado %></td>
+		<td><%= orden.fecha %></td>
+		<td><%= link_to 'despachar' ,despachar_path(orden.id) %></td>
+		<td><%= link_to 'Ver', orden %></td>
+	</tr>
+	<% end %>
+</table>
+<br />
+

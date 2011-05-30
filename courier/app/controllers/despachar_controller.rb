@@ -1,24 +1,24 @@
-class HistoricosController < ApplicationController
+class DespacharController < ApplicationController
+    layout "enSistema"
+
   # GET /historicos
   # GET /historicos.xml
   def index
-    
-    @historico = Historico.all
-
+    @ordens = Orden.where(:estado => "Pendiente por Recolectar").order("created_at DESC")
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @historico }
+      format.html # index.html.erb
+      format.xml  { render :xml => @ordens }
     end
   end
 
   # GET /historicos/1
   # GET /historicos/1.xml
   def show
-    @historico = Historico.find(params[:id])
-
+    @ordens = Orden.find(params[:id])
+  @ordencompare = Orden.where(:estado => "Pendiente por Recolectar")
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @historico }
+      format.xml  { render :xml => @ordens }
     end
   end
 
@@ -81,4 +81,5 @@ class HistoricosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
