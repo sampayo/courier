@@ -93,4 +93,19 @@ class DespacharController < ApplicationController
     end
   end
 
+  # Muestra todos los recolectores tanto disponibles como Ocupados y simula
+  def recolectores
+    @personas = Persona.where(:empleados_id => 2)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @personas }
+    end
+  end
+
+  def ver
+    @personas = Persona.find(params["id"])
+    @ordenes = Despachar.rutasAsignadas(params["id"])
+  end
+
 end

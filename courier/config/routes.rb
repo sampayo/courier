@@ -84,8 +84,11 @@ Courier::Application.routes.draw do
 
   match '/:locale/despachar', :to => 'despachar#index', :as => "despachador"
 
-  # Crea el Url para tipo_pagos, llamando al metodo tipo_pago.enviar, y lo manda como get.
-  match 'enviar/tipoPago/:id', :to => 'enviar#tipoPago', :via => 'get', :as => "tipoPago"
+
+  match ':locale/ruta/:id', :to => 'despachar#ver', :as => "ver"
+
+  #
+  match ':locale/recolectores/', :to => 'despachar#recolectores', :as => "recolec"
 
   # Genera el xml de los paquetes.
   match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"

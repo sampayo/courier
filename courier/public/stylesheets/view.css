@@ -7,8 +7,11 @@
 	text-align:left;
 	width:640px;
 }
-#form_container #form{
+#form{
 	width: 50%;
+}
+#form1{
+	width: 100%;
 }
 
 #top
@@ -401,6 +404,20 @@ label.choice
 	line-height:1.4em;
 	margin:-1.55em 0 0 50px;
 	padding:4px 0 5px;
+	width:90%;
+}
+
+#form1 label.choice
+{
+	padding-left: 5;
+	padding-bottom: 25px;
+	padding-right: 5;
+	padding-top: 5px;
+	color:#444;
+	display:block;
+	font-size: 80%;
+	line-height:1.4em;
+	margin:-1.55em 0 0 5px;
 	width:90%;
 }
 label.choice2

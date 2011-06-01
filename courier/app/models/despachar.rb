@@ -11,4 +11,10 @@ class Despachar < ActiveRecord::Base
   def self.recolectorDesocupado
     return Orden.find_by_sql('select DISTINCT * from personas p where p.empleados_id=2 and p.id not in (select o.empleado_id from ordens o where o.empleado_id is not null)')
   end
+  
+   def self.rutasAsignadas(id)
+    return Orden.find_by_sql('Select o.*, d.ciudad, d.pais, d.avCalle, d.urban, d.resCasa,d.aptoNumero, d.lat, d.lng from ordens o, direccions d, historicos h where o.estado="Asignada para Recoleccion" and h.direccions_id=d.id and h.ordens_id=o.id and h.tipo="Recolectada" and o.empleado_id='+ id.to_s)
+  end
+  
+  
 end

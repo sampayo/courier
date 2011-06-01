@@ -16,4 +16,13 @@ module DespacharHelper
       end
     end
   end
+  
+  def validarDisponibilidad(id)
+    @orden = Orden.where(:empleado_id => id).first
+    if @orden.nil?
+      "Disponible"
+    else
+      link_to 'Ver Ruta' ,ver_path(id)
+    end
+  end
 end

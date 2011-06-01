@@ -1,0 +1,93 @@
+<html>
+	<body onload="initialize()">
+		<div id="form_container">
+			<h1>
+			<a>.</a>
+			</h1>
+			<div id="form1">
+				<%= form_for(:despachar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
+				<div class="form_description">
+					<h2>Ruta de recoleccion </h2>
+					<p>
+						Listado de ordenes asignadas al recolector
+					</p>
+				</div>
+				<ul >
+
+					<li id="li_2" >
+						<label class="description" for="element_2">
+							Recolector
+						</label>
+						<div>
+							<%= @personas.nombre + " " + @personas.apellido
+%>
+						</div>
+					</li>
+					<li id="li_3" >
+						<label class="description" for="element_3">
+							Ordenes asignadas
+						</label>
+						<div class="form_description">
+							<p>
+							</p>
+						</div>
+						<% @ordenes.each do |orden|%>
+
+						<span>
+
+							<td>
+							<label class="choice" for="element_3_1">
+								<%= "orden n: " + orden.id.to_s + ", direccion:  " + orden.urban + ", " + orden.avCalle + ", residencia " + orden.resCasa + " num: " + orden.aptoNumero.to_s + ". " + orden.ciudad + ", " +orden.pais   %>
+
+							</label>
+							<% end %>
+						</span>
+
+					</li>
+				</ul>
+				<% end %>
+				<div class="entry" >
+					<div id="map_canvas" style="width:100%; height:300px">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript">
+		var map;
+		var posicion;
+
+		function initialize() {
+			var myLatlng = new google.maps.LatLng(10.5,-66.91667);
+			var myOptions = {
+				zoom: 12,
+				center: myLatlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+<% @ordenes.each do |orden|%>
+		marca( <%= orden.lat.to_s + ',' + orden.lng.to_s %>,"<%= orden.id.to_s  %>" )
+<% end %>
+		}
+
+		function marca(lat,lng,ciudad) {
+			var myLatlng = new google.maps.LatLng(lat,lng);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map,
+				title: ciudad
+			});
+
+			var infowindow = new google.maps.InfoWindow({
+				content: '<div id="InfoWindow"><h3>orden #' + ciudad + '</h3></div>',
+				size: new google.maps.Size(50,50)
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map,marker);
+			});
+			map.setCenter(myLatlng);
+		}
+	</script>
+</html>
