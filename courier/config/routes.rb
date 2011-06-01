@@ -82,6 +82,8 @@ Courier::Application.routes.draw do
   # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
   match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
 
+  match '/:locale/despachar', :to => 'despachar#index', :as => "despachador"
+
   # Crea el Url para tipo_pagos, llamando al metodo tipo_pago.enviar, y lo manda como get.
   match 'enviar/tipoPago/:id', :to => 'enviar#tipoPago', :via => 'get', :as => "tipoPago"
 

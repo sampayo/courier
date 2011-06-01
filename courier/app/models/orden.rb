@@ -8,4 +8,5 @@ class Orden < ActiveRecord::Base
 	has_one :facturas
 	has_many :historicos
 	has_many :paquetes
+	belongs_to :personas
 end

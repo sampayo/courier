@@ -1,6 +1,5 @@
 class DespacharController < ApplicationController
-    layout "enSistema"
-
+  layout "enSistema"
   # GET /historicos
   # GET /historicos.xml
   def index
@@ -14,8 +13,10 @@ class DespacharController < ApplicationController
   # GET /historicos/1
   # GET /historicos/1.xml
   def show
-    @ordens = Orden.find(params[:id])
-  @ordencompare = Orden.where(:estado => "Pendiente por Recolectar")
+    @orden = Despachar.orden(params[:id])
+    @recolector = Despachar.recolectorDesocupado
+    @direccionCercana= Despachar.ordenesCercanas(params[:id],@orden.lat,@orden.lng)
+    @count=0
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ordens }
@@ -41,17 +42,27 @@ class DespacharController < ApplicationController
   # POST /historicos
   # POST /historicos.xml
   def create
-    @historico = Historico.new(params[:historico])
+    # @historico = Historico.new(params[:historico])
 
-    respond_to do |format|
-      if @historico.save
-        format.html { redirect_to(@historico, :notice => 'Historico was successfully created.') }
-        format.xml  { render :xml => @historico, :status => :created, :location => @historico }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @historico.errors, :status => :unprocessable_entity }
+    @var=params[:despachar]
+    if !(params[:enviar].nil?)
+
+      @ordenes=params[:enviar]
+      @ordenes.each do |orden|
+        if orden[1] != "no"
+          @orden = Orden.find(orden[1])
+          @orden.empleado_id = @var["recolector"]
+          @orden.estado = "Asignada para Recoleccion"
+        @orden.save
+        end
       end
     end
+    @ordenprincipal = Orden.find(@var["orden"])
+    @ordenprincipal.estado = "Asignada para Recoleccion"
+    @ordenprincipal.empleado_id = @var["recolector"]
+    @ordenprincipal.save
+    redirect_to(despachador_path, :notice => 'La ruta de recoleccion fue asignada con exito.')
+
   end
 
   # PUT /historicos/1

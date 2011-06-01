@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
     t.string   "estado"
     t.date     "fecha"
     t.integer  "personas_id"
+    t.integer  "empleado_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

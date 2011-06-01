@@ -6,7 +6,6 @@
 		<th>Estado</th>
 		<th>Fecha</th>
 		<th></th>
-		<th></th>
 	</tr>
 	<% @ordens.each do |orden| %>
 	<tr align="center">
@@ -14,7 +13,6 @@
 		<td><%= orden.nombre + ' ' + orden.apellido %></td>
 		<td><%= orden.estado %></td>
 		<td><%= orden.fecha %></td>
-		<td><%= validarOrden (orden.id) %></td>
 		<td><%= link_to 'Ver', orden %></td>
 	</tr>
 	<% end %>

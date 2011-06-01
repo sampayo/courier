@@ -6,6 +6,7 @@ class CreateOrdens < ActiveRecord::Migration
 			t.string :estado
 			t.date :fecha
 			t.references :personas
+			t.references :empleado
 
 			t.timestamps
 		end
