@@ -20,8 +20,6 @@ class ApplicationController < ActionController::Base
     session[:nombre] = nombre
     session[:apellido] = apellido
     session[:id] = id
-    $email = email
-    $nombre = nombre +" "+ apellido
   end
 
   #Metodo para destruir la sesion una vez que el usuario utiliza el boton de salir.

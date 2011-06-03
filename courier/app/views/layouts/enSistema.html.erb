@@ -51,10 +51,15 @@
 									<h2>Datos</h2>
 									<ul id='datos'>
 										<li>
-											Nombre:<%= " "+ $nombre %>
+											Nombre:
+											<% if !(session[:email].nil?) %>
+											<%= "" + session[:nombre] + " " + session[:apellido] %>
+											<%end%>
 										</li>
 										<li>
-											Email: <%= $email %>
+											Email: <% if !(session[:email].nil?) %>
+											<%= "" + session[:email] %>
+											<%end%>
 										</li>
 									</ul>
 								</li>
@@ -90,7 +95,6 @@
 										<li>
 											<%= link_to 'Solicitar apoyo', tipo_pagos_path %>
 										</li>
-
 									</ul>
 								</li>
 								<li>
@@ -102,7 +106,6 @@
 										<li>
 											<%= link_to 'notificar recoleccion', reco_path %>
 										</li>
-
 									</ul>
 								</li>
 							</ul>
