@@ -22,12 +22,9 @@ class OrdensController < ApplicationController
 		@paquetes = Paquete.where(:ordens_id => params[:id] )
 		
 		# Realizamos dos llamadas a buscar en base de datos para poder crear las facturas del usuario.
-      @historico = Historico.find_by_sql('Select h.fecha, h.tipo , d.ciudad, d.cPostal from historicos h, direccions d where h.direccions_id=d.id and h.fecha is not null and h.ordens_id=' + @orden.id.to_s + ' order by h.fecha DESC')
-    # Comparamos que ambas llamadas a base de datos sean iguales y creamos dos salidas para la factura.
-		if @salida && @destino
-			@salida=@salida.ciudad + ', ' + @salida.pais + ' Urbanizacion: ' + @salida.urban + ' Residencia: ' + @salida.resCasa
-			@destino=@destino.ciudad + ', ' + @destino.pais + ' Urbanizacion: ' + @destino.urban + ' Residencia: ' + @destino.resCasa
-		end
+		
+      @historico = Orden.rutas(@orden.id)
+
 
 		respond_to do |format|
 			format.html # show.html.erb

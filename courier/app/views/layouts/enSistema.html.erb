@@ -85,10 +85,10 @@
 											<%= link_to 'Recolectores', recolec_path %>
 										</li>
 										<li>
-											<%= link_to 'Solicitar apoyo', tipo_pagos_path %>
+											<%= link_to 'Simulacion', simul_path %>
 										</li>
 										<li>
-											<%= link_to 'Simular', tipo_pagos_path %>
+											<%= link_to 'Solicitar apoyo', tipo_pagos_path %>
 										</li>
 
 									</ul>
@@ -97,10 +97,10 @@
 									<h2>Recolectar</h2>
 									<ul>
 										<li>
-											<%= link_to 'Rutas Asignadas', direccions_path %>
+											<%= link_to 'Rutas Asignadas', recolectar_path(session[:id]) %>
 										</li>
 										<li>
-											<%= link_to 'notificar recoleccion', tipo_pagos_path %>
+											<%= link_to 'notificar recoleccion', reco_path %>
 										</li>
 
 									</ul>

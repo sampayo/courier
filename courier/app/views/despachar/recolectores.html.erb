@@ -1,17 +1,17 @@
 <h1>Lista de recolectores</h1>
 <table width="80%">
 	<tr>
-		<th>Nombre completo</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
 		<th>Email</th>
-		<th></th>
 		<th></th>
 	</tr>
 	<% @personas.each do |persona| %>
 	<tr align="Center">
-		<td><%= persona.nombre + " " + persona.apellido  %></td>
+		<td><%= persona.nombre  %></td>
+		<td><%= persona.apellido %></td>
 		<td><%= persona.email %></td>
 		<td><%= validarDisponibilidad(persona.id) %></td>
-		<td>Simular</td>
 	</tr>
 	<% end %>
 </table>
