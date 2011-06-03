@@ -16,10 +16,12 @@
 				<label class="description" for="element_2">
 					Recolector
 				</label>
-				<div>
-					<%= f.select(:recolector, @recolector.collect {|p| [ p.nombre + " " + p.apellido, p.id ] }, {:include_blank => false}, {:class=>'element select medium'})
-%>
+				<div class="form_description">
+					<p>
+						No hay recolectores disponibles en este momento
+					</p>
 				</div>
+
 			</li>
 			<li id="li_3" >
 				<label class="description" for="element_3">
@@ -46,11 +48,7 @@
 					<% end %>
 				</span>
 			</li>
-			<li class="buttons">
-				<%= f.hidden_field :orden, :value => @orden.id %>
 
-				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
-			</li>
 		</ul>
 		<% end %>
 	</div>

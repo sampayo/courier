@@ -17,10 +17,10 @@ class DespacharController < ApplicationController
     @recolector = Despachar.recolectorDesocupado
     @direccionCercana= Despachar.ordenesCercanas(params[:id],@orden.lat,@orden.lng)
     @count=0
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @ordens }
+    if !(@recolector.nil?)
+      render "sinRecolector"
     end
+
   end
 
   # GET /historicos/new
