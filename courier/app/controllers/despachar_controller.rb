@@ -17,7 +17,7 @@ class DespacharController < ApplicationController
     @recolector = Despachar.recolectorDesocupado
     @direccionCercana= Despachar.ordenesCercanas(params[:id],@orden.lat,@orden.lng)
     @count=0
-    if !(@recolector.nil?)
+    if @recolector.first.nil?
       render "sinRecolector"
     end
 
