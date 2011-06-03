@@ -1,0 +1,53 @@
+<html>
+	<body onload="initialize()">
+
+		<div id="form_container">
+			<h1>
+			<a>.</a>
+			</h1>
+			<div id="form1">
+				<%= form_for(:recolectar, :url => {:action => 'save'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
+				<div class="form_description">
+					<h2>Notificar Recoleccion </h2>
+					<p>
+						Buscar por el numero de orden
+					</p>
+				</div>
+				<ul >
+
+					<li id="li_2" >
+						<label class="description" for="element_2">
+							Recolector
+						</label>
+						<div>
+							<%= @personas.nombre + " " + @personas.apellido
+%>
+						</div>
+					</li>
+					<li id="li_3" >
+						<label class="description" for="element_3">
+							Buscar
+						</label>
+						<div class="form_description">
+							<p>
+								indique el numero de la orden
+								<br/>
+							</p>
+							<p id="error2">
+								<%= notice %>
+							</p>
+						</div>
+						<span>
+							<%= f.text_field :nombre,:size =>18 %>
+							<label>
+								Buscar
+							</label>
+						</span>
+						<span>
+							<input id="search-submit" class="search-submit" type="submit" name="submit" value="Enviar" />
+						</span>
+					</li>
+				</ul>
+				<% end %>
+			</div>
+		</div>

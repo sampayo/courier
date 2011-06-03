@@ -1,0 +1,46 @@
+<p id="notice">
+	<%= notice %>
+</p>
+<p>
+	<b>Receptor:</b>
+	<%= @orden.nombre + ' ' + @orden.apellido %>
+</p>
+<p>
+	<b>Fecha:</b>
+	<%= @orden.fecha %>
+</p>
+<p>
+	<b>Estado:</b>
+	<%= @orden.estado %>
+</p>
+<div id='paquetes'>
+	<h3>Paquetes</h3>
+	<table width="90%">
+		<tr>
+			<th>Nombre</th>
+			<th>Peso</th>
+			<th>Descripcion</th>
+		</tr>
+		<% @paquetes.each do |paquete| %>
+		<tr align="center">
+			<td><%= paquete.nombre %></td>
+			<td><%= paquete.peso %></td>
+			<td><%= paquete.descripcion %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<h3>Seguimiento</h3>
+<div id="paquetes">
+	<form id="form_178611" class="appnitro"  method="post" action="">
+
+		<ul>
+			<li id="li_1" >
+				<span><% @historico.each do |historico| %>
+					<%= historico.tipo + " - " + historico.fecha.to_s + ".  " + historico.ciudad + ", " + historico.cPostal  %></br>
+					<% end %></span>
+			</li>
+		</ul>
+	</form>
+</div>
+<%= link_to 'Back', reco_path  %>

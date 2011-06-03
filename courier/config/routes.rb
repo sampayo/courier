@@ -23,6 +23,8 @@ Courier::Application.routes.draw do
 
     resources :despachar
 
+    resources :recolectar
+
   end
 
   get "courier/index"
@@ -82,13 +84,23 @@ Courier::Application.routes.draw do
   # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
   match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
 
+  # crea el url para los despachadores donde pueden asignar rutas a los recolectores
   match '/:locale/despachar', :to => 'despachar#index', :as => "despachador"
 
-
+  # crea ruta con la informacion de rutas asignadas dependiendo del recolector
   match ':locale/ruta/:id', :to => 'despachar#ver', :as => "ver"
 
-  #
+  #lista de recolectores y estatus
   match ':locale/recolectores/', :to => 'despachar#recolectores', :as => "recolec"
+
+  # url donde se muestra las ordenes recolectadas para ejecutar una simulacion de la entrega
+  match ':locale/simulacion/', :to => 'despachar#simulacion', :as => "simul"
+
+  # url donde se busca las ordenes para recolectarlas
+  match ':locale/recolectar/', :to => 'recolectar#index', :as => "reco"
+
+  #Informacion de la orden
+  match ':locale/orden/:id', :to => 'recolectar#orden', :as => "recorden"
 
   # Genera el xml de los paquetes.
   match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"

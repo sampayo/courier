@@ -477,5 +477,8 @@ text-align: center;
 #resultados{
 	padding-top: 30px;
 }
+#error2 {
+  color: red;
+}
 
 

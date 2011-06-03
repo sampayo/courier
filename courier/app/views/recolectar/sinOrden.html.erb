@@ -1,0 +1,42 @@
+<html>
+	<body onload="initialize()">
+		<div id="form_container">
+			<h1>
+			<a>.</a>
+			</h1>
+			<div id="form1">
+				<%= form_for(:despachar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
+				<div class="form_description">
+					<h2>Ruta de recoleccion </h2>
+					<p>
+						Listado de ordenes asignadas al recolector
+					</p>
+				</div>
+				<ul >
+
+					<li id="li_2" >
+						<label class="description" for="element_2">
+							Recolector
+						</label>
+						<div>
+							<%= @personas.nombre + " " + @personas.apellido
+%>
+						</div>
+					</li>
+					<li id="li_3" >
+						<label class="description" for="element_3">
+							Ordenes asignadas
+						</label>
+						<div class="form_description">
+							<p> No tiene ordenes disponibles hasta el momento
+							</p>
+						</div>
+
+					</li>
+				</ul>
+				<% end %>
+				
+			</div>
+		</div>
+
+	
