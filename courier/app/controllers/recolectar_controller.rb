@@ -16,7 +16,7 @@ class RecolectarController < ApplicationController
   def show
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(@personas.id)
-    if !(@ordenes.nil?)
+    if @ordenes.first.nil?
       render "sinOrden"
     end
 
@@ -43,24 +43,24 @@ class RecolectarController < ApplicationController
   def create
     # @historico = Historico.new(params[:historico])
 
-    @var=params[:despachar]
-    if !(params[:enviar].nil?)
-
-      @ordenes=params[:enviar]
-      @ordenes.each do |orden|
-        if orden[1] != "no"
-          @orden = Orden.find(orden[1])
-          @orden.empleado_id = @var["recolector"]
-          @orden.estado = "Asignada para Recoleccion"
-        @orden.save
-        end
-      end
-    end
-    @ordenprincipal = Orden.find(@var["orden"])
-    @ordenprincipal.estado = "Asignada para Recoleccion"
-    @ordenprincipal.empleado_id = @var["recolector"]
-    @ordenprincipal.save
-    redirect_to(despachador_path, :notice => 'La ruta de recoleccion fue asignada con exito.')
+    # @var=params[:despachar]
+    # if !(params[:enviar].nil?)
+# 
+      # @ordenes=params[:enviar]
+      # @ordenes.each do |orden|
+        # if orden[1] != "no"
+          # @orden = Orden.find(orden[1])
+          # @orden.empleado_id = @var["recolector"]
+          # @orden.estado = "Asignada para Recoleccion"
+        # @orden.save
+        # end
+      # end
+    # end
+    # @ordenprincipal = Orden.find(@var["orden"])
+    # @ordenprincipal.estado = "Asignada para Recoleccion"
+    # @ordenprincipal.empleado_id = @var["recolector"]
+    # @ordenprincipal.save
+    # redirect_to(despachador_path, :notice => 'La ruta de recoleccion fue asignada con exito.')
 
   end
 
