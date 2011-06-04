@@ -14,12 +14,18 @@
 					<a href="#">Courier UCAB</a>
 					</h1>
 				</div>
+				<div id="idioma">
+					<h3>
+					<a href="#">es</a> |
+					<a href="#">en</a><%= @lala %>
+					</h3>
+				</div>
 			</div>
 			<!-- end #header -->
 			<div id="menu">
 				<ul>
 					<li class="current_page_item">
-						<a href="<%= cont_path %>">Principal</a>
+						<a href="<%= cont_path %>"><%= t('principal.principal') %></a>
 					</li>
 					<li>
 						<a href="#">Seguimiento de Paquetes</a>
@@ -28,7 +34,7 @@
 				<ul>
 					<li>
 						<div id='salir'>
-							<%= link_to 'Salir',  root_url, :action=> :destruir %>
+							<%= link_to t('principal.salir'),  root_url, :action=> :destruir %>
 						</div>
 					</li>
 				</ul>
@@ -48,10 +54,10 @@
 						<div id="sidebar">
 							<ul>
 								<li>
-									<h2>Datos</h2>
+									<h2><%= t('principal.datos') %></h2>
 									<ul id='datos'>
 										<li>
-											Nombre:
+											<%= t('principal.nombre') %>:
 											<% if !(session[:email].nil?) %>
 											<%= "" + session[:nombre] + " " + session[:apellido] %>
 											<%end%>
@@ -64,47 +70,47 @@
 									</ul>
 								</li>
 								<li>
-									<h2>Categories</h2>
+									<h2><%= t('principal.categoria') %></h2>
 									<ul>
 										<li>
-											<%= link_to 'Direcciones', direccions_path %>
+											<%= link_to  t('principal.dir'), direccions_path %>
 										</li>
 										<li>
-											<%= link_to 'Tarjeta de credito', tipo_pagos_path %>
+											<%= link_to t('principal.tdc'), tipo_pagos_path %>
 										</li>
 										<li>
-											<%= link_to 'Ordenes', ordens_path %>
+											<%= link_to t('principal.orden'), ordens_path %>
 										</li>
 										<li>
-											<%= link_to 'Facturas', facturas_path %>
+											<%= link_to t('principal.factura'), facturas_path %>
 										</li>
 									</ul>
 								</li>
 								<li>
-									<h2>Despachar</h2>
+									<h2><%= t('principal.despachar') %></h2>
 									<ul>
 										<li>
-											<%= link_to 'Asignar rutas', despachador_path %>
+											<%= link_to t('principal.asignarr'), despachador_path %>
 										</li>
 										<li>
-											<%= link_to 'Recolectores', recolec_path %>
+											<%= link_to t('principal.recolector'), recolec_path %>
 										</li>
 										<li>
-											<%= link_to 'Simulacion', simul_path %>
+											<%= link_to t('principal.simulacion'), simul_path %>
 										</li>
 										<li>
-											<%= link_to 'Solicitar apoyo', tipo_pagos_path %>
+											<%= link_to t('principal.solicitara'), tipo_pagos_path %>
 										</li>
 									</ul>
 								</li>
 								<li>
-									<h2>Recolectar</h2>
+									<h2><%= t('principal.recolectar') %></h2>
 									<ul>
 										<li>
-											<%= link_to 'Rutas Asignadas', recolectar_path(session[:id]) %>
+											<%= link_to t('principal.rutasasig'), recolectar_path(session[:id]) %>
 										</li>
 										<li>
-											<%= link_to 'notificar recoleccion', reco_path %>
+											<%= link_to t('principal.notificarre'), reco_path %>
 										</li>
 									</ul>
 								</li>

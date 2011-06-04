@@ -177,7 +177,7 @@ a:hover {
 #menu li {
 	float: left;
 }
-#salir{margin-left: 90%;}
+#salir{margin-left: 85%;}
 
 #menu a {
 	display: block;
@@ -479,6 +479,12 @@ text-align: center;
 }
 #error2 {
   color: red;
+}
+#idioma {
+  padding-top: 30px;
+  float: right;
+  height: 100px;
+  width: 100px;
 }
 
 

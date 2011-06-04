@@ -182,3 +182,26 @@
 
       full_messages:
         format: "%{attribute} %{message}"
+        
+  principal:
+    seguimiento: Seguimiento
+    despachar: Despachar
+    ingresar: Ingresar
+    simulacion: Simulacion
+    ingrsarsistema: Ingresar al sistema
+    asignarr: Asignar rutas
+    buscar: Buscar
+    principal: Principal
+    salir: Salir
+    datos: Informacion principal
+    dir: "Direccion"
+    categoria: Categoria
+    tdc: Tarjeta de credito
+    orden: Orden
+    factura: Factura
+    recolector: Recolectar
+    solicitara: Solicitar apoyo
+    recolectar: Recolectar
+    rutasasig: Rutas asignadas
+    notificarre: Notificar recoleccion
+    nombre: Nombre
