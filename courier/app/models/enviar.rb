@@ -1,5 +1,7 @@
 class Enviar < ActiveRecord::Base
   validates :direccions  , :presence => true
+  
+  #Metodo para calcular el costo de envio de la orden.
   def self.montoTotal(id)
     @orden = Orden.find(id)
     @peso=0
@@ -16,6 +18,7 @@ class Enviar < ActiveRecord::Base
     return @monto
   end
 
+  #Valida que la fecha de la recoleccion y le coloca la fecha actual.
   def self.validarRecoleccion(id)
     @orden = Orden.find(id)
     @orden.estado = "Recolectada"

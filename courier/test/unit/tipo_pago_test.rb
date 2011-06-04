@@ -1,8 +1,10 @@
 require 'test_helper'
+#Falta validar 1 metodo de tipo_pago model!
 
 class TipoPagoTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
+
   test "the truth" do
+    TipoPago.validarTdc
     assert true
   end
 end
