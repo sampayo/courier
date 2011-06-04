@@ -26,7 +26,7 @@ Persona.create! :id => 2,
                 :fNacimiento => '2006-03-26'               
 
 Persona.create! :id => 3,
-                :email => 'dreye88gmail.com',
+                :email => 'dreye88@gmail.com',
                 :nombre => 'Drey',
                 :apellido => 'Laya',
                 :fNacimiento => '2006-02-26'
@@ -70,12 +70,3 @@ Direccion.create! :id => 3,
                   :lng => '-66.8855',
                   :personas_id => 3                
                   
-                  
-                  
-                  
-                
-                
-                
-
-
-

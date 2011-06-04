@@ -6,7 +6,7 @@
 				<h3><%= flash[:error]%></h3>
 			</div>
 			<h2 class="title">
-			<a href="#">Bienvenido
+			<%= t('principal.bienvenido') %>
 			<% if !(session[:email].nil?) %>
 			<%= "" + session[:nombre] + " " + session[:apellido] %>
 			<%end%></a>

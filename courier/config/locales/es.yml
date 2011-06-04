@@ -193,7 +193,7 @@
     buscar: Buscar
     principal: Principal
     salir: Salir
-    datos: Informacion principal
+    datos: Informacion Personal
     dir: "Direccion"
     categoria: Categoria
     tdc: Tarjeta de credito
@@ -205,3 +205,4 @@
     rutasasig: Rutas asignadas
     notificarre: Notificar recoleccion
     nombre: Nombre
+    bienvenido: Bienvenido!

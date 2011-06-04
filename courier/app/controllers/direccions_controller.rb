@@ -19,7 +19,7 @@ class DireccionsController < ApplicationController
 	# GET /direccions/1.xml
 	def show
 		@direccion = Direccion.find(params[:id])
-
+    NUESTRO_LOG.info "Estoy viendo la direccion!"
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @direccion }
