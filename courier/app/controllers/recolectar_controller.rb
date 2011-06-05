@@ -73,6 +73,7 @@ class RecolectarController < ApplicationController
     else
       if @orden.estado != "Recolectada"
         @orden.estado = "Recolectada"
+        @orden.empleado_id = nil
         @historico = Historico.where(:ordens_id => @orden.id, :tipo => "Recolectada").first
         @historico.fecha = Time.now
         @orden.save

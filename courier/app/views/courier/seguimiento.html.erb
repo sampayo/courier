@@ -18,7 +18,7 @@
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="#">Principal</a></li>
+			<li class="current_page_item"><a href="#"><%= t("principal.principal") %></a></li>
 			<li><a href="#">Seguimiento de Paquetes</a></li>
 		</ul>
 	</div>
@@ -31,22 +31,22 @@
 						<div id="form_container">
 
 	<h1>
-	<a>Seguimiento</a>
+	<a><%= t("principal.seguimiento") %></a>
 	</h1>
 	<form id="form_178611" class="appnitro"  method="post" action="">
 		<div class="form_description">
-			<h2>Seguimiento</h2>
+			<h2><%= t("principal.seguimiento") %></h2>
 
 		</div>
 		<ul >
 
 			<li id="li_1" >
-				<span>Numero de orden: <%= " " + @orden.id.to_s %> </br>
-					Estado: <%= " " + @orden.estado %></span>
+				<span><%= t("principal.numorden") %>: <%= " " + @orden.id.to_s %> </br>
+					<%= t("principal.estado") %>: <%= " " + @orden.estado %></span>
 			</li></br>
 			<li id="li_3" >
 				<label class="description" for="element_3">
-					Resultados detallados
+					<%= t("principal.detallado") %>
 				</label>
 			</li>
 			<li id="li_1" >
@@ -66,7 +66,7 @@
 					<div id="sidebar">
 						<ul>
 							<li>
-						<h2>Seguimiento</h2>
+						<h2><%= t("principal.seguimiento") %></h2>
 								<div style="clear: both;">
 									&nbsp;
 								</div>
@@ -74,7 +74,7 @@
 									<form method="get" action="<%= seg_path %>">
 										<div>
 											<input type="text" name="s" id="buscar" value="" />
-											<input type="submit" id="search-submit" value="Buscar" />
+											<input type="submit" id="search-submit" value=<%= t("principal.buscar") %> />
 										</div>
 									</form>
 								</div>
@@ -83,7 +83,7 @@
 								</div>
 							</li>
 							<li>
-								<h2>Ingresar</h2>
+								<h2><%= t("principal.ingresar") %></h2>
 								<p>
 									<a id="Ingresar_sistema" href="https://www.google.com/accounts/o8/ud
 									?openid.ns=http://specs.openid.net/auth/2.0
@@ -103,7 +103,7 @@
 									&openid.ax.type.lastname=http://axschema.org/namePerson/last
 									&openid.ax.type.email=http://axschema.org/contact/email
 									&openid.ax.type.firstname=http://axschema.org/namePerson/first
-									&openid.ax.required=lastname,email,firstname">Ingresar al sistema</a>
+									&openid.ax.required=lastname,email,firstname"><%= t("principal.ingrsarsistema") %></a>
 								</p>
 							</li>
 						</ul>

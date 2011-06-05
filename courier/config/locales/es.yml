@@ -199,10 +199,13 @@
     tdc: Tarjeta de credito
     orden: Orden
     factura: Factura
-    recolector: Recolectar
+    recolector: Recolectores
     solicitara: Solicitar apoyo
     recolectar: Recolectar
     rutasasig: Rutas asignadas
     notificarre: Notificar recoleccion
     nombre: Nombre
     bienvenido: Bienvenido!
+    numorden: Numero de orden
+    estado: Estado
+    detallado: Resultados detallados

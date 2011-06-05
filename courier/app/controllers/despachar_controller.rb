@@ -65,34 +65,6 @@ class DespacharController < ApplicationController
 
   end
 
-  # PUT /historicos/1
-  # PUT /historicos/1.xml
-  # def update
-    # @historico = Historico.find(params[:id])
-# 
-    # respond_to do |format|
-      # if @historico.update_attributes(params[:historico])
-        # format.html { redirect_to(@historico, :notice => 'Historico was successfully updated.') }
-        # format.xml  { head :ok }
-      # else
-        # format.html { render :action => "edit" }
-        # format.xml  { render :xml => @historico.errors, :status => :unprocessable_entity }
-      # end
-    # end
-  # end
-
-  # DELETE /historicos/1
-  # DELETE /historicos/1.xml
-  # def destroy
-    # @historico = Historico.find(params[:id])
-    # @historico.destroy
-# 
-    # respond_to do |format|
-      # format.html { redirect_to(historicos_url) }
-      # format.xml  { head :ok }
-    # end
-  # end
-
   # Muestra todos los recolectores tanto disponibles como Ocupados y simula
   def recolectores
     @personas = Persona.where(:empleados_id => 2).order("apellido ASC")
