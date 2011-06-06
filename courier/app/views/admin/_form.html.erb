@@ -1,0 +1,31 @@
+<%= form_for(@persona, :url => {:action => 'create'} ) do |f| %>
+
+<div class="field">
+	<%= f.label :Email %>
+	<br />
+	<%= f.text_field :email%>
+</div>
+<div class="field">
+	<%= f.label :Nombre %>
+	<br />
+	<%= f.text_field :nombre %>
+</div>
+<div class="field">
+	<%= f.label :Apellido %>
+	<br />
+	<%= f.text_field :apellido %>
+</div>
+<div class="field">
+	<%= f.label :Cargo %>
+	<br />
+	<%= collection_select :persona, :empleados_id, Empleado.find(:all), :id, :cargo %>
+</div>
+<div class="field">
+	<%= f.label :Fecha_Nacimiento %>
+	<br />
+	<%= f.date_select :fNacimiento, :start_year => 1920, :end_year => 2040 %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

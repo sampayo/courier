@@ -16,8 +16,8 @@
 				</div>
 				<div id="idioma">
 					<h3>
-					<a href="#">es</a> |
-					<a href="#">en</a><%= @lala %>
+					<%= link_to 'es', '', :method => :espanol %> |
+					<a href="#">en</a>
 					</h3>
 				</div>
 			</div>
@@ -83,6 +83,17 @@
 										</li>
 										<li>
 											<%= link_to t('principal.factura'), facturas_path %>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h2><%= t('principal.admin') %></h2>
+									<ul>
+										<li>
+											<%= link_to t('principal.clientes'), adm_path %>
+										</li>
+										<li>
+											<%= link_to t('principal.empleados'), emple_path %>
 										</li>
 									</ul>
 								</li>

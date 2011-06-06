@@ -24,6 +24,8 @@ Courier::Application.routes.draw do
     resources :despachar
 
     resources :recolectar
+    
+    resources :admin
 
   end
 
@@ -80,6 +82,10 @@ Courier::Application.routes.draw do
   match '/:locale/contenido', :to => 'courier#contenido', :as => "cont"
 
   match '/:locale/seguimiento/', :to => 'courier#seguimiento', :as => "seg"
+  
+  match '/:locale/empleado/', :to => 'admin#empleados', :as => "emple"
+  
+  match '/:locale/admin/', :to => 'admin#index', :as => "adm"
 
   # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
   match 'paquetes/new/:id', :to => 'paquetes#new', :via => 'get', :as => "newpa"
