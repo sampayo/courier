@@ -19,6 +19,7 @@ class DireccionsController < ApplicationController
 	# GET /direccions/1.xml
 	def show
 		@direccion = Direccion.find(params[:id])
+		#Accedemos a la constante, para escribir el mensaje en customlog.
     NUESTRO_LOG.info "Estoy viendo la direccion!"
 		respond_to do |format|
 			format.html # show.html.erb
