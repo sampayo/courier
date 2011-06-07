@@ -1,6 +1,6 @@
-<h1>Editar Tarjeta de Credito:</h1>
+<h1><%= t('editartarjeta') %>:</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Mostrar', @tipo_pago %> |
-<%= link_to 'Regresar', tipo_pagos_path %>
+<%= link_to t('mostrar'), @tipo_pago %> |
+<%= link_to t('regresar'), tipo_pagos_path %>

@@ -26,10 +26,42 @@ en:
     notificarre: collection report
     nombre: Name
     bienvenido: Welcome!
+<<<<<<< Updated upstream
     numorden: Tracking number
     estado: Status
     detallado: Detailed results
     admin: Admin
     clientes: Clients
     empleados: Employees
+=======
+      
+  	 mostrar: Show
+  	 editar: Edit
+  	 eliminar: Delete
+  	 regresar: Return
+  	 listdir: My Directions
+  	 nombrez: Name  
+  	 paiz: Country
+  	 ciudad: City
+  	 avenida: Avenue
+  	 linkdireccion: New Direction
+  	 nuevadir: New Direction
+  	 calle: Street or Avenue
+  	 nombrecasa: House Name
+  	 urbanizacion: Urbanization
+  	 numerocasa: House Number
+  	 codigopostal: Postal Code
+  	 longitud: longitude
+  	 latitud: Latitude
+  	 marcamapa: Mark your address on the map
+  	 actualizardir: Update your Address
+  	 codseguridad: Security Code
+  	 fechavencimiento: Expiration Date
+  	 numtarjeta: Credit Card Number
+  	 mistarjetas: My Credit Cards
+  	 agregartarjeta: Add Credit Card
+  	 editartarjeta: Edit my Credit Card
+  	 listaordenes: My order list
+  	 
+>>>>>>> Stashed changes
   

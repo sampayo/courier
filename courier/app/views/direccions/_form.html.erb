@@ -7,14 +7,14 @@
 
       <td>
       <div class="field">
-        <%= f.label :Nombre%>
+        <%= f.label t('nombrez') %>
         <br />
         <%= f.text_field :nombre %>
       </div>
       </td>
       <td>
       <div class="field">
-        <%= f.label :Calle_o_Avenida%>
+        <%= f.label t('calle') %>
         <br />
         <%= f.text_field :avCalle %>
       </div>
@@ -23,14 +23,14 @@
     <tr>
       <td>
       <div class="field">
-        <%= f.label :Nombre_de_la_casa %>
+        <%= f.label t('nombrecasa') %>
         <br />
         <%= f.text_field :resCasa %>
       </div>
       </td>
       <td>
       <div class="field">
-        <%= f.label :Urbanizacion %>
+        <%= f.label t('urbanizacion') %>
         <br />
         <%= f.text_field :urban %>
       </div>
@@ -39,14 +39,14 @@
     <tr>
       <td>
       <div class="field">
-        <%= f.label :Numero_de_la_casa %>
+        <%= f.label t('numerocasa') %>
         <br />
         <%= f.text_field :aptoNumero %>
       </div>
       </td>
       <td>
       <div class="field">
-        <%= f.label :Ciudad %>
+        <%= f.label t('ciudad') %>
         <br />
         <%= f.text_field :ciudad %>
       </div>
@@ -55,14 +55,14 @@
     <tr>
       <td>
       <div class="field">
-        <%= f.label :Pais %>
+        <%= f.label t('paiz') %>
         <br />
         <%= f.text_field :pais %>
       </div>
       </td>
       <td>
       <div class="field">
-        <%= f.label :Codigo_Postal %>
+        <%= f.label t('codigopostal') %>
         <br />
         <%= f.text_field :cPostal %>
       </div>
@@ -71,14 +71,14 @@
     <tr>
       <td>
       <div class="field">
-        <%= f.label :Longitud %>
+        <%= f.label t('longitud') %>
         <br />
         <%= f.text_field :lng, :onchange=>"placeMarker()", :readonly =>"true" %>
       </div>
       </td>
       <td>
       <div class="field">
-        <%= f.label :Latitud  %>
+        <%= f.label t('latitud')  %>
         <br />
         <%= f.text_field :lat, :onchange=>"placeMarker()", :readonly =>"true" %>
       </div>

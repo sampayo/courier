@@ -206,9 +206,40 @@
     notificarre: Notificar recoleccion
     nombre: Nombre
     bienvenido: Bienvenido!
+<<<<<<< Updated upstream
     numorden: Numero de orden
     estado: Estado
     detallado: Resultados detallados
     admin: Administrador
     clientes: Clientes
     empleados: Empleados
+=======
+    
+  	 mostrar: Ver
+  	 editar: Editar
+  	 eliminar: Eliminar
+  	 regresar: Regresar
+  	 listdir: Mis Direcciones
+  	 nombrez: Nombre
+  	 paiz: Pais
+  	 ciudad: Ciudad
+  	 avenida: Avenida
+  	 linkdireccion: Agregar Direccion
+  	 nuevadir: Nueva Direccion
+  	 calle: Calle o Avenida
+  	 nombrecasa: Nombre de la casa
+  	 urbanizacion: Urbanizacion
+  	 numerocasa: Numero de Casa
+  	 codigopostal: Codigo Postal
+  	 longitud: Longitud
+  	 latitud: Latitud
+  	 marcamapa: Marque su direccion en el mapa
+  	 actualizardir: Actualizar Direccion
+  	 codseguridad: Codigo de Seguridad
+  	 fechavencimiento: Fecha de Vencimiento
+  	 numtarjeta: Numero de Tarjeta
+  	 mistarjetas: Mis Tarjetas de Credito
+  	 agregartarjeta: Agregar Tarjeta
+  	 editartarjeta: Editar mis tarjetas de credito
+  	 listaordenes: Listado de mis ordenes
+>>>>>>> Stashed changes

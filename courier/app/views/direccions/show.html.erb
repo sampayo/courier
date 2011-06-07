@@ -2,43 +2,43 @@
   <%= notice %>
 </p>
 <p>
-  <b>Nombre:</b>
+  <b><%= t('nombrez') %>:</b>
   <%= @direccion.nombre %>
 </p>
 <p>
-  <b>Calle o Avenida:</b>
+  <b><%= t('calle') %>:</b>
   <%= @direccion.avCalle %>
 </p>
 <p>
-  <b>Nombre de la Casa:</b>
+  <b><%= t('nombrecasa') %>:</b>
   <%= @direccion.resCasa %>
 </p>
 <p>
-  <b>N&uacute;mero de Casa:</b>
+  <b><%= t('numerocasa') %>:</b>
   <%= @direccion.aptoNumero %>
 </p>
 <p>
-  <b>Urbanizaci&oacute;n:</b>
+  <b><%= t('urbanizacion') %>:</b>
   <%= @direccion.urban %>
 </p>
 <p>
-  <b>Ciudad:</b>
+  <b><%= t('ciudad') %>:</b>
   <%= @direccion.ciudad %>
 </p>
 <p>
-  <b>Pa&iacute;s:</b>
+  <b><%= t('paiz') %>:</b>
   <%= @direccion.pais %>
 </p>
 <p>
-  <b>C&oacute;digo postal:</b>
+  <b><%= t('codigopostal') %>:</b>
   <%= @direccion.cPostal %>
 </p>
 <p>
-  <b>Latitud:</b>
+  <b><%= t('latitud') %>:</b>
   <%= @direccion.lat %>
 </p>
 <p>
-  <b>Longitud:</b>
+  <b><%= t('longitud')  %>:</b>
   <%= @direccion.lng %>
 </p>
 <%= link_to 'Editar', edit_direccion_path(@direccion) %> |
