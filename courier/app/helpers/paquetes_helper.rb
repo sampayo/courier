@@ -6,7 +6,7 @@ module PaquetesHelper
     if @paquete.nil?
       @paquete =  ""
     else
-      @paquete = link_to 'Generar Orden', enviar_path(id)
+      @paquete = link_to t('generarorden'), enviar_path(id)
     end
   end
   

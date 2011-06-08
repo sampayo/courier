@@ -1,10 +1,10 @@
 <h1><%= t('listaordenes') %></h1>
 <table width="90%">
 	<tr>
-		<th>Numero</th>
-		<th>Receptor</th>
-		<th>Estado</th>
-		<th>Fecha</th>
+		<th><%= t('numorden')%></th>
+		<th><%= t('receptor')%></th>
+		<th><%= t('estado')%></th>
+		<th><%= t('fecha')%></th>
 		<th></th>
 	</tr>
 	<% @ordens.each do |orden| %>
@@ -13,10 +13,10 @@
 		<td><%= orden.nombre + ' ' + orden.apellido %></td>
 		<td><%= orden.estado %></td>
 		<td><%= orden.fecha %></td>
-		<td><%= link_to 'Ver', orden %></td>
+		<td><%= link_to t('mostrar'), orden %></td>
 	</tr>
 	<% end %>
 </table>
 <br />
 
-<%= link_to 'nueva orden', paquetes_path %>
+<%= link_to t('nuevaorden'), paquetes_path %>

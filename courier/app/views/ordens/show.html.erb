@@ -2,24 +2,24 @@
 	<%= notice %>
 </p>
 <p>
-	<b>Receptor:</b>
+	<b><%= t('receptor') %>:</b>
 	<%= @orden.nombre + ' ' + @orden.apellido %>
 </p>
 <p>
-	<b>Fecha:</b>
+	<b><%= t('fecha')%>:</b>
 	<%= @orden.fecha %>
 </p>
 <p>
-	<b>Estado:</b>
+	<b><%= t('estado')%>:</b>
 	<%= @orden.estado %>
 </p>
 <div id='paquetes'>
-	<h3>Paquetes</h3>
+	<h3><%= t('paquetesorden')%></h3>
 	<table width="90%">
 		<tr>
-			<th>Nombre</th>
-			<th>Peso</th>
-			<th>Descripcion</th>
+			<th><%= t('nombrez')%></th>
+			<th><%= t('peso')%></th>
+			<th><%= t('descripcion')%></th>
 		</tr>
 		<% @paquetes.each do |paquete| %>
 		<tr align="center">
@@ -30,7 +30,7 @@
 		<% end %>
 	</table>
 </div>
-<h3>Seguimiento</h3>
+<h3><%= t('seguimiento')%></h3>
 <div id="paquetes">
 	<form id="form_178611" class="appnitro"  method="post" action="">
 

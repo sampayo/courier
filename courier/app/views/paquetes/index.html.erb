@@ -1,10 +1,10 @@
-<h1>Listing paquetes</h1>
+<h1><%= t('listadopaquetes')%></h1>
 
 <table>
   <tr>
-    <th>Nombre</th>
-    <th>Peso</th>
-    <th>Descripcion</th>
+    <th><%= t('nombrez') %></th>
+    <th><%= t('peso') %></th>
+    <th><%= t('descripcion') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,15 +15,15 @@
     <td><%= paquete.nombre %></td>
     <td><%= paquete.peso %></td>
     <td><%= paquete.descripcion %></td>
-    <td><%= link_to 'Show', paquete %></td>
-    <td><%= link_to 'Edit', edit_paquete_path(paquete) %></td>
-    <td><%= link_to 'Destroy', paquete, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('mostrar'), paquete %></td>
+    <td><%= link_to t('editar'), edit_paquete_path(paquete) %></td>
+    <td><%= link_to t('eliminar'), paquete, :confirm => t('eliminarseguro'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nuevo Paquete', new_paquete_path %>
+<%= link_to t('nuevopaquete'), new_paquete_path %>
 |
 <%= validar (@id) %>

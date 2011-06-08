@@ -177,7 +177,10 @@ a:hover {
 #menu li {
 	float: left;
 }
-#salir{margin-left: 85%;}
+#salir{
+	position: absolute;
+	left: 940px;
+}
 
 #menu a {
 	display: block;
@@ -470,9 +473,16 @@ form h3{
 text-align: center;
 }
 #mapas{
+	position: absolute;
+	right: 20px;
+	/*top: 50%;
+	margin-top: -150px;*/
+	bottom: 20px;
+	width: 300px;
+	height: 300px;
 	text-align: center;
-	float: right;
-	width: 45%;
+/*	float: right;*/
+/*	width: 45%;*/
 }
 #resultados{
 	padding-top: 30px;

@@ -206,19 +206,18 @@
     notificarre: Notificar recoleccion
     nombre: Nombre
     bienvenido: Bienvenido!
-<<<<<<< Updated upstream
     numorden: Numero de orden
     estado: Estado
     detallado: Resultados detallados
     admin: Administrador
     clientes: Clientes
     empleados: Empleados
-=======
     
   	 mostrar: Ver
   	 editar: Editar
   	 eliminar: Eliminar
   	 regresar: Regresar
+  	 eliminarseguro: Esta seguro que desea eliminarlo?
   	 listdir: Mis Direcciones
   	 nombrez: Nombre
   	 paiz: Pais
@@ -242,4 +241,21 @@
   	 agregartarjeta: Agregar Tarjeta
   	 editartarjeta: Editar mis tarjetas de credito
   	 listaordenes: Listado de mis ordenes
->>>>>>> Stashed changes
+  	 numorden: Numero Orden
+  	 receptor: Receptor de la Orden
+  	 estado: Estado de la Orden
+  	 fecha: Fecha de la Orden
+  	 nuevaorden: Crear orden nueva
+  	 paquetesorden: Paquetes de la Orden
+  	 peso: Peso
+  	 descripcion: Descripcion
+  	 seguimiento: Seguimiento del Paquete
+  	 listadopaquetes: Listado de Paquetes
+  	 nuevopaquete: Agregar nuevo paquete
+  	 generarorden: Generar la Orden
+  	 editarpaquete: Editar Paquete
+  	 
+
+
+
+

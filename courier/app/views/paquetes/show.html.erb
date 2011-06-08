@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Nombre:</b>
+  <b><%= t('nombrez') %>:</b>
   <%= @paquete.nombre %>
 </p>
 
 <p>
-  <b>Peso:</b>
+  <b><%= t('peso') %>:</b>
   <%= @paquete.peso %>
 </p>
 
 <p>
-  <b>Descripcion:</b>
+  <b><%= t('descripcion') %>:</b>
   <%= @paquete.descripcion %>
 </p>
 
 
-<%= link_to 'Edit', edit_paquete_path(@paquete) %> |
-<%= link_to 'Back', paquetes_path %>
+<%= link_to t('editar'), edit_paquete_path(@paquete) %> |
+<%= link_to t('regresar'), paquetes_path %>

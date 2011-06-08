@@ -18,7 +18,7 @@ en:
     categoria: Category
     tdc: Credit Card
     orden: Orders
-    factura: factura en ingles
+    factura: Invoice
     recolector: Collectors
     solicitara: Support request
     recolectar: Collect
@@ -26,19 +26,18 @@ en:
     notificarre: collection report
     nombre: Name
     bienvenido: Welcome!
-<<<<<<< Updated upstream
     numorden: Tracking number
     estado: Status
     detallado: Detailed results
     admin: Admin
     clientes: Clients
     empleados: Employees
-=======
-      
+
   	 mostrar: Show
   	 editar: Edit
   	 eliminar: Delete
   	 regresar: Return
+  	 eliminarseguro: Are you sure you want to delete?
   	 listdir: My Directions
   	 nombrez: Name  
   	 paiz: Country
@@ -62,6 +61,20 @@ en:
   	 agregartarjeta: Add Credit Card
   	 editartarjeta: Edit my Credit Card
   	 listaordenes: My order list
+  	 numorden: Order Number
+  	 receptor: Order Receiver
+  	 estado: Order Status
+  	 fecha: Order Date  	 
+  	 nuevaorden: Create new order
+  	 paquetesorden: Order Packeges
+  	 peso: Weight
+  	 descripcion: Description
+  	 seguimiento: Package tracking
+  	 listadopaquetes: Package Listing
+  	 nuevopaquete: Add new package
+  	 generarorden: Generate Order
+  	 editarpaquete: Package Edit
   	 
->>>>>>> Stashed changes
-  
+  	 
+  	 
+  	   
