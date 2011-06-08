@@ -19,7 +19,7 @@
     <td><%= direccion.avCalle %></td>
     <td><%= link_to t('mostrar'), direccion %></td>
     <td><%= link_to t('editar'), edit_direccion_path(direccion) %></td>
-    <td><%= link_to t('eliminar'), direccion, :confirm => 'Esta seguro que desea Borrarla?', :method => :delete %></td>
+    <td><%= link_to t('eliminar'), direccion, :confirm => t('eliminarseguro'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

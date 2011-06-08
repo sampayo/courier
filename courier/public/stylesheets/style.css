@@ -445,8 +445,9 @@ a:hover {
 
 #contentdir{	
 	text-align: center;	
-	float: center;
-	width: 100%;}
+/*	float: center;*/
+	width: 100%;
+}
 	
 	#paquetes{
 	padding-top: 20px;

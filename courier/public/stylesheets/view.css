@@ -79,7 +79,7 @@ form.appnitro
 
 #form_container img
 {
-	behavior:url(css/iepngfix.htc);
+/*	behavior:url(css/iepngfix.htc);*/
 	border:none;
 }
 
@@ -411,9 +411,9 @@ label.choice
 
 #form1 label.choice
 {
-	padding-left: 5;
+	padding-left: 5px;
 	padding-bottom: 25px;
-	padding-right: 5;
+	padding-right: 5px;
 	padding-top: 5px;
 	color:#444;
 	display:block;
