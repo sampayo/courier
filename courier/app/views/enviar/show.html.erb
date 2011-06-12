@@ -6,33 +6,33 @@
 	<div id="form">
 		<%= form_for(:enviar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
 		<div class="form_description">
-			<h2>Datos para facturacion</h2>
+			<h2><%= t('datosfacturacion') %></h2>
 			<p>
-				Indique datos del receptor de la orden, y seleccione las direcciones
+				<%= t('parraforeceptor') %>
 			</p>
 		</div>
 		<ul >
 
 			<li id="li_1" >
 				<label class="description" for="element_1">
-					Nombre receptor
+					<%= t('receptor') %>
 				</label>
 				<span>
 					<%= f.text_field :nombre,:size =>8 %>
 					<label>
-						Nombre
+						<%= t('nombrez') %>
 					</label>
 				</span>
 				<span>
 					<%= f.text_field :apellido,:size =>14 %>
 					<label>
-						Apellido
+						<%= t('apellido') %>
 					</label>
 				</span>
 			</li>
 			<li id="li_2" >
 				<label class="description" for="element_2">
-					Tarjeta de credito
+					<%= t('numtarjeta') %>
 				</label>
 				<div>
 					<%= f.select(:tdc, @tdc.collect {|p| [ p.nombre + " " + p.nTDC, p.id ] }, {:include_blank => false}, {:class=>'element select medium'})
@@ -41,11 +41,11 @@
 			</li>
 			<li id="li_3" >
 				<label class="description" for="element_3">
-					Direcciones
+					<%= t('direcciones') %>
 				</label>
 				<div class="form_description">
 					<p>
-						Seleccione la direccion de recoleccion de su orden, y la direccion a donde va a ser enviado
+						<%= t('seleccionerecoleccion') %>
 					</p>
 				</div>
 				<% @direccions.each do |direccion| %>

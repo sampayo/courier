@@ -294,6 +294,12 @@
   	 buscarpororden: Buscar por el numero de orden
   	 buscar: Buscar
   	 indiqueorden: Indique el numero de la orden
+  	 listadodirecciones: Listado de direcciones
+  	 parraforeceptor: Indique datos del receptor de la orden, y seleccione las direcciones
+  	 datosfacturacion: Datos para facturacion
+  	 direcciones: Direcciones
+  	 seleccionerecoleccion: Seleccione la direccion de recoleccion de su orden, y la direccion a donde va a ser enviado
+  	 editarorden: Editar la Orden
 
 
 

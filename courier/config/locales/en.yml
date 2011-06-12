@@ -114,6 +114,12 @@ en:
   	 buscarpororden: Search by order number
   	 buscar: Search
   	 indiqueorden: Indicate the order number
+  	 listadodirecciones: Direction listing
+  	 parraforeceptor: Indicate recipient data for the order, and select the addresses
+  	 datosfacturacion: Invoice data
+  	 direcciones: Directions
+  	 seleccionerecoleccion: Select the direction of collection for your order, and the address where you will be sent
+  	 editarorden: Edit order
   	 
   	 
   	 

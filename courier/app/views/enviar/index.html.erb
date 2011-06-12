@@ -1,13 +1,13 @@
-<h1>Listing direccions</h1>
+<h1><%= t('listadodirecciones') %></h1>
 
 
 
 <table width="80%" align="Center">
   <tr>
-  	<th>Pais</th>
-  	<th>Ciudad</th>
-  	<th>Avenida</th>
-    <th>Residencia</th>
+  	<th><%= t('paiz') %></th>
+  	<th><%= t('ciudad') %></th>
+  	<th><%= t('avenida') %></th>
+    <th><%= t('nombrecasa') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,9 +19,8 @@
   	<td><%= direccion.ciudad %></td>
     <td><%= direccion.avCalle %></td>
     <td><%= direccion.resCasa %></td>
-    <td><%= link_to 'Show', direccion %></td>
-    <td><%= link_to 'Edit', edit_direccion_path(direccion) %></td>
-    <td><%= link_to 'Destroy', direccion, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('mostrar'), direccion %></td>
+    <td><%= link_to t('editar'), edit_direccion_path(direccion) %></td>
   </tr>
 <% end %>
 </table>
