@@ -36,7 +36,7 @@ class DespacharController < ApplicationController
 
   # GET /historicos/1/edit
   # def edit
-    # @historico = Historico.find(params[:id])
+  # @historico = Historico.find(params[:id])
   # end
 
   # POST /historicos
@@ -79,20 +79,28 @@ class DespacharController < ApplicationController
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(params["id"])
   end
-  
+
   def simulacion
-    @ordenes = Orden.where(:estado => "Recolectada") 
-    espanol
+    @ordenes = Orden.where(:estado => "Recolectada")
   end
-  
+
   def destroy
     @despachar = params[:id]
-
-
-    respond_to do |format|
-      format.html { redirect_to(simul_path) }
-      format.xml  { head :ok }
+    @direcciones = Despachar.simular(@despachar)
+    @entregada = Historico.where(:ordens_id => @despachar, :tipo => 'Entregada').first
+    @direcciones.each do |dir|
+      @historico= Historico.new(:ordens_id => @despachar, :direccions_id => dir.id, :tipo => 'Llego a: ', :fecha => Time.now)
+      @historico.save
     end
+    @orden = Orden.find(@despachar)
+    @entregada.fecha = Time.now
+    @orden.estado = 'Entregada'
+    @entregada.save
+    @orden.save
+  respond_to do |format|
+  format.html { redirect_to(simul_path, :notice => 'La simulacion fue realizada con exito') }
+  format.xml  { head :ok }
+  end
   end
 
 end
