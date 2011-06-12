@@ -110,6 +110,7 @@ Courier::Application.routes.draw do
 
   # Genera el xml de los paquetes.
   match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
+  
 
   # Pagina principal del proyecto.
   root :to => "courier#index"

@@ -87,4 +87,7 @@ class DireccionsController < ApplicationController
 			format.xml  { head :ok }
 		end
 	end
+	 def espanol
+      I18n.locale = "es"
+  end
 end

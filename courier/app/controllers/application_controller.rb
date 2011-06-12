@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale]
   end
 
-  def espanol
-    @lala = "es"
+  def self.espanol
+    I18n.locale = "es"
   end
 
   def default_url_options(options={})

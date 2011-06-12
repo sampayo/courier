@@ -16,8 +16,9 @@
 				</div>
 				<div id="idioma">
 					<h3>
-					<%= link_to 'es', '', :method => :espanol %> |
-					<a href="#">en</a>
+					<%= link_to 'es', idioma('es') %> |
+					<%= link_to 'en', idioma('en') %>
+
 					</h3>
 				</div>
 			</div>
@@ -42,6 +43,7 @@
 				<div id="page-bgtop">
 					<div id="page-bgbtm">
 						<div id="content">
+
 							<%= yield %>
 
 							<div style="clear: both;">

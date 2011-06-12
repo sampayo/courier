@@ -82,6 +82,17 @@ class DespacharController < ApplicationController
   
   def simulacion
     @ordenes = Orden.where(:estado => "Recolectada") 
+    espanol
+  end
+  
+  def destroy
+    @despachar = params[:id]
+
+
+    respond_to do |format|
+      format.html { redirect_to(simul_path) }
+      format.xml  { head :ok }
+    end
   end
 
 end

@@ -13,7 +13,7 @@
 		<td><%= orden.nombre + ' ' + orden.apellido %></td>
 		<td><%= orden.estado %></td>
 		<td><%= orden.fecha %></td>
-		<td><%= link_to 'Simulacion', orden %></td>
+		<td><%= link_to 'Simulacion', despachar_path(orden.id), :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>
