@@ -1,13 +1,17 @@
+<<<<<<< Updated upstream
 <h1>Lista de ordenes</h1>
 <p id="notice">
   <%= notice %>
 </p>
+=======
+<h1><%= t('listaordenes') %></h1>
+>>>>>>> Stashed changes
 <table width="90%">
 	<tr>
-		<th>Numero</th>
-		<th>Receptor</th>
-		<th>Estado</th>
-		<th>Fecha</th>
+		<th><%= t('numorden') %></th>
+		<th><%= t('receptor') %></th>
+		<th><%= t('estado') %></th>
+		<th><%= t('fecha') %></th>
 		<th></th>
 	</tr>
 	<% @ordenes.each do |orden| %>
@@ -16,7 +20,7 @@
 		<td><%= orden.nombre + ' ' + orden.apellido %></td>
 		<td><%= orden.estado %></td>
 		<td><%= orden.fecha %></td>
-		<td><%= link_to 'Simulacion', despachar_path(orden.id), :method => :delete %></td>
+		<td><%= link_to t('simulacion'), despachar_path(orden.id), :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>

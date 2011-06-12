@@ -1,11 +1,11 @@
-<h1>Lista de ordenes</h1>
+<h1><%= t('listaordenes') %></h1>
 <p id="notice"><%= notice %></p>
 <table width="90%">
 	<tr>
-		<th>Numero</th>
-		<th>Receptor</th>
-		<th>Estado</th>
-		<th>Fecha</th>
+		<th><%= t('numero') %></th>
+		<th><%= t('receptor') %></th>
+		<th><%= t('estado') %></th>
+		<th><%= t('fecha') %></th>
 		<th></th>
 		<th></th>
 	</tr>
@@ -15,8 +15,8 @@
 		<td><%= orden.nombre + ' ' + orden.apellido %></td>
 		<td><%= orden.estado %></td>
 		<td><%= orden.fecha %></td>
-		<td><%= link_to 'despachar' ,despachar_path(orden.id) %></td>
-		<td><%= link_to 'Ver', orden %></td>
+		<td><%= link_to t('despachar') ,despachar_path(orden.id) %></td>
+		<td><%= link_to t('mostrar'), orden %></td>
 	</tr>
 	<% end %>
 </table>

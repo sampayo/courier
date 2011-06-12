@@ -5,27 +5,27 @@
 	<div id="form">
 		<%= form_for(:despachar, :url => {:action => 'create'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
 		<div class="form_description">
-			<h2>Recoleccion orden # <%= @orden.id %></h2>
+			<h2><%= t('recoleccionorden') %> # <%= @orden.id %></h2>
 			<p>
-				Indique el Recolector de la orden, y asigna las ordenes a recolectar
+				<%= t('parraforecolector') %>
 			</p>
 		</div>
 		<ul >
 
 			<li id="li_2" >
 				<label class="description" for="element_2">
-					Recolector
+					<%= t('recolector') %>
 				</label>
 				<div class="form_description">
 					<p>
-						No hay recolectores disponibles en este momento
+						<%= t('recolectordisponible') %>
 					</p>
 				</div>
 
 			</li>
 			<li id="li_3" >
 				<label class="description" for="element_3">
-					Ordenes cercanas
+					<%= t('ordenescercanas') %>
 				</label>
 				<div class="form_description">
 					<p>

@@ -20,7 +20,7 @@
 		</div>
 		<table id="meta">
 			<tr>
-				<td class="meta-head">Orden #</td>
+				<td class="meta-head"><%= t('numorden') %></td>
 				<td>
 				<div class="due">
 					<%= @orden.id %>
@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 
-				<td class="meta-head">Fecha</td>
+				<td class="meta-head"><%= t('fecha') %></td>
 				<td>
 				<div class="due">
 					<%= @orden.fecha %>
@@ -37,7 +37,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="meta-head">Reseptor</td>
+				<td class="meta-head"><%= t('receptor') %></td>
 				<td>
 				<div class="due">
 					<%= @orden.nombre + ' ' + @orden.apellido %>
@@ -49,9 +49,9 @@
 	<table id="items">
 
 		<tr>
-			<th>Item</th>
-			<th>Description</th>
-			<th>peso</th>
+			<th><%= t('item') %></th>
+			<th><%= t('descripcion') %></th>
+			<th><%= t('peso') %></th>
 		</tr>
 		<% @paquete.each do |paquete| %>
 		<tr class="item-row">
@@ -63,7 +63,7 @@
 
 		<tr>
 			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line">Subtotal</td>
+			<td colspan="2" class="total-line"><%= t('subtotal') %></td>
 			<td class="total-value">
 			<div id="subtotal">
 				<%= @factura.costoTotal %>
@@ -73,7 +73,7 @@
 		<tr>
 
 			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line">Iva</td>
+			<td colspan="2" class="total-line"><%= t('iva') %></td>
 			<td class="total-value">
 			<div id="total">
 				<%= @factura.iva.round(2) %>
@@ -82,7 +82,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line balance">Total</td>
+			<td colspan="2" class="total-line balance"><%= t('total') %></td>
 			<td class="total-value balance">
 			<div class="due">
 				<%= (@factura.costoTotal + @factura.iva).round(2) %>
@@ -91,7 +91,7 @@
 		</tr>
 	</table>
 	<div id="terms">
-		<h5>Codigo</h5>
+		<h5><%= t('codigoqr') %></h5>
 		<div id="QR">
 			<a href="http://<%= @remote_ip %>:3000/tracking/<%= @orden.id %>">
 			<img src="<%= @dirQR %>" >
@@ -99,7 +99,7 @@
 			</a>
 		</div>
 	</div>
-<%= link_to 'Back', facturas_path %> | 
-<%= link_to 'Imprimir Factura', @factura.id.to_s + ".pdf" %>
+<%= link_to t('regresar'), facturas_path %> | 
+<%= link_to t('imprimirfact'), @factura.id.to_s + ".pdf" %>
 </div>
 

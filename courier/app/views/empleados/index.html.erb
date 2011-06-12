@@ -1,9 +1,9 @@
-<h1>Listing empleados</h1>
+<h1><%= t('listaempleado') %></h1>
 
 <table>
   <tr>
-  	<th>Nombre</th>
-    <th>Cargo</th>
+  	<th><%= t('nombrez') %></th>
+    <th><%= t('cargo') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,13 +15,13 @@
   	%></td>
     <td><%= empleado.cargo 
     %></td>
-    <td><%= link_to 'Show', empleado %></td>
-    <td><%= link_to 'Edit', edit_empleado_path(empleado) %></td>
-    <td><%= link_to 'Destroy', empleado, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('mostrar'), empleado %></td>
+    <td><%= link_to t('editar'), edit_empleado_path(empleado) %></td>
+    <td><%= link_to t('eliminar'), empleado, :confirm => t('eliminarseguro'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Empleado', new_empleado_path %>
+<%= link_to t('nuevoempleado'), new_empleado_path %>

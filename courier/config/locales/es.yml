@@ -240,13 +240,14 @@
   	 mistarjetas: Mis Tarjetas de Credito
   	 agregartarjeta: Agregar Tarjeta
   	 editartarjeta: Editar mis tarjetas de credito
-  	 listaordenes: Listado de mis ordenes
+  	 listaordenes: Listado de ordenes
   	 numorden: Numero Orden
   	 receptor: Receptor de la Orden
   	 estado: Estado de la Orden
   	 fecha: Fecha de la Orden
   	 nuevaorden: Crear orden nueva
   	 paquetesorden: Paquetes de la Orden
+  	 paquete: Paquete
   	 peso: Peso
   	 descripcion: Descripcion
   	 seguimiento: Seguimiento del Paquete
@@ -254,7 +255,45 @@
   	 nuevopaquete: Agregar nuevo paquete
   	 generarorden: Generar la Orden
   	 editarpaquete: Editar Paquete
-  	 
+  	 listafactura: Listado de mis facturas
+  	 monto: Costo
+  	 item: Item
+  	 subtotal: Subtotal
+  	 iva: Iva
+  	 total: Total
+  	 codigoqr: Codigo QR
+  	 imprimirfact: Imprimir Factura
+  	 nuevafactura: Crear Factura
+  	 editarfactura: Editar Factura
+  	 listaclientes: Listado de Clientes
+  	 apellido: Apellido
+  	 fechanac: Fecha de Nacimiento
+  	 editarpersona: Editar Cuenta
+  	 cargo: Cargo
+  	 nuevapersona: Crear usuario
+  	 listaempleado: Listado de Empleados
+  	 nuevoempleado: Agregar nuevo Empleado
+  	 editarempleado: Editar Empleado
+  	 empleado: Empleado
+  	 despachar: Despachar
+  	 listarecolectores: Lista de recolectores
+  	 recoleccionorden: Recoleccion de Orden
+  	 recolector: Recolector
+  	 parraforecolector: Indique el Recolector de la orden, y asigna las ordenes a recolectar
+  	 recolectordisponible: No hay recolectores disponibles en este momento
+  	 ordenescercanas: Ordenes Cercanas
+  	 noordenescercanas: No hay ordenes cercanas
+  	 ordenescerca: Estas ordenes estan cercanas a su orden, puede asignarlas a la ruta de recoleccion
+  	 verruta: Ver Ruta
+  	 simulacion: Simulacion
+  	 rutarecoleccion: Ruta de Recoleccion
+  	 listaasignada: Listado de ordenes asignadas al recolector
+  	 ordenasignada: Ordenes Asignadas
+  	 noordendisponible: No tiene ordenes disponibles hasta el momento
+  	 notificarrecolector: Notificar Recolector
+  	 buscarpororden: Buscar por el numero de orden
+  	 buscar: Buscar
+  	 indiqueorden: Indique el numero de la orden
 
 
 

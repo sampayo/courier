@@ -8,16 +8,16 @@
 			<div id="form1">
 				<%= form_for(:recolectar, :url => {:action => 'save'}, :html=>{:onsubmit=> "validar();", :name => "form"} ) do |f| %>
 				<div class="form_description">
-					<h2>Notificar Recoleccion </h2>
+					<h2><%= t('notificarrecolector') %></h2>
 					<p>
-						Buscar por el numero de orden
+						<%= t('buscarpororden') %>
 					</p>
 				</div>
 				<ul >
 
 					<li id="li_2" >
 						<label class="description" for="element_2">
-							Recolector
+							<%= t('recolector') %>
 						</label>
 						<div>
 							<%= @personas.nombre + " " + @personas.apellido
@@ -26,11 +26,11 @@
 					</li>
 					<li id="li_3" >
 						<label class="description" for="element_3">
-							Buscar
+							<%= t('buscar') %>
 						</label>
 						<div class="form_description">
 							<p>
-								indique el numero de la orden
+								<%= t('indiqueorden') %>
 								<br/>
 							</p>
 							<p id="error2">
@@ -40,7 +40,7 @@
 						<span>
 							<%= f.text_field :nombre,:size =>18 %>
 							<label>
-								Buscar
+								<%= t('buscar') %>
 							</label>
 						</span>
 						<span>

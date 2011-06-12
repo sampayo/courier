@@ -2,7 +2,7 @@ module DespacharHelper
   def descripcionDir(direcciones)
     @bolean = false
     if direcciones.nil?
-      @imprime = "No hay ordenes cercanas"
+      @imprime = t('noordenescercanas')
     else
       direcciones.each do |orden|
         if orden.distancia < 0.1
@@ -10,9 +10,9 @@ module DespacharHelper
         end
       end
       if @bolean
-        @imprime = "Estas ordenes estan cercanas a su orden, puede asignarlas a la ruta de recoleccion"
+        @imprime = t('ordenescerca')
       else
-        @imprime = "No hay Ordenes cercanas"
+        @imprime = t('noordenescercanas')
       end
     end
   end
@@ -22,7 +22,7 @@ module DespacharHelper
     if @orden.nil?
       "Disponible"
     else
-      link_to 'Ver Ruta' ,ver_path(id)
+      link_to t('verruta') ,ver_path(id)
     end
   end
 end

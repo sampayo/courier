@@ -1,13 +1,13 @@
-<h1>Lista de Clientes</h1>
+<h1><%= t('listaclientes') %></h1>
 <p id="notice">
 	<%= notice %>
 </p>
 <table width="80%">
 	<tr>
 		<th>Email</th>
-		<th>Nombre</th>
-		<th>Apellido</th>
-		<th>Fnacimiento</th>
+		<th><%= t('nombrez') %></th>
+		<th><%= t('apellido') %></th>
+		<th><%= t('fechanac') %></th>
 		<th></th>
 		<th></th>
 	</tr>
@@ -17,8 +17,8 @@
 		<td><%= admin.nombre %></td>
 		<td><%= admin.apellido %></td>
 		<td><%= admin.fNacimiento %></td>
-		<td><%= link_to 'Show', admin_path(admin) %></td>
-		<td><%= link_to 'Edit', edit_persona_path(admin) %></td>
+		<td><%= link_to t('mostrar'), admin_path(admin) %></td>
+		<td><%= link_to t('editar'), edit_persona_path(admin) %></td>
 	</tr>
 	<% end %>
 </table>

@@ -11,11 +11,11 @@
     </div> -->
   <% end %>
    <div class="field">
-    <%= f.label :Empleado %><br />
+    <%= f.label t('empleado') %><br />
     <%= collection_select(:empleado,:personas_id,@query,:id,:nombre) %>
   </div> 
   <div class="field">
-    <%= f.label :Cargo %><br />
+    <%= f.label t('cargo') %><br />
     <%= f.text_field :cargo %>
   </div>
   <div class="actions">

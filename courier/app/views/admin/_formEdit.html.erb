@@ -6,22 +6,22 @@
 	<%= f.text_field :email%>
 </div>
 <div class="field">
-	<%= f.label :Nombre %>
+	<%= f.label t('nombrez') %>
 	<br />
 	<%= f.text_field :nombre %>
 </div>
 <div class="field">
-	<%= f.label :Apellido %>
+	<%= f.label t('apellido') %>
 	<br />
 	<%= f.text_field :apellido %>
 </div>
 <div class="field">
-	<%= f.label :Cargo %>
+	<%= f.label t('cargo') %>
 	<br />
 	<%= collection_select :persona, :empleados_id, Empleado.find(:all), :id, :cargo %>
 </div>
 <div class="field">
-	<%= f.label :Fecha_Nacimiento %>
+	<%= f.label t('fechanac') %>
 	<br />
 	<%= f.date_select :fNacimiento, :start_year => 1920, :end_year => 2040 %>
 </div>

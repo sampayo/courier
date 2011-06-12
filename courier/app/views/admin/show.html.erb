@@ -6,20 +6,20 @@
 </p>
 
 <p>
-  <b>Nombre:</b>
+  <b><%= t('nombrez') %>:</b>
   <%= @persona.nombre %>
 </p>
 
 <p>
-  <b>Apellido:</b>
+  <b><%= t('apellido') %>:</b>
   <%= @persona.apellido %>
 </p>
 
 <p>
-  <b>Fnacimiento:</b>
+  <b><%= t('fechanac') %>:</b>
   <%= @persona.fNacimiento %>
 </p>
 
 
-<%= link_to 'Edit', edit_admin_path(@persona) %> |
-<%= link_to 'Back', emple_path %>
+<%= link_to t('editar'), edit_admin_path(@persona) %> |
+<%= link_to t('regresar'), emple_path %>

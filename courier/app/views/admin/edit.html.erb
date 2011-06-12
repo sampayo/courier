@@ -1,6 +1,6 @@
-<h1>Editing persona</h1>
+<h1><%= t('editarpersona') %></h1>
 
 <%= render 'formEdit' %>
 
-<%= link_to 'Show', admin_path(@persona) %> |
-<%= link_to 'Back', admin_path %>
+<%= link_to t('mostar'), admin_path(@persona) %> |
+<%= link_to t('regresar'), admin_path %>

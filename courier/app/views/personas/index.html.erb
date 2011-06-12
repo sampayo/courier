@@ -1,11 +1,11 @@
-<h1>Lista personas</h1>
+<h1><%= t('editarpersona') %></h1>
 
 <table width="80%">
   <tr>
     <th>Email</th>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Fnacimiento</th>
+    <th><%= t('nombrez') %></th>
+    <th><%= t('apellido') %></th>
+    <th><%= t('fechanac') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,13 +17,13 @@
     <td><%= persona.nombre %></td>
     <td><%= persona.apellido %></td>
     <td><%= persona.fNacimiento %></td>
-    <td><%= link_to 'Show', persona %></td>
-    <td><%= link_to 'Edit', edit_persona_path(persona) %></td>
-    <td><%= link_to 'Destroy', persona, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('mostar'), persona %></td>
+    <td><%= link_to t('editar'), edit_persona_path(persona) %></td>
+    <td><%= link_to t('eliminar'), persona, :confirm => t('eliminarseguro'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Persona', new_persona_path %>
+<%= link_to t('nuevapersona'), new_persona_path %>

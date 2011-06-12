@@ -15,15 +15,15 @@
     <%= f.text_field :email, :readonly =>"true"%> 
   </div>
   <div class="field">
-    <%= f.label :Nombre %><br />
+    <%= f.label t('nombrez') %><br />
     <%= f.text_field :nombre %> 
   </div>
   <div class="field">
-    <%= f.label :Apellido %><br />
+    <%= f.label t('apellido') %><br />
     <%= f.text_field :apellido %> 
   </div>
   <div class="field">
-    <%= f.label :Fecha_Nacimiento %><br />
+    <%= f.label t('fechanac') %><br />
     <%= f.date_select :fNacimiento, :start_year => 1920, :end_year => 2040 %>
   </div>
   <div class="actions">

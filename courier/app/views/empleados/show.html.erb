@@ -5,15 +5,15 @@
 </p>
 
 <p>
-  <b>Nombre:</b>
+  <b><%= t('nombrez') %>:</b>
   <%= @persona.nombre+' '+@persona.apellido %>
 </p>
 
 <p>
-  <b>Cargo:</b>
+  <b><%= t('cargo') %>:</b>
   <%= @empleado.cargo %>
 </p>
 
 
-<%= link_to 'Edit', edit_empleado_path(@empleado) %> |
-<%= link_to 'Back', empleados_path %>
+<%= link_to t('editar'), edit_empleado_path(@empleado) %> |
+<%= link_to t('regresar'), empleados_path %>

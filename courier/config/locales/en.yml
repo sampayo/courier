@@ -60,13 +60,14 @@ en:
   	 mistarjetas: My Credit Cards
   	 agregartarjeta: Add Credit Card
   	 editartarjeta: Edit my Credit Card
-  	 listaordenes: My order list
+  	 listaordenes: Order list
   	 numorden: Order Number
   	 receptor: Order Receiver
   	 estado: Order Status
   	 fecha: Order Date  	 
   	 nuevaorden: Create new order
   	 paquetesorden: Order Packeges
+  	 paquete: Package
   	 peso: Weight
   	 descripcion: Description
   	 seguimiento: Package tracking
@@ -74,7 +75,49 @@ en:
   	 nuevopaquete: Add new package
   	 generarorden: Generate Order
   	 editarpaquete: Package Edit
+  	 listafactura: My Invoice list
+  	 monto: Charge
+  	 item: Item
+  	 subtotal: Subtotal
+  	 iva: Tax
+  	 total: Amount due
+  	 codigoqr: QR Code
+  	 imprimirfact: Print Invoice
+  	 nuevafactura: Create Invoice
+  	 editarfactura: Edit Invoice
+  	 listaclientes: Client Listing
+  	 apellido: Last Name
+  	 fechanac: Date of Birth
+  	 editarpersona: Edit Account
+  	 cargo: Position
+  	 nuevapersona: Create user
+  	 listaempleado: Employee Listing
+  	 nuevoempleado: Add new Employee
+  	 editarempleado: Edit employee
+  	 empleado: Employee
+  	 despachar: Dispatch
+  	 listarecolectores: Collector List
+  	 recoleccionorden: Order Collection
+  	 recolector: Collector
+  	 parraforecolector: Enter the Collector of the order, and assign orders to collect
+  	 recolectordisponible: There is no currently available collectors
+  	 ordenescercanas: Near by orders
+  	 noordenescercanas: There are no Near by orders
+  	 ordenescerca: These orders are close to your order, you can assign them to the collection route
+  	 verruta: Show Route
+  	 simulacion: Simulation
+  	 rutarecoleccion: Collection Route
+  	 listaasignada: List of orders assigned to the collector
+  	 ordenasignada: Assigned ordenes
+  	 noordendisponible: There are no available orders to date
+  	 notificarrecolector: Notify Collector
+  	 buscarpororden: Search by order number
+  	 buscar: Search
+  	 indiqueorden: Indicate the order number
   	 
   	 
+  	 
+  	 
+
   	 
   	   

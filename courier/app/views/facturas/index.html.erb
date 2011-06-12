@@ -1,10 +1,10 @@
-<h1>Listing facturas</h1>
+<h1><%= t('listafactura') %></h1>
 
 <table width="90%">
   <tr>
-    <th>numero de orden</th>
-    <th>Fecha</th>
-    <th>Monto</th>
+    <th><%= t('numorden') %></th>
+    <th><%= t('fecha') %></th>
+    <th><%= t('monto') %></th>
     <th></th>
   </tr>
 
@@ -13,7 +13,7 @@
   	<td><%= factura.numOrden %></td>
     <td><%= factura.fecha %></td>
     <td><%= factura.monto.round(2) %></td>
-    <td><%= link_to 'Show', factura %></td>
+    <td><%= link_to t('mostar'), factura %></td>
 
     
   </tr>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Factura', new_factura_path %>
+<%= link_to t('nuevafactura'), new_factura_path %>
