@@ -3,7 +3,7 @@
 one:
   nombre: MyString
   apellido: MyString
-  estado: MyString
+  estado: Pendiente por recolectar
   fecha: 2011-04-20
 
 two:

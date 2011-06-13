@@ -20,7 +20,6 @@ class DireccionsController < ApplicationController
 	def show
 		@direccion = Direccion.find(params[:id])
 		#Accedemos a la constante, para escribir el mensaje en customlog.
-    NUESTRO_LOG.info "Estoy viendo la direccion!"
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @direccion }
@@ -68,6 +67,7 @@ class DireccionsController < ApplicationController
 		respond_to do |format|
 			if @direccion.update_attributes(params[:direccion])
 				format.html { redirect_to(@direccion, :notice => 'Direccion was successfully updated.') }
+				NUESTRO_LOG.info "Se borro ua direccion!"
 				format.xml  { head :ok }
 			else
 				format.html { render :action => "edit" }
@@ -87,7 +87,5 @@ class DireccionsController < ApplicationController
 			format.xml  { head :ok }
 		end
 	end
-	 def espanol
-      I18n.locale = "es"
-  end
+
 end

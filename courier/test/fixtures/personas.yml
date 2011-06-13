@@ -13,3 +13,11 @@ two:
   nombre: MyString1
   apellido: MyString1
   fNacimiento: 2011-04-21
+
+three:
+  id: 3
+  email: MyString
+  nombre: MyString
+  apellido: MyString
+  fNacimiento: 2011-04-20
+  empleados_id: 2

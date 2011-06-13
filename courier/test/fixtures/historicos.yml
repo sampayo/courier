@@ -11,3 +11,18 @@ two:
   fecha: 2011-04-21 01:16:11
   ordens_id: 298486374
   direccions_id: 2
+
+three:
+  tipo: Entregada
+  fecha: 2011-04-20 01:16:01
+  ordens_id: 298486374
+  direccions_id: 2
+  ordens_id: 980190962
+
+four:
+  tipo: Recolectada
+  fecha: 2011-04-21 01:16:11
+  ordens_id: 298486374
+  direccions_id: 1
+  ordens_id: 980190962
+  

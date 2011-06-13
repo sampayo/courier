@@ -3,8 +3,8 @@ require 'test_helper'
 
 class OrdenTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test "the truth" do
-    Orden.rutas(id)
-    assert true
+  test "rutas" do
+     Orden.rutas(298486374)
+    assert(true , NUESTRO_LOG.info("La prueba unitaria OrdenTest(rutas) fue exitosa,retorno la direccion de recoleccion"))
   end
 end

@@ -22,6 +22,7 @@ class Enviar < ActiveRecord::Base
   def self.validarRecoleccion(id)
     @orden = Orden.find(id)
     @orden.estado = "Recolectada"
+    @orden.empleado_id = nil
     @historico = Historico.where(:ordens_id => id , :tipo => 'Recolectada').first
     @historico.fecha = Time.now
     @historico.save
