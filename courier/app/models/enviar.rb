@@ -28,5 +28,9 @@ class Enviar < ActiveRecord::Base
     @historico.save
     @orden.save
   end
+  
+  def self.facturaxml(orden)
+    return Factura.find_by_sql("select h.fecha, o.id, o.estado from historicos h , ordens o where o.id = h.ordens_id and h.tipo='Recolectada' AND o.id=" + orden.to_s).first
+  end
 
 end

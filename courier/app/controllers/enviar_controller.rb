@@ -61,7 +61,7 @@ class EnviarController < ApplicationController
     unless @orden.estado == "Recolectada"
       Enviar.validarRecoleccion(@orden.id)
     end
-    @factura = Factura.find_by_sql("select h.fecha, o.id, o.estado from historicos h , ordens o where o.id = h.ordens_id and h.tipo='Recolectada' AND o.id=" + @id).first
+    @factura = Enviar.facturaxml(@id)
     render :layout => false
   end
 

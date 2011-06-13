@@ -44,7 +44,7 @@ class CourierController < ApplicationController
     @busqueda = params['s'] 
     if !(Orden.where(:id => @busqueda).first.nil?)
       @orden = Orden.find(@busqueda)
-      @historico = Historico.find_by_sql('Select h.fecha, h.tipo , d.ciudad, d.cPostal from historicos h, direccions d where h.direccions_id=d.id and h.fecha is not null and h.ordens_id=' + @orden.id.to_s + ' order by h.fecha DESC')
+      @historico = Historico.seguimiento1(@orden.id)
     else
       redirect_to (root_url)
     end
