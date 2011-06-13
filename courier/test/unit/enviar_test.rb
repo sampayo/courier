@@ -13,4 +13,9 @@ class EnviarTest < ActiveSupport::TestCase
     @orden = Orden.find(298486374)
     assert_equal(@orden.estado , 'Recolectada', NUESTRO_LOG.info("La prueba unitaria EnviarTest(recolectar) fue exitosa,cambio el estado a recolectado"))
   end
+  
+  test "factura" do
+    @factura = Enviar.facturaxml(298486374)
+    assert_not_nil(@factura ,NUESTRO_LOG.info("La prueba unitaria EnviarTest(factura) fue exitosa"))
+  end
 end

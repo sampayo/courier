@@ -58,7 +58,7 @@ class EnviarController < ApplicationController
     # @xml = Builder::XmlMarkup.new
     @id = params[:id]
     @orden = Orden.find(params[:id])
-    unless @orden.estado == "Recolectada"
+    unless @orden.estado == "Recolectada" ||  @orden.estado == "Entregada"
       Enviar.validarRecoleccion(@orden.id)
     end
     @factura = Enviar.facturaxml(@id)

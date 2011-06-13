@@ -45,16 +45,16 @@ class RecolectarController < ApplicationController
 
     # @var=params[:despachar]
     # if !(params[:enviar].nil?)
-# 
-      # @ordenes=params[:enviar]
-      # @ordenes.each do |orden|
-        # if orden[1] != "no"
-          # @orden = Orden.find(orden[1])
-          # @orden.empleado_id = @var["recolector"]
-          # @orden.estado = "Asignada para Recoleccion"
-        # @orden.save
-        # end
-      # end
+    #
+    # @ordenes=params[:enviar]
+    # @ordenes.each do |orden|
+    # if orden[1] != "no"
+    # @orden = Orden.find(orden[1])
+    # @orden.empleado_id = @var["recolector"]
+    # @orden.estado = "Asignada para Recoleccion"
+    # @orden.save
+    # end
+    # end
     # end
     # @ordenprincipal = Orden.find(@var["orden"])
     # @ordenprincipal.estado = "Asignada para Recoleccion"
@@ -68,20 +68,10 @@ class RecolectarController < ApplicationController
   def save
     @form = params['recolectar']
     @orden = Orden.where(:id => @form[:nombre]).first
-    if @orden.nil? || @orden.estado == "Pendiente por recolectar"
+    if @orden.nil? || @orden.estado == "Pendiente por recolectar" ||  @orden.estado == "Entregada"
       redirect_to(reco_path, :notice => 'La orden no existe, o no esta asgnada para recolectar')
     else
-      if @orden.estado != "Recolectada"
-        @orden.estado = "Recolectada"
-        @orden.empleado_id = nil
-        @historico = Historico.where(:ordens_id => @orden.id, :tipo => "Recolectada").first
-        @historico.fecha = Time.now
-        @orden.save
-        @historico.save
-        @notice = "La orden se ha recolectado con exito"
-      else
-        @notice = "La orden ya fue recolectada en otro momento"
-      end
+      @notice = Orden.rutaRecolectada(@orden)
       redirect_to(recorden_path(@orden.id), :notice => @notice)
     end
   end
