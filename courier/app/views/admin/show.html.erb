@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div id="form_container">
 
-<p>
-  <b>Email:</b>
-  <%= @persona.email %>
-</p>
+	<h1>
+	<a></a>
+	</h1>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+		<div class="form_description">
+			<h2><%= t("principal.tdc") %></h2>
+			<p id="notice">
+				<%= notice %>
+			</p>
+		</div>
+		<ul >
 
-<p>
-  <b><%= t('nombrez') %>:</b>
-  <%= @persona.nombre %>
-</p>
+			<li id="li_1" >
+				<span>
+					Email: <%= " " + @persona.email %> </br>
+					<%= t('nombrez') %>: <%= " " + @persona.nombre + " " + @persona.apellido %>
+					<br/>
+					<%= t('fechanac') %>: <%= " " + @persona.fNacimiento.to_s %>
+				</span>
+			</li>
 
-<p>
-  <b><%= t('apellido') %>:</b>
-  <%= @persona.apellido %>
-</p>
+		</ul>
+		<% if @persona.empleados_id.nil? %>
+		<%= link_to t('regresar'), adm_path %> 
+		<% else %>
+		<%= link_to t('editar'), edit_admin_path(@persona) %> |
+		<%= link_to t('regresar'), emple_path %>
+		<% end %>
+	</form>
+</div>
 
-<p>
-  <b><%= t('fechanac') %>:</b>
-  <%= @persona.fNacimiento %>
-</p>
-
-
-<%= link_to t('editar'), edit_admin_path(@persona) %> |
-<%= link_to t('regresar'), emple_path %>

@@ -8,7 +8,7 @@
 <div class="field">
   <%= f.label t('nombrez') %>
   <br />
-  <%= f.text_field :nombre %>
+  <%= select( :tipo_pago, "nombre", { "Visa" => "Visa", "Mastercard" => "Mastercard", "American Express" => "American Express"}) %>
 </div>
 <div class="field">
   <%= f.label t('numtarjeta') %>

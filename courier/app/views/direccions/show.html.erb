@@ -1,45 +1,40 @@
-<p id="notice">
-  <%= notice %>
-</p>
-<p>
-  <b><%= t('nombrez') %>:</b>
-  <%= @direccion.nombre %>
-</p>
-<p>
-  <b><%= t('calle') %>:</b>
-  <%= @direccion.avCalle %>
-</p>
-<p>
-  <b><%= t('nombrecasa') %>:</b>
-  <%= @direccion.resCasa %>
-</p>
-<p>
-  <b><%= t('numerocasa') %>:</b>
-  <%= @direccion.aptoNumero %>
-</p>
-<p>
-  <b><%= t('urbanizacion') %>:</b>
-  <%= @direccion.urban %>
-</p>
-<p>
-  <b><%= t('ciudad') %>:</b>
-  <%= @direccion.ciudad %>
-</p>
-<p>
-  <b><%= t('paiz') %>:</b>
-  <%= @direccion.pais %>
-</p>
-<p>
-  <b><%= t('codigopostal') %>:</b>
-  <%= @direccion.cPostal %>
-</p>
-<p>
-  <b><%= t('latitud') %>:</b>
-  <%= @direccion.lat %>
-</p>
-<p>
-  <b><%= t('longitud')  %>:</b>
-  <%= @direccion.lng %>
-</p>
-<%= link_to t('editar'), edit_direccion_path(@direccion) %> |
-<%= link_to t('regresar'), direccions_path %>
+
+
+<div id="form_container">
+
+	<h1>
+	<a></a>
+	</h1>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+		<div class="form_description">
+			<h2><%= t("principal.dir") %></h2>
+			<p id="notice">
+				<%= notice %>
+			</p>
+		</div>
+		<ul >
+
+			<li id="li_1" >
+				<span>
+					<%= t('nombrecasa') %>: <%= " " + @direccion.nombre %> </br>
+					<%= t('calle') %>: <%= " " + @direccion.avCalle %>
+					<br/>
+					<%= t('nombrecasa') %>: <%= " " + @direccion.resCasa %>
+					<br/>
+					<%= t('numerocasa') %>: <%= " " + @direccion.aptoNumero.to_s %> </br>
+					<%= t('urbanizacion') %>: <%= " " + @direccion.urban %>
+					<br/>
+					<%= t('ciudad') %>: <%= " " + @direccion.ciudad %>
+					<br/>
+					<%= t('paiz') %>: <%= " " + @direccion.pais %> </br>
+					<%= t('latitud') + " , " + t('longitud') %>: <%= " " + @direccion.lat.to_s + ' , ' + @direccion.lng.to_s %>
+					<br/>
+				</span>
+			</li>
+			
+			</ul>
+				<%= link_to t('editar'), edit_direccion_path(@direccion) %> |
+				<%= link_to t('regresar'), direccions_path %>
+	</form>
+</div>
+

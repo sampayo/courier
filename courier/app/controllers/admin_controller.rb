@@ -17,6 +17,7 @@ class AdminController < ApplicationController
   # GET /personas/1.xml
   def show
     @persona = Persona.find(params[:id])
+   
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @persona }
@@ -43,10 +44,10 @@ class AdminController < ApplicationController
   # POST /personas
   # POST /personas.xml
   def create
-     @persona = Persona.new(params[:persona])
+    @persona = Persona.new(params[:persona])
 
     respond_to do |format|
-      if @persona.save 
+      if @persona.save
         format.html { redirect_to(admin_path(@persona), :notice => 'El cliente se agrego enxitosamente.') }
         format.xml  { render :xml => @persona, :status => :created, :location => @persona }
       else

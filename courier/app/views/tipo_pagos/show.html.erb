@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div id="form_container">
 
-<p>
-  <b><%= t('nombrez')%>:</b>
-  <%= @tipo_pago.nombre %>
-</p>
+	<h1>
+	<a></a>
+	</h1>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+		<div class="form_description">
+			<h2><%= t("principal.tdc") %></h2>
+			<p id="notice">
+				<%= notice %>
+			</p>
+		</div>
+		<ul >
 
-<p>
-  <b><%= t('numtarjeta')%>:</b>
-  <%= @tipo_pago.nTDC %>
-</p>
+			<li id="li_1" >
+				<span>
+					<%= t('nombrez') %>: <%= " " + @tipo_pago.nombre %> </br>
+					<%= t('numtarjeta') %>: <%= " " + @tipo_pago.nTDC %>
+					<br/>
+					<%= t('codseguridad') %>: <%= " " + @tipo_pago.cSeguridad.to_s %>
+					<br/>
+					<%= t('fechavencimiento') %>: <%= " " + @tipo_pago.fVencimiento.to_s %> 
+				</span>
+			</li>
 
-<p>
-  <b><%= t('codseguridad')%>:</b>
-  <%= @tipo_pago.cSeguridad %>
-</p>
+		</ul>
+		<%= link_to t('editar'), edit_tipo_pago_path(@tipo_pago) %> |
+		<%= link_to t('regresar'), tipo_pagos_path %>
+	</form>
+</div>
 
-<p>
-  <b><%= t('fechavencimiento')%>:</b>
-  <%= @tipo_pago.fVencimiento %>
-</p>
-
-
-<%= link_to t('editar'), edit_tipo_pago_path(@tipo_pago) %> |
-<%= link_to t('regresar'), tipo_pagos_path %>

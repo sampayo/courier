@@ -1,46 +1,63 @@
-<p id="notice">
-	<%= notice %>
-</p>
-<p>
-	<b><%= t('receptor') %>:</b>
-	<%= @orden.nombre + ' ' + @orden.apellido %>
-</p>
-<p>
-	<b><%= t('fecha') %>:</b>
-	<%= @orden.fecha %>
-</p>
-<p>
-	<b><%= t('estado') %>:</b>
-	<%= @orden.estado %>
-</p>
-<div id='paquetes'>
-	<h3><%= t('paquete') %></h3>
-	<table width="90%">
-		<tr>
-			<th><%= t('nombrez') %></th>
-			<th><%= t('peso') %></th>
-			<th><%= t('descripcion') %></th>
-		</tr>
-		<% @paquetes.each do |paquete| %>
-		<tr align="center">
-			<td><%= paquete.nombre %></td>
-			<td><%= paquete.peso %></td>
-			<td><%= paquete.descripcion %></td>
-		</tr>
-		<% end %>
-	</table>
-</div>
-<h3><%= t('seguimiento') %></h3>
-<div id="paquetes">
-	<form id="form_178611" class="appnitro"  method="post" action="">
 
-		<ul>
+
+<div id="form_container">
+
+	<h1>
+	<a></a>
+	</h1>
+	<form id="form_178611" class="appnitro"  method="post" action="">
+		<div class="form_description">
+			<h2><%= t("principal.orden") %></h2>
+			<p id="notice">
+				<%= notice %>
+			</p>
+		</div>
+		<ul >
+
 			<li id="li_1" >
-				<span><% @historico.each do |historico| %>
+				<span>
+					<%= t('receptor') %>: <%= " " + @orden.nombre + ' ' + @orden.apellido %> </br>
+					<%= t('fecha') %>: <%= " " + @orden.fecha.to_s %>
+					<br/>
+					<%= t('estado') %>: <%= " " + @orden.estado %>
+				</span>
+			</li>
+			<li id="li_1" >
+				</p>
+				<div id='paquetes'>
+					<label class="description" for="element_3">
+						<%= t('paquetesorden')%>
+					</label>
+
+					<table width="90%">
+						<tr>
+							<th><%= t('nombrez')%></th>
+							<th><%= t('peso')%></th>
+							<th><%= t('descripcion')%></th>
+						</tr>
+						<% @paquetes.each do |paquete| %>
+						<tr align="center">
+							<td><%= paquete.nombre %></td>
+							<td><%= paquete.peso %></td>
+							<td><%= paquete.descripcion %></td>
+						</tr>
+						<% end %>
+					</table>
+				</div>
+
+			</li></br>
+			<li id="li_3" >
+				<label class="description" for="element_3">
+					<%= t("principal.detallado") %>
+				</label>
+			</li>
+			<li id="li_1" >
+				<span>	<% @historico.each do |historico| %>
 					<%= historico.tipo + " - " + historico.fecha.to_s + ".  " + historico.ciudad + ", " + historico.cPostal  %></br>
-					<% end %></span>
+					<% end %>
 			</li>
 		</ul>
+		<%= link_to t('regresar'), reco_path  %>
 	</form>
 </div>
-<%= link_to t('regresar'), reco_path  %>
+
