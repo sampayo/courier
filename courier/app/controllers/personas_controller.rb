@@ -47,6 +47,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
+        iniciarSesion(@persona.email,@persona.nombre,@persona.apellido,@persona.id)
         format.html { redirect_to(@persona, :notice => 'El cliente se agrego enxitosamente.') }
         format.xml  { render :xml => @persona, :status => :created, :location => @persona }
       else
@@ -54,7 +55,6 @@ class PersonasController < ApplicationController
         format.xml  { render :xml => @persona.errors, :status => :unprocessable_entity }
       end
     end
-    iniciarSesion(@persona.email,@persona.nombre,@persona.apellido,@persona.id)
   end
 
   # PUT /personas/1

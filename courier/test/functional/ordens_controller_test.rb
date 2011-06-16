@@ -3,6 +3,7 @@ require 'test_helper'
 class OrdensControllerTest < ActionController::TestCase
   setup do
     @orden = ordens(:one)
+    session[:id]=1
   end
 
   test "should get index" do
