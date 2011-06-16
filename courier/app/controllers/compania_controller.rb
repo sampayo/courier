@@ -1,9 +1,10 @@
 class CompaniaController < ApplicationController
+  layout "enSistema"
 
   # GET /compania
   # GET /compania.xml
   def index
-    @compania = Companium.all
+    @compania = Companium.where(:url => nil?)
 
     respond_to do |format|
       format.html # index.html.erb
