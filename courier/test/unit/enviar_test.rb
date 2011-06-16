@@ -18,4 +18,9 @@ class EnviarTest < ActiveSupport::TestCase
     @factura = Enviar.facturaxml(298486374)
     assert_not_nil(@factura ,NUESTRO_LOG.info("La prueba unitaria EnviarTest(factura) fue exitosa"))
   end
+  
+    test "compania" do
+    Enviar.compania
+    assert true 
+  end
 end

@@ -32,5 +32,13 @@ class Enviar < ActiveRecord::Base
   def self.facturaxml(orden)
     return Factura.find_by_sql("select h.fecha, o.id, o.estado from historicos h , ordens o where o.id = h.ordens_id and h.tipo='Recolectada' AND o.id=" + orden.to_s).first
   end
+  
+    def self.compania
+    @compania = Companium.where(:id => 1)
+    if @compania.first.nil?
+      @compania = Companium.new(:id =>1,:nombre => 'Courier Ucab', :rif => 'J-1234567890', :direccionF => 'Montalban', :telefono => '04142051140')
+      @compania.save
+    end
+  end
 
 end

@@ -11,7 +11,7 @@ class Orden < ActiveRecord::Base
   belongs_to :personas
   # Muestra las rutas de la de la orden
   def self.rutas(id)
-    return Historico.find_by_sql('Select h.fecha, h.tipo , d.ciudad, d.cPostal from historicos h, direccions d where h.direccions_id=d.id and h.fecha is not null and h.ordens_id=' + id.to_s + ' order by h.fecha DESC')
+    return Historico.find_by_sql('Select h.fecha, h.tipo , d.* from historicos h, direccions d where h.direccions_id=d.id and h.fecha is not null and h.ordens_id=' + id.to_s + ' order by h.fecha DESC')
   end
 
   def self.rutaRecolectada(orden)

@@ -5,4 +5,8 @@ class Factura < ActiveRecord::Base
   belongs_to :ordens
   belongs_to :tipo_pagos
   belongs_to :compania
+  
+  def self.facturatotal(id)
+      return Factura.find_by_sql('SELECT f.id, o.id as numOrden, (f.costoTotal + f.iva) as monto, o.fecha from facturas f, ordens o where o.id=f.ordens_id and o.personas_id='+id.to_s)
+  end
 end

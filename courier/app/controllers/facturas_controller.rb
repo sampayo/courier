@@ -11,7 +11,7 @@ class FacturasController < ApplicationController
   
   # Metodo utilizado en la pagina index, y realizamos una busqueda en base de datos una factura.
   def index
-    @facturas = Factura.find_by_sql('SELECT f.id, o.id as numOrden, (f.costoTotal + f.iva) as monto, o.fecha from facturas f, ordens o where o.id=f.ordens_id and o.personas_id='+session[:id].to_s)
+    @facturas = Factura.facturatotal(session[:id])
 
     respond_to do |format|
       format.html # index.html.erb

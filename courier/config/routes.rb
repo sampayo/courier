@@ -1,5 +1,6 @@
 Courier::Application.routes.draw do
 
+
   scope "(:locale)", :locale => /es|en-US|en/ do
     resources :direccions
 
@@ -26,6 +27,8 @@ Courier::Application.routes.draw do
     resources :recolectar
     
     resources :admin
+    
+    resources :service
 
   end
 
@@ -110,6 +113,13 @@ Courier::Application.routes.draw do
 
   # Genera el xml de los paquetes.
   match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
+  
+  
+  
+#service
+match ':locale/prueba/', :to => 'service#prueba', :as => "prueba"
+match 'getorden/:id', :to => 'service#getorden', :as => "getorden", :via => 'get'
+
   
 
   # Pagina principal del proyecto.

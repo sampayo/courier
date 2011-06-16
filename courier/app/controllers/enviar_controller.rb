@@ -28,6 +28,7 @@ class EnviarController < ApplicationController
     @historico.save
     @monto = Enviar.montoTotal(@orden.id)
     @iva = @monto * 0.12
+    Enviar.compania
     @factura = Factura.new(:companias_id => 1, :ordens_id =>@orden.id , :tipo_pagos_id => @enviar['tdc'], :costoTotal => @monto ,:iva => @iva)
 
     # redirect_to ordens_path
