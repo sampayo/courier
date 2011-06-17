@@ -3,6 +3,7 @@ require 'test_helper'
 class HistoricosControllerTest < ActionController::TestCase
   setup do
     @historico = historicos(:one)
+    session[:id]=1
   end
 
   test "should get index" do

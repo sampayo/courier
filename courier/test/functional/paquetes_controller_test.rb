@@ -3,6 +3,7 @@ require 'test_helper'
 class PaquetesControllerTest < ActionController::TestCase
   setup do
     @paquete = paquetes(:one)
+    session[:id]=1
   end
 
   test "should get index" do
