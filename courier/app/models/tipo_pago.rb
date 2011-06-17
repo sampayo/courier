@@ -12,7 +12,7 @@ class TipoPago < ActiveRecord::Base
 	has_many :facturas
 	
 	
-	validate :validarTdc
+	validate :validarTdc 
   
   # Metodo para verifar las fechas de la tarjetas. 
   def validarTdc

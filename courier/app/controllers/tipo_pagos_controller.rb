@@ -7,7 +7,7 @@ class TipoPagosController < ApplicationController
 	# GET /tipo_pagos
 	# GET /tipo_pagos.xml
 	def index
-		@tipo_pagos = TipoPago.all
+		@tipo_pagos = TipoPago.where(:personas_id => session[:id])
 		respond_to do |format|
 			format.html # index.html.erb
 			format.xml  { render :xml => @tipo_pagos }

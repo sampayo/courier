@@ -6,13 +6,20 @@ class PaquetesController < ApplicationController
   # GET /paquetes
   # GET /paquetes.xml
   def index
-    @id=session[:id]
-    @paquetes = Paquete.where(:personas_id => @id,:ordens_id => nil)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @paquetes }
+    if (Direccion.where(:personas_id => session[:id]).first && TipoPago.where(:personas_id => session[:id]).first)
+      @id=session[:id]
+      @paquetes = Paquete.where(:personas_id => @id,:ordens_id => nil)
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @paquetes }
+      end
+    else
+    # Mostramos un error, de no existir una tarjeta de credito y una direcion.
+      flash[:error] = "Para hacer una orden debe tener al menos una direccion y una tarjeta de credito"
+      redirect_to cont_path
     end
+
   end
 
   # llamada a motrar una paquete, pasandole un parametro.

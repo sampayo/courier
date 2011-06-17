@@ -69,6 +69,7 @@
 										</li>
 									</ul>
 								</li>
+								<% if session[:rol].nil? %>
 								<li>
 									<h2><%= t('principal.categoria') %></h2>
 									<ul>
@@ -86,6 +87,8 @@
 										</li>
 									</ul>
 								</li>
+								<% else %>
+								<% if session[:rol] == 1 %> 
 								<li>
 									<h2><%= t('principal.admin') %></h2>
 									<ul>
@@ -97,6 +100,8 @@
 										</li>
 									</ul>
 								</li>
+								<%end%>
+								<% if session[:rol] == 3 or session[:rol] == 1 %> 
 								<li>
 									<h2><%= t('principal.despachar') %></h2>
 									<ul>
@@ -114,6 +119,8 @@
 										</li>
 									</ul>
 								</li>
+								<%end%>
+								<% if session[:rol] == 2 or session[:rol] == 1%>								
 								<li>
 									<h2><%= t('principal.recolectar') %></h2>
 									<ul>
@@ -125,6 +132,8 @@
 										</li>
 									</ul>
 								</li>
+								<%end%>
+								<%end%>
 							</ul>
 						</div>
 						<div style="clear: both;">

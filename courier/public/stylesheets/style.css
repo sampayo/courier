@@ -113,7 +113,7 @@ a:hover {
 	float: right;
 	width: 280px;
 	height: 60px;
-	padding: 20px 0px 0px 0px;
+	padding: 10px 0px 0px 0px;
 	background: #E9E3CB;
 	border-bottom: 4px solid #FFFFFF;
 }
@@ -496,6 +496,15 @@ text-align: center;
   float: right;
   height: 100px;
   width: 100px;
+}
+.descrip a{
+	font-weight: bold;
+	text-align: center;
+	font-size: 12px;
+}
+
+#imagen{
+	padding-left: 12%;
 }
 
 

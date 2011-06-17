@@ -18,7 +18,8 @@
 		<td><%= admin.apellido %></td>
 		<td><%= admin.fNacimiento %></td>
 		<td><%= link_to t('mostrar'), admin_path(admin) %></td>
-		<td><%= link_to t('editar'), edit_persona_path(admin) %></td>
+		<td><%=# link_to t('editar'), edit_persona_path(admin) 
+		%></td>
 	</tr>
 	<% end %>
 </table>

@@ -27,15 +27,35 @@
 			<div id="page-bgtop">
 				<div id="page-bgbtm">
 					<div id="content">
-						<div class="post">
-							<div id='error'><h3><%= flash[:error]%></h3></div>
-							<div style="clear: both;">
-								&nbsp;
-							</div>
-							<div class="entry" >
-								
-							</div>
-						</div>
+
+<div class="post">
+			<div id='error'>
+				<h3><%= flash[:error]%></h3>
+			</div>
+			<h1>Razones para escoger Courier Ucab</h1>
+			<div style="clear: both;">
+				&nbsp;
+			</div>
+			<p class="meta">
+					<span class="date"></span>
+					<span class="posted"></span>
+				</p>
+				
+			<div style="clear: both;">
+				&nbsp;
+			</div>
+			<div class="entry" >
+				<h4>1. Porque si llegamos un minuto tarde, le compesamos con mas envios</h4>
+				<p>Una garantía así sólo puede ofrecerla quien está seguro de la fiabilidad y rapidez de sus entregas. Los Clientes lo valoran y nos confían 2,5 millones de envíos al mes, posicionándonos como los líderes nacionales en pequeña paquetería urgente.</p>
+				<h4>2. Porque aproximadamente el 90% de la poblacion tiene una officina Courier Ucab a menos de 5 Km</h4>
+				<p>Courier Ucab cuenta con la mayor red mundial de oficinas del sector, más de 1.300 oficinas que permiten una proximidad real con el Cliente, proporcionando un servicio ágil y, lo más importante, personalizado.</p>
+				<h4>3. Porque mas del 1,5% de la facturacion la destinamos a acciones sociales</h4>
+				<p>Sólo en 2008, más de 9 millones de euros se invirtieron en diferentes planes sociales. Apostamos por la igualdad de oportunidades y de condiciones de trabajo, por la conciliación de la vida laboral con la familiar, por la contratación de personas discapacitadas, por el respeto al medio ambiente...</p>
+				<!-- <div id='imagen'>
+					<img src='../images/parcel.jpg' />
+				</div> -->
+			</div>
+		</div>
 						<div style="clear: both;">
 							&nbsp;
 						</div>
@@ -45,9 +65,9 @@
 						<ul>
 							<li>
 						<h2><%= t("principal.seguimiento") %></h2>
-								<div style="clear: both;">
-									&nbsp;
-								</div>
+								<label class="descrip">
+				     					<a>Introduzca numero de tracking</a> 
+									</label>
 							<div id="search" >
 									<form method="get" action="<%= seg_path %>">
 										<div>

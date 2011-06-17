@@ -37,16 +37,16 @@ class OrdensController < ApplicationController
 	# GET /ordens/new.xml
 	def new
 		if (Direccion.where(:personas_id => session[:id]).first && TipoPago.where(:personas_id => session[:id]).first)
-			@orden = Orden.new
-			respond_to do |format|
-				format.html # new.html.erb
-				format.xml  { render :xml => @orden }
-			end
-		else
-		  # Mostramos un error, de no existir una tarjeta de credito y una direcion.
-			flash[:error] = "Para hacer una orden debe tener al menos una direccion y una tarjeta de credito"
-			redirect_to cont_path
-		end
+      @orden = Orden.new
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @orden }
+      end
+    else
+      # Mostramos un error, de no existir una tarjeta de credito y una direcion.
+      flash[:error] = "Para hacer una orden debe tener al menos una direccion y una tarjeta de credito"
+      redirect_to cont_path
+    end
 	end
 
   # Llamamos a la pagina editar de orden.

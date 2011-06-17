@@ -18,8 +18,8 @@
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="#"><%= t("principal.principal") %></a></li>
-			<li><a href="#">Seguimiento de Paquetes</a></li>
+			<li class="current_page_item"><a href=<%= root_path%>><%= t("principal.principal") %></a></li>
+<!-- 			<li><a href="#">Seguimiento de Paquetes</a></li> -->
 		</ul>
 	</div>
 	<!-- end #menu -->
@@ -29,7 +29,6 @@
 				<div id="page-bgbtm">
 					<div id="content">
 						<div id="form_container">
-
 	<h1>
 	<a><%= t("principal.seguimiento") %></a>
 	</h1>
@@ -67,9 +66,9 @@
 						<ul>
 							<li>
 						<h2><%= t("principal.seguimiento") %></h2>
-								<div style="clear: both;">
-									&nbsp;
-								</div>
+									<label class="descrip">
+				     					<a>Introduzca numero de tracking</a> 
+									</label>
 							<div id="search" >
 									<form method="get" action="<%= seg_path %>">
 										<div>

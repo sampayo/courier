@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
     session[:nombre] = nombre
     session[:apellido] = apellido
     session[:id] = id
+    @persona = Persona.find(id)
+    if !(@persona.empleados_id.nil?)
+      session[:rol] = @persona.empleados_id
+    else
+      session[:rol] = nil
+    end
   end
 
   #Metodo para destruir la sesion una vez que el usuario utiliza el boton de salir.
