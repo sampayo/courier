@@ -1,6 +1,10 @@
 class Enviar < ActiveRecord::Base
   validates :direccions  , :presence => true
-  
+  validate :nombre , :presence => true
+  validate :validate
+    def validate()
+      errors.add(:nombre, "debe ser positivo") if nombre.nil?   
+    end
   #Metodo para calcular el costo de envio de la orden.
   def self.montoTotal(id)
     @orden = Orden.find(id)
