@@ -27,5 +27,53 @@ class Orden < ActiveRecord::Base
       return "La orden ya fue recolectada en otro momento"
     end
   end
+
+  def self.validarCliente(cliente)  
+    if cliente[:email].nil? or cliente[:nombre].nil? or cliente[:apellido].nil? or cliente[:fNacimiento].nil?
+    return false
+    else
+    return true
+    end
+  end
+
+  def self.validarDireccion(direccion)  
+    if direccion[:nombre].nil? or direccion[:avCalle].nil? or direccion[:resCasa].nil? or direccion[:aptoNumero].nil? or direccion[:urban].nil? or direccion[:ciudad].nil? or direccion[:pais].nil? or direccion[:cPostal].nil? or direccion[:lat].nil? or direccion[:lng].nil?
+    return false
+    else
+    return true
+    end
+  end
+
+  def self.validarOrdenRemota(orden)  
+    if orden[:estado].nil? or orden[:nombre].nil? or orden[:apellido].nil? or orden[:fecha].nil?
+    return false
+    else
+    return true
+    end
+  end
+
+  def self.validarPaquete(paquete)  
+    if paquete[:peso].nil? or paquete[:nombre].nil? or paquete[:descripcion].nil? 
+    return false
+    else
+    return true
+    end
+  end
   
+    def self.validartarjeta(tarjeta)  
+    if tarjeta[:nTDC].nil? or tarjeta[:nombre].nil? or tarjeta[:cSeguridad].nil? or tarjeta[:fVencimiento].nil?
+    return false
+    else
+    return true
+    end
+  end      
+
+  def self.validarRemota(xml)
+    if validarCliente(xml[:cliente]) and validarOrdenRemota(xml[:orden]) and validarPaquete(xml[:paquete]) and validarDireccion(xml[:direccionrecoleccion]) and validarDireccion(xml[:direccionentrega]) and validartarjeta(xml[:tarjeta])
+      return true
+    else
+      return false
+    end
+  end
+
 end

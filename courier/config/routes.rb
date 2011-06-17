@@ -119,6 +119,7 @@ Courier::Application.routes.draw do
 #service
 match ':locale/prueba/', :to => 'service#prueba', :as => "prueba"
 match 'getorden/:id', :to => 'service#getorden', :as => "getorden", :via => 'get'
+match 'setorden', :to => 'service#setorden', :as => "setorden", :via => 'post'
 
   
 

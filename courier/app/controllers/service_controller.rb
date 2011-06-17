@@ -4,6 +4,7 @@ class ServiceController < ApplicationController
   #http://www.ultrasaurus.com/sarahblog/2009/06/simple-web-services-with-rails/
 
   require 'open-uri'
+
   def show
     @factura = Factura.find(1)
     respond_to do |format|
@@ -18,19 +19,34 @@ class ServiceController < ApplicationController
     # @a = xml_result_set.body
     @a = data
   end
-  
+
   def getorden
     @id = params['id']
     @orden = Orden.find(@id)
     @factura = Factura.where(:ordens_id =>  @id).first
-        @monto= @factura.iva + @factura.costoTotal
+    @monto= @factura.iva + @factura.costoTotal
 
     @historico = Orden.rutas(@id)
-    
-        respond_to do |format|
-      # format.html # show.html.erb
-      format.xml  
+
+    respond_to do |format|
+    # format.html # show.html.erb
+      format.xml
     end
+  end
+
+  def setorden
+    @xml = params[:solicitud]
+    if Orden.validarRemota(@xml)
+      @cliente = @xml[:cliente]
+      @orden = @xml[:orden]
+      @recoleccion = @xml[:direccionrecoleccion]
+      @entrega = @xml[:direccionentrega]
+      @tarjeta = @xml[:tarjeta]
+      @paquete = @xml[:paquete]
+    else
+      render "errorxml"
+    end
+
   end
 
 end
