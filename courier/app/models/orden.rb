@@ -45,7 +45,7 @@ class Orden < ActiveRecord::Base
   end
 
   def self.validarOrdenRemota(orden)  
-    if orden[:estado].nil? or orden[:nombre].nil? or orden[:apellido].nil? or orden[:fecha].nil?
+    if  orden[:nombre].nil? or orden[:apellido].nil? or orden[:fecha].nil?
     return false
     else
     return true

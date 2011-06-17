@@ -37,12 +37,40 @@ class ServiceController < ApplicationController
   def setorden
     @xml = params[:solicitud]
     if Orden.validarRemota(@xml)
-      @cliente = @xml[:cliente]
-      @orden = @xml[:orden]
-      @recoleccion = @xml[:direccionrecoleccion]
-      @entrega = @xml[:direccionentrega]
+      @cliente = Persona.new(@xml[:cliente])
+      @cliente.save
+
       @tarjeta = @xml[:tarjeta]
-      @paquete = @xml[:paquete]
+      @tarjeta = TipoPago.new(@tarjeta)
+      @tarjeta.personas_id = @cliente.id
+      @tarjeta.save
+
+      @recoleccion = Direccion.new(@xml[:direccionrecoleccion])
+      @entrega = Direccion.new(@xml[:direccionentrega])
+      @recoleccion.save
+      @entrega.save
+
+      @orden = Orden.new(@xml[:orden])
+      @orden.estado = 'Pendiente por recolectar'
+      @orden.personas_id= @cliente.id
+      @orden.save
+
+      @paquete = Paquete.new(@xml[:paquete])
+      @paquete.ordens_id = @orden.id
+      @paquete.personas_id = @cliente.id
+      @paquete.save
+
+      @historico1= Historico.new(:ordens_id => @orden.id, :direccions_id => @recoleccion.id, :tipo => 'Recolectada')
+      @historico= Historico.new(:ordens_id => @orden.id, :direccions_id => @entrega.id, :tipo => 'Entregada')
+      @historico1.save
+      @historico.save
+      
+      @monto = Enviar.montoTotal(@orden.id)
+      @iva = (@monto * 0.12).round(2)
+      @montototal = @monto + @iva
+      Enviar.compania
+      @factura = Factura.new(:companias_id => 1, :ordens_id =>@orden.id , :tipo_pagos_id => @tarjeta.id , :costoTotal => @monto ,:iva => @iva)
+
     else
       render "errorxml"
     end
