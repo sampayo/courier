@@ -53,6 +53,7 @@ class TipoPagosController < ApplicationController
 		respond_to do |format|
 			@tipo_pago.personas_id=session[:id]
 			if @tipo_pago.save
+			  NUESTRO_LOG.info "Se guardo el tipopago correctamente"
 				format.html { redirect_to(@tipo_pago)}
 				format.xml  { render :xml => @tipo_pago, :status => :created, :location => @tipo_pago }
 			else

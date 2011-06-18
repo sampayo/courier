@@ -48,6 +48,7 @@ class AdminController < ApplicationController
 
     respond_to do |format|
       if @persona.save
+        NUESTRO_LOG.info "Se guardo el administrador correctamente"
         format.html { redirect_to(admin_path(@persona), :notice => t('admincreado')) }
         format.xml  { render :xml => @persona, :status => :created, :location => @persona }
       else

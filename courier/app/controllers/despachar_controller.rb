@@ -51,6 +51,7 @@ class DespacharController < ApplicationController
           @orden = Orden.find(orden[1])
           @orden.empleado_id = @var["recolector"]
           @orden.estado = "Asignada para Recoleccion"
+          NUESTRO_LOG.info "Se despacho la orden correctamente"
         @orden.save
         end
       end

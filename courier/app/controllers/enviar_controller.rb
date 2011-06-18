@@ -15,17 +15,20 @@ class EnviarController < ApplicationController
     @id = session[:id]
     @orden= Orden.new(:nombre => @enviar['nombre'], :apellido => @enviar['apellido'], :fecha => Time.now, :estado => "Pendiente por recolectar", :personas_id => @id)
     @orden.save
+    NUESTRO_LOG.info "Se guardo la orden correctamente"
     @orden = Orden.where(:personas_id => @id).order("created_at DESC").first
     @paquetes = Paquete.where(:personas_id => @id, :ordens_id => nil )
     @paquetes.each do |paquete|
       @paquete = Paquete.find(paquete.id)
       @paquete.ordens_id = @orden.id
       @paquete.save
+      NUESTRO_LOG.info "Se guardo el paquete correctamente"
     end
     @historico1= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion1'], :tipo => 'Recolectada')
     @historico= Historico.new(:ordens_id => @orden.id, :direccions_id => @enviar['direccion2'], :tipo => 'Entregada')
     @historico1.save
     @historico.save
+    NUESTRO_LOG.info "Se guardo el historico correctamente"
     @monto = Enviar.montoTotal(@orden.id)
     @iva = @monto * 0.12
     Enviar.compania
@@ -34,6 +37,7 @@ class EnviarController < ApplicationController
     # redirect_to ordens_path
     respond_to do |format|
       if  @factura.save
+        NUESTRO_LOG.info "Se guardo el tipopago correctamente"
         format.html { redirect_to(@factura, :notice => t('tipopagocreado')) }
         format.xml  { render :xml => @historico, :status => :created, :location => @historico }
       else

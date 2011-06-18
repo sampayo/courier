@@ -49,6 +49,7 @@ class HistoricosController < ApplicationController
 
     respond_to do |format|
       if @historico.save
+        NUESTRO_LOG.info "Se guardo el historico correctamente"
         format.html { redirect_to(@historico, :notice => t('historicocreado')) }
         format.xml  { render :xml => @historico, :status => :created, :location => @historico }
       else

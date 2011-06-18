@@ -61,6 +61,7 @@ class PaquetesController < ApplicationController
     respond_to do |format|
       @paquete.personas_id=session[:id]
       if @paquete.save
+        NUESTRO_LOG.info "Se guardo el paquete correctamente"
         format.html { redirect_to(paquetes_path, :notice => t('paquetecrear')) }
         format.xml  { render :xml => @paquete, :status => :created, :location => @paquete }
       else

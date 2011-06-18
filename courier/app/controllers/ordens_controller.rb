@@ -66,6 +66,7 @@ class OrdensController < ApplicationController
 		@orden.estado = 'Pendiente por Recolectar'
 		respond_to do |format|
 			if @orden.save
+			  NUESTRO_LOG.info "Se guardo la orden correctamente"
 				format.html { redirect_to(@orden, :notice => 'Orden was successfully created.') }
 				format.xml  { render :xml => @orden, :status => :created, :location => @orden }
 			else

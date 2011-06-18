@@ -47,6 +47,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
+        NUESTRO_LOG.info "Se guardo el cliente correctamente"
         iniciarSesion(@persona.email,@persona.nombre,@persona.apellido,@persona.id)
         format.html { redirect_to(@persona) }
         format.xml  { render :xml => @persona, :status => :created, :location => @persona }

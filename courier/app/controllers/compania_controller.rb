@@ -51,6 +51,7 @@ class CompaniaController < ApplicationController
 
     respond_to do |format|
       if @companium.save
+        NUESTRO_LOG.info "Se guardo la compania correctamente"
         format.html { redirect_to(@companium, :notice => t('companiacreada')) }
         format.xml  { render :xml => @companium, :status => :created, :location => @companium }
       else

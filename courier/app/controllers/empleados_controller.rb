@@ -50,6 +50,7 @@ class EmpleadosController < ApplicationController
 
 		respond_to do |format|
 			if @empleado.save
+			  NUESTRO_LOG.info "Se guardo el empleado correctamente"
 				format.html { redirect_to(@empleado, :notice => t('empleadocreado')) }
 				format.xml  { render :xml => @empleado, :status => :created, :location => @empleado }
 			else

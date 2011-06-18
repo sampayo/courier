@@ -50,6 +50,7 @@ class DireccionsController < ApplicationController
 		respond_to do |format|
 			@direccion.personas_id=session[:id]
 			if @direccion.save
+			   NUESTRO_LOG.info "Se guardo la direccion correctamente"
 				format.html { redirect_to(@direccion, :notice => t('direccioncreada')) }
 				format.xml  { render :xml => @direccion, :status => :created, :location => @direccion }
 			else
