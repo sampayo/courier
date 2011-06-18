@@ -44,7 +44,7 @@ class OrdensController < ApplicationController
       end
     else
       # Mostramos un error, de no existir una tarjeta de credito y una direcion.
-      flash[:error] = t('validartarjeta')
+      flash[:error] = t('validartarjeta2')
       redirect_to cont_path
     end
 	end

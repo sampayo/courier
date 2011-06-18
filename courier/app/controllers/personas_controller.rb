@@ -48,7 +48,7 @@ class PersonasController < ApplicationController
     respond_to do |format|
       if @persona.save
         iniciarSesion(@persona.email,@persona.nombre,@persona.apellido,@persona.id)
-        format.html { redirect_to(@persona, :notice => t('personascrear')) }
+        format.html { redirect_to(@persona) }
         format.xml  { render :xml => @persona, :status => :created, :location => @persona }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.update_attributes(params[:persona])
-        format.html { redirect_to(@persona, :notice => t('personasactualizar')) }
+        format.html { redirect_to(@persona) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

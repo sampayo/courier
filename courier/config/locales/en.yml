@@ -134,17 +134,14 @@ en:
   	 facturaactualizada: Factura was successfully updated
   	 historicocreado: Historico was successfully created
   	 historicoactualizado: Historico was successfully updated
+  	 admincreado: The administrator was added successfully
+  	 adminactualizado: The administrator was updated successfully
+  	 ordencreada: The order has been collected successfully
+  	 ordenactualizada: The order has already been collected at another time
+  	 ordenrecolector: The order does not exist, or not assigned to collect
   	 validartarjeta: To order must have at least one address and a credit card
-  	 paquetecrear: Paquete was successfully created
-  	 paqueteactualizar: Paquete was successfully updated
-  	 personascrear: Persona was successfully created
-  	 personasactualizar: Personas was successfully updated
-  	 ordenrecolector: The order doesn't exists, or it dosen't have a collector
-  	 tipocreado: Tipo pago was successfully created
-  	 tipoactualizado: Tipo pago was successfully updated
   	 disponible: Available
-  	 admincreado: Admin was successfully created
-  	 adminactualizado: Admin was successfully updated
+  	 
   	 
   	 
   	 
