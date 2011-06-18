@@ -22,8 +22,7 @@ class OrdensController < ApplicationController
 		@paquetes = Paquete.where(:ordens_id => params[:id] )
 		
 		# Realizamos dos llamadas a buscar en base de datos para poder crear las facturas del usuario.
-		
-      @historico = Orden.rutas(@orden.id)
+    @historico = Orden.rutas(@orden.id)
 
 
 		respond_to do |format|

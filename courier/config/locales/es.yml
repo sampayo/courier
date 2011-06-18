@@ -321,6 +321,7 @@
   	 ordenrecolector: La orden no existe, o no esta asignada para recolectar
   	 validartarjeta: Para hacer una orden debe tener al menos una direccion y una tarjeta de credito
   	 disponible: Disponible
+  	 rutaasignada: Rutas asignadas
   	 
   	  
 

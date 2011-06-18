@@ -26,7 +26,7 @@ class OrdensControllerTest < ActionController::TestCase
   end
 
   test "should show orden" do
-    get :show, :id => @orden.to_param
+    get :show, :id => @orden.id
     assert_response :success
   end
 

@@ -141,6 +141,7 @@ en:
   	 ordenrecolector: The order does not exist, or not assigned to collect
   	 validartarjeta: To order must have at least one address and a credit card
   	 disponible: Available
+  	 rutaasignada: Assigned routes
   	 
   	 
   	 
