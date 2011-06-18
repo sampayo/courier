@@ -3,9 +3,6 @@ require 'test_helper'
 class PersonasControllerTest < ActionController::TestCase
   setup do
     @persona = personas(:one)
-
-    I18n.locale = "es"
-    # :locale => I18n.locale
     session[:id]=1
   end
 

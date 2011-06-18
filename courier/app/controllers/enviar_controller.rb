@@ -9,7 +9,7 @@ class EnviarController < ApplicationController
 
   # POST /historicos
   # POST /historicos.xml
-  # Metodo create
+  # Metodo create para despachar una orden
   def create
     @enviar = params[:enviar]
     @id = session[:id]
@@ -34,7 +34,7 @@ class EnviarController < ApplicationController
     # redirect_to ordens_path
     respond_to do |format|
       if  @factura.save
-        format.html { redirect_to(@factura, :notice => 'Tipo pago was successfully created.') }
+        format.html { redirect_to(@factura, :notice => t('tipopagocreado')) }
         format.xml  { render :xml => @historico, :status => :created, :location => @historico }
       else
         format.html { render :action => "new" }
@@ -55,6 +55,7 @@ class EnviarController < ApplicationController
     end
   end
 
+  # Metodo genera el xml de la orden
   def gen_xml
     # @xml = Builder::XmlMarkup.new
     @id = params[:id]

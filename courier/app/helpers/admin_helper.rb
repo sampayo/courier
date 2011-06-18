@@ -1,4 +1,6 @@
 module AdminHelper
+  
+  # Metodo para validar el tipo de usuario que inicio sesion
   def cargo(id)
     if id==2
       t('principal.recolectar')

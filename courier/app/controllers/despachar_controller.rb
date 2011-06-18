@@ -2,6 +2,7 @@ class DespacharController < ApplicationController
   layout "enSistema"
   # GET /historicos
   # GET /historicos.xml
+  # Metodo para mostar el index de despachar
   def index
     @ordens = Orden.where(:estado => "Pendiente por Recolectar").order("created_at DESC")
     respond_to do |format|
@@ -12,6 +13,7 @@ class DespacharController < ApplicationController
 
   # GET /historicos/1
   # GET /historicos/1.xml
+  # Metodo para mostrar la orden a despachar
   def show
     @orden = Despachar.orden(params[:id])
     @recolector = Despachar.recolectorDesocupado
@@ -25,6 +27,7 @@ class DespacharController < ApplicationController
 
   # GET /historicos/new
   # GET /historicos/new.xml
+  # Metodo para crear una orden a despachar
   def new
     @historico = Historico.new
 
@@ -34,15 +37,10 @@ class DespacharController < ApplicationController
     end
   end
 
-  # GET /historicos/1/edit
-  # def edit
-  # @historico = Historico.find(params[:id])
-  # end
-
   # POST /historicos
   # POST /historicos.xml
+  # Metodo para crear un paquete a despachar
   def create
-    # @historico = Historico.new(params[:historico])
 
     @var=params[:despachar]
     if !(params[:enviar].nil?)
@@ -61,7 +59,7 @@ class DespacharController < ApplicationController
     @ordenprincipal.estado = "Asignada para Recoleccion"
     @ordenprincipal.empleado_id = @var["recolector"]
     @ordenprincipal.save
-    redirect_to(despachador_path, :notice => 'La ruta de recoleccion fue asignada con exito.')
+    redirect_to(despachador_path, :notice => t('rutarecolecciones'))
 
   end
 
@@ -75,15 +73,18 @@ class DespacharController < ApplicationController
     end
   end
 
+  # Metodo muestra las rutas asignadas al recolector
   def ver
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(params["id"])
   end
-
+  
+  # Metodo para imprimir todas las ordenes recolectadas para generarles la simulacion
   def simulacion
     @ordenes = Orden.where(:estado => "Recolectada")
   end
 
+  # Borra las las ordnes a despachar
   def destroy
     @despachar = params[:id]
     @direcciones = Despachar.simular(@despachar)
@@ -98,7 +99,7 @@ class DespacharController < ApplicationController
     @entregada.save
     @orden.save
   respond_to do |format|
-  format.html { redirect_to(simul_path, :notice => 'La simulacion fue realizada con exito') }
+  format.html { redirect_to(simul_path, :notice => t('simulacionexitosa')) }
   format.xml  { head :ok }
   end
   end

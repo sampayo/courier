@@ -61,7 +61,7 @@ class PaquetesController < ApplicationController
     respond_to do |format|
       @paquete.personas_id=session[:id]
       if @paquete.save
-        format.html { redirect_to(paquetes_path, :notice => 'Paquete was successfully created.') }
+        format.html { redirect_to(paquetes_path, :notice => t('paquetecrear')) }
         format.xml  { render :xml => @paquete, :status => :created, :location => @paquete }
       else
         format.html { render :action => "new" }
@@ -78,7 +78,7 @@ class PaquetesController < ApplicationController
 
     respond_to do |format|
       if @paquete.update_attributes(params[:paquete])
-        format.html { redirect_to(@paquete, :notice => 'Paquete was successfully updated.') }
+        format.html { redirect_to(@paquete, :notice => t('paqueteactualizar')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

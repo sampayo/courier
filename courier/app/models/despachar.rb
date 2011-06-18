@@ -18,7 +18,7 @@ class Despachar < ActiveRecord::Base
   def self.rutasAsignadas(id)
     return Orden.find_by_sql('Select o.*, d.ciudad, d.pais, d.avCalle, d.urban, d.resCasa,d.aptoNumero, d.lat, d.lng from ordens o, direccions d, historicos h where o.estado="Asignada para Recoleccion" and h.direccions_id=d.id and h.ordens_id=o.id and h.tipo="Recolectada" and o.empleado_id='+ id.to_s)
   end
-
+ # Metodo que simula 
   def self.simular(id)
     @direcciones = Direccion.find_by_sql('select * from direccions d where d.id not in (select h.direccions_id from ordens o, historicos h where h.ordens_id=o.id and o.id=' + id.to_s + ') limit 3')
     if @direcciones.first.nil?

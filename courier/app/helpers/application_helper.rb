@@ -1,4 +1,6 @@
 module ApplicationHelper
+  
+  # Metodo para parsear los botones de el idioma
   def idioma(dir)
     @dir=request.url
     @dirSplit=@dir.split('/')

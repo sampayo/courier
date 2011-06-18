@@ -1,4 +1,6 @@
 module DespacharHelper
+  
+  # Metodo para validar las ordenes cercanas a un paquete
   def descripcionDir(direcciones)
     @bolean = false
     if direcciones.nil?
@@ -17,10 +19,11 @@ module DespacharHelper
     end
   end
   
+  # Metodo para validar la disponibilidad del recolector
   def validarDisponibilidad(id)
     @orden = Orden.where(:empleado_id => id).first
     if @orden.nil?
-      "Disponible"
+      t('disponible')
     else
       link_to t('verruta') ,ver_path(id)
     end

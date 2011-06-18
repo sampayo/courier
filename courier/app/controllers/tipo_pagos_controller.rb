@@ -53,7 +53,7 @@ class TipoPagosController < ApplicationController
 		respond_to do |format|
 			@tipo_pago.personas_id=session[:id]
 			if @tipo_pago.save
-				format.html { redirect_to(@tipo_pago, :notice => 'Tipo pago was successfully created.') }
+				format.html { redirect_to(@tipo_pago, :notice => t('tipocreado')) }
 				format.xml  { render :xml => @tipo_pago, :status => :created, :location => @tipo_pago }
 			else
 				format.html { render :action => "new" }

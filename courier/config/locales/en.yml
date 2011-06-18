@@ -120,9 +120,37 @@ en:
   	 direcciones: Directions
   	 seleccionerecoleccion: Select the direction of collection for your order, and the address where you will be sent
   	 editarorden: Edit order
+  	 debesesion: You must login
+  	 companiacreada: Companium was successfully created
+  	 companiaactualizada: Companium was successfully updated
+  	 rutarecolecciones: The collection route was assigned successfully
+  	 simulacionexitosa: The simulation was carried out successfully
+  	 direccioncreada: Direccion was successfully created
+  	 direccionactualizada: Direccion was successfully updated
+  	 empleadocreado: Empleado was successfully created
+  	 empleadoactualizado: Empleado was successfully updated
+  	 tipopagocreado: Tipo pago was successfully created
+  	 facturacreada: Factura was successfully created
+  	 facturaactualizada: Factura was successfully updated
+  	 historicocreado: Historico was successfully created
+  	 historicoactualizado: Historico was successfully updated
+  	 validartarjeta: To order must have at least one address and a credit card
+  	 paquetecrear: Paquete was successfully created
+  	 paqueteactualizar: Paquete was successfully updated
+  	 personascrear: Persona was successfully created
+  	 personasactualizar: Personas was successfully updated
+  	 ordenrecolector: The order doesn't exists, or it dosen't have a collector
+  	 tipocreado: Tipo pago was successfully created
+  	 tipoactualizado: Tipo pago was successfully updated
+  	 disponible: Available
+  	 admincreado: Admin was successfully created
+  	 adminactualizado: Admin was successfully updated
   	 
   	 
   	 
+  	 
+  	 
+  	  	 
   	 
 
   	 

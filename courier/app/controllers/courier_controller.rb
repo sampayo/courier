@@ -38,7 +38,8 @@ class CourierController < ApplicationController
     end
 
   end
-
+  
+  # Metodo para hacer el seguimiento del paquete mientras el usuario no este logeado
   def seguimiento
     @remote_ip = ip
     @busqueda = params['s'] 

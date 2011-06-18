@@ -65,7 +65,7 @@ class FacturasController < ApplicationController
     @factura = Factura.new(params[:factura])
     respond_to do |format|
       if @factura.save
-        format.html { redirect_to(@factura, :notice => 'Factura was successfully created.') }
+        format.html { redirect_to(@factura, :notice => t('facturacreada')) }
         format.xml  { render :xml => @factura, :status => :created, :location => @factura }
       else
         format.html { render :action => "new" }
@@ -82,7 +82,7 @@ class FacturasController < ApplicationController
 
     respond_to do |format|
       if @factura.update_attributes(params[:factura])
-        format.html { redirect_to(@factura, :notice => 'Factura was successfully updated.') }
+        format.html { redirect_to(@factura, :notice => t('facturaactualizada')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

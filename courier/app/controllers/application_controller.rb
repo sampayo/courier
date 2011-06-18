@@ -1,16 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+ # Metodo para definir el idioma actual
   before_filter :set_locale
   def set_locale
-    # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
   end
 
+  # Metodo para definir el idioma por defecto
   def self.espanol
     I18n.locale = "es"
   end
 
+  # Metodo para tener el url mas amigable
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
@@ -45,7 +47,7 @@ class ApplicationController < ActionController::Base
   #Metodo para validar si existe una session activa.
   def validarSesion
     if  session[:email].nil?
-      flash[:error] = "Debe iniciar sesion"
+      flash[:error] = t('debesesion')
       redirect_to root_url
     end
   end

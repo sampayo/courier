@@ -300,6 +300,32 @@
   	 direcciones: Direcciones
   	 seleccionerecoleccion: Seleccione la direccion de recoleccion de su orden, y la direccion a donde va a ser enviado
   	 editarorden: Editar la Orden
+  	 debesesion: Debe iniciar sesion
+  	 companiacreada: La compa–ia fue creada exitosamente
+  	 companiaactualizada: La compa–ia fue actualizada exitosamente
+  	 rutarecolecciones: La ruta de recoleccion fue asignada con exito
+  	 simulacionexitosa: La simulacion fue realizada con exito
+  	 direccioncreada: Direcci—n se ha creado correctamente
+  	 direccionactualizada: Direcci—n se ha actualizado correctamente
+  	 empleadocreado: Empleado se ha creado correctamente
+  	 empleadoactualizado: Empleado se ha actualizado correctamente
+  	 tipopagocreado: Tipo de Pago se ha creado correctamente
+  	 facturacreada: Factura se ha creado correctamente
+  	 facturaactualizada: Factura se ha actualizado correctamente
+  	 historicocreado: Hist—rico fue creado con Žxito
+  	 historicoactualizado: Hist—rico fue actualizado con Žxito
+ 		 validartarjeta: Para hacer una orden debe tener al menos una direccion y una tarjeta de credito
+		 paquetecrear: Paquete se ha creado correctamente
+		 paqueteactualizar: Paquete se ha actualizado correctamente
+		 personascrear: El cliente se agrego correctamente
+		 personasactualizar: El cliente se actualizao correctamente
+		 ordenrecolector: La orden no existe, o no esta asgnada para recolectar
+		 tipocreado: Tipo de Pago se ha creado correctamente
+		 tipoactualizado: Tipo de Pago se ha actualizado correctamente
+		 disponible: Disponible
+		 admincreado: El administrador se agrego correctamente
+		 adminactualizado: El administrador se actualizo correctamente
+  	  
 
 
 

@@ -50,7 +50,7 @@ class DireccionsController < ApplicationController
 		respond_to do |format|
 			@direccion.personas_id=session[:id]
 			if @direccion.save
-				format.html { redirect_to(@direccion, :notice => 'Direccion was successfully created.') }
+				format.html { redirect_to(@direccion, :notice => t('direccioncreada')) }
 				format.xml  { render :xml => @direccion, :status => :created, :location => @direccion }
 			else
 				format.html { render :action => "new" }
@@ -66,7 +66,7 @@ class DireccionsController < ApplicationController
 
 		respond_to do |format|
 			if @direccion.update_attributes(params[:direccion])
-				format.html { redirect_to(@direccion, :notice => 'Direccion was successfully updated.') }
+				format.html { redirect_to(@direccion, :notice => t('direccionactualizada')) }
 				NUESTRO_LOG.info "Se borro ua direccion!"
 				format.xml  { head :ok }
 			else

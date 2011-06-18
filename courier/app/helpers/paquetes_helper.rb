@@ -1,5 +1,5 @@
 module PaquetesHelper
-  
+  # Helper de vista para validar el boton generarorden
   def validar (id)
     
     @paquete = Paquete.where(:ordens_id => nil, :personas_id => id).first

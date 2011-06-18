@@ -3,6 +3,7 @@ class RecolectarController < ApplicationController
   layout "enSistema"
   # GET /historicos
   # GET /historicos.xml
+  # Metodo para mostar el indes de recolectar
   def index
     @personas = Persona.find(session["id"])
     respond_to do |format|
@@ -13,6 +14,7 @@ class RecolectarController < ApplicationController
 
   # GET /historicos/1
   # GET /historicos/1.xml
+  # Metodo para mostrar un recolectar
   def show
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(@personas.id)
@@ -24,6 +26,7 @@ class RecolectarController < ApplicationController
 
   # GET /historicos/new
   # GET /historicos/new.xml
+  # Metodo para crear una orden a recolectar 
   def new
     @historico = Historico.new
 
@@ -41,26 +44,6 @@ class RecolectarController < ApplicationController
   # POST /historicos
   # POST /historicos.xml
   def create
-    # @historico = Historico.new(params[:historico])
-
-    # @var=params[:despachar]
-    # if !(params[:enviar].nil?)
-    #
-    # @ordenes=params[:enviar]
-    # @ordenes.each do |orden|
-    # if orden[1] != "no"
-    # @orden = Orden.find(orden[1])
-    # @orden.empleado_id = @var["recolector"]
-    # @orden.estado = "Asignada para Recoleccion"
-    # @orden.save
-    # end
-    # end
-    # end
-    # @ordenprincipal = Orden.find(@var["orden"])
-    # @ordenprincipal.estado = "Asignada para Recoleccion"
-    # @ordenprincipal.empleado_id = @var["recolector"]
-    # @ordenprincipal.save
-    # redirect_to(despachador_path, :notice => 'La ruta de recoleccion fue asignada con exito.')
 
   end
 
@@ -69,18 +52,20 @@ class RecolectarController < ApplicationController
     @form = params['recolectar']
     @orden = Orden.where(:id => @form[:nombre]).first
     if @orden.nil? || @orden.estado == "Pendiente por recolectar" ||  @orden.estado == "Entregada"
-      redirect_to(reco_path, :notice => 'La orden no existe, o no esta asgnada para recolectar')
+      redirect_to(reco_path, :notice => t('ordenrecolector'))
     else
       @notice = Orden.rutaRecolectada(@orden)
       redirect_to(recorden_path(@orden.id), :notice => @notice)
     end
   end
-
+  
+  # Muestra las rutas con el despachador
   def ver
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(params["id"])
   end
 
+  # Metodo muestra las ordenes con paquete y la ruta
   def orden
     @orden = Orden.find(params[:id])
     @paquetes = Paquete.where(:ordens_id => params[:id] )

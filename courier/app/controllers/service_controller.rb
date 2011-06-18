@@ -3,6 +3,7 @@ class ServiceController < ApplicationController
   #http://www.google.com/translate?twu=1&u=http://www.ultrasaurus.com/sarahblog/2009/06/simple-web-services-with-rails/
   #http://www.ultrasaurus.com/sarahblog/2009/06/simple-web-services-with-rails/
 
+  # Utilizamos open-uri para leer los xml
   require 'open-uri'
 
   def show
@@ -20,6 +21,7 @@ class ServiceController < ApplicationController
     @a = data
   end
 
+  # Recibe un id y retorna la informacion de la orden
   def getorden
     @id = params['id']
     @orden = Orden.find(@id)
@@ -34,6 +36,7 @@ class ServiceController < ApplicationController
     end
   end
 
+  # Recibe toda la informacion en un /post para crear una orden por webservice
   def setorden
     @xml = params[:solicitud]
     if Orden.validarRemota(@xml)

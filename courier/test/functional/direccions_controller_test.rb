@@ -3,8 +3,7 @@ require 'test_helper'
 class DireccionsControllerTest < ActionController::TestCase
   setup do
     @direccion = direccions(:one)
-    $email = 'adffa'
-    $nombre = 'refeer'
+    session[:id]=1
   end
 
   test "should get index" do

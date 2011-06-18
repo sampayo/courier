@@ -8,7 +8,7 @@ module OrdensHelper
       @historico = 'Enviado'
     end
   end
-
+  # Metodo para validar botones para administrado dependiendo del usuario que quiera ver
   def retorno(id)
     @persona = Persona.find(id)
     if @persona.empleados_id.nil?
