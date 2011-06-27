@@ -31,10 +31,15 @@ class Orden < ActiveRecord::Base
 
   # metodo valida todos los campos cliente
   def self.validarCliente(cliente)
-    if cliente[:email].nil? or cliente[:nombre].nil? or cliente[:apellido].nil? or cliente[:fNacimiento].nil?
-    return false
+    if cliente[:email].nil?
+    return nil
     else
-    return true
+      @cliente = Persona.where(:email => cliente[:email]).first
+      if @cliente.nil?
+      return nil
+      else
+      return @cliente.id
+      end
     end
   end
 
@@ -58,7 +63,7 @@ class Orden < ActiveRecord::Base
 
   # metodo valida todos los campos paquete
   def self.validarPaquete(paquete)
-    if paquete[:peso].nil? or paquete[:nombre].nil? or paquete[:descripcion].nil?
+    if paquete[:peso].nil? or paquete[:nombre].nil? or paquete[:descripcion].nil?  or paquete[:peso].to_i<=0
     return false
     else
     return true
@@ -67,19 +72,40 @@ class Orden < ActiveRecord::Base
 
   # metodo valida todos los campos tarjeta
   def self.validartarjeta(tarjeta)
-    if tarjeta[:nTDC].nil? or tarjeta[:nombre].nil? or tarjeta[:cSeguridad].nil? or tarjeta[:fVencimiento].nil?
-    return false
+    if tarjeta[:nTDC].nil?
+    return nil
     else
-    return true
+      @cliente = TipoPago.where(:nTDC => tarjeta[:nTDC]).first
+      if @cliente.nil?
+      return nil
+      else
+      return @cliente.id
+      end
+    end
+  end
+
+  def self.validarrecoleccion(direccion)
+    if direccion[:nombre].nil?
+    return nil
+    else
+      @cliente = Direccion.where(:nombre => direccion[:nombre]).first
+      if @cliente.nil?
+      return nil
+      else
+      return @cliente.id
+      end
     end
   end
 
   # metodo valida todos los campos de la orden remota
   def self.validarRemota(xml)
-    if validarCliente(xml[:cliente]) and validarOrdenRemota(xml[:orden]) and validarPaquete(xml[:paquete]) and validarDireccion(xml[:direccionrecoleccion]) and validarDireccion(xml[:direccionentrega]) and validartarjeta(xml[:tarjeta])
-    return true
+    @cli = validarCliente(xml[:cliente])
+    @tar = validartarjeta(xml[:tarjeta])
+    @dir = validarrecoleccion(xml[:direccionrecoleccion])
+    if !(@cli.nil?) and validarOrdenRemota(xml[:orden]) and validarPaquete(xml[:paquete]) and validarDireccion(xml[:direccionentrega]) and !(@dir.nil?) and !(@tar.nil?)
+    return [@cli,@tar,@dir]
     else
-    return false
+    return nil
     end
   end
 
