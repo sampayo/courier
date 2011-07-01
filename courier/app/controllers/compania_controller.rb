@@ -84,11 +84,18 @@ class CompaniaController < ApplicationController
     @id = params[:id]
     @orden = $id
     $id = ''
-    
-   @courier = Courierucab.new(@orden, @id) 
-   @notice = @courier.enviarpost
-   flash[:notice] = @notice
-   redirect_to (simul_path)
+   if (@id == 2)
+    @courier = Courierucab.new(@orden, @id) 
+    @notice = @courier.enviarpost
+    flash[:notice] = @notice
+    redirect_to (simul_path)
+   elsif (@id == 3)
+    @courier = Giancourier.new(@orden, @id) 
+    @notice = @courier.enviarpost
+    flash[:notice] = @notice
+    redirect_to (simul_path)
+   end
+     
    
     
     # @companium = Companium.find(params[:id])
