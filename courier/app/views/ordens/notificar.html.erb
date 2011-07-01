@@ -1,0 +1,22 @@
+<h1><%= t('listaordenes') %></h1>
+<table width="90%">
+	<tr>
+		<th><%= t('numorden')%></th>
+		<th><%= t('estado')%></th>
+		<th><%= t('fecha')%></th>
+		<th>Nuevo costo</th>
+		<th></th>
+	</tr>
+	<% @notificacion.each do |orden| %>
+	<tr align="center">
+		<td><%= orden.id %></td>
+		<td><%= orden.estado %></td>
+		<td><%= orden.fecha %></td>
+		<td><%= orden.costoTotal %></td>
+		<td><%= link_to 'Aceptar', notis_path(orden.id) %></td>
+	</tr>
+	<% end %>
+</table>
+<br />
+
+<%= link_to t('nuevaorden'), paquetes_path %>
