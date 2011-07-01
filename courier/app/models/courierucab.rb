@@ -1,7 +1,7 @@
 class Courierucab
   attr_accessor :orden, :empresa
   require 'open-uri'
-  # require 'net/http'
+  require 'net/http'
 
   def initialize(id,id2)
     @orden = Orden.find(id)
@@ -9,7 +9,7 @@ class Courierucab
   end
 
   def xml
-    @persona = Persona.find(@orden.id)
+    @persona = Persona.find(@orden.personas_id)
     # @tdc = TipoPago.find(@orden.)
     @direccion1 = Orden.direcciones(@orden.id,'Recolectada')
     @direccion2 = Orden.direcciones(@orden.id,'Entregada')
@@ -111,11 +111,13 @@ class Courierucab
     when Net::HTTPSuccess
       if !(xmlresponse["Tracking"]["movimiento"].nil?)
         xmlresponse["Tracking"]["movimiento"].each do |admin|
+          
           if admin['fecha'].nil?
             fecha = Time.now
           else
             fecha = admin['fecha']
           end
+          
           if admin['desc']!='Entregada'
             @direccion = Direccion.new(:nombre => admin['nombre'], :avCalle => admin['calle'], :resCasa => admin['casa'], :aptoNumero => admin['numero'], :urban => ['urbanizacion'], :ciudad => admin['ciudad'], :pais => admin['pais'], :cPostal => admin['codigopostal'], :lat => admin ['lat'], :lng => admin['lng'])
             @direccion.save

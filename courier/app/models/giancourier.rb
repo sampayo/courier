@@ -1,6 +1,7 @@
 class Giancourier
   attr_accessor :orden, :empresa
   require 'open-uri'
+  require 'net/http'
 
   def initialize(id,id2)
     @orden = Orden.find(id)
@@ -8,43 +9,32 @@ class Giancourier
   end
 
   def xml
-    @persona = Persona.find(@orden.id)
+    @persona = Persona.find(@orden.personas_id)
     # @tdc = TipoPago.find(@orden.)
     @direccion1 = Orden.direcciones(@orden.id,'Recolectada')
     @direccion2 = Orden.direcciones(@orden.id,'Entregada')
     @paquete = Paquete.where(:ordens_id => @orden.id).first
     @factura = Factura.where(:ordens_id => @orden.id).first
     @tdc = TipoPago.find(@factura.tipo_pagos_id)
-    @xml = '<solicitud><cliente><email>' + @persona.email + '</email></cliente>
-  <orden>
-    <nombre>' + @orden.nombre + '</nombre>
-    <apellido>' + @orden.apellido + '</apellido>
-    <fecha>' + @orden.fecha.to_s + '</fecha>
-  </orden>
-  <direccionrecoleccion>
-    <nombre>' + @direccion1.nombre + '</nombre>
-  </direccionrecoleccion>
-  <direccionentrega>
-    <nombre>' + @direccion2.nombre + '</nombre>
-    <avCalle>' + @direccion2.avCalle + '</avCalle>
-    <resCasa>' + @direccion2.resCasa + '</resCasa>
-    <aptoNumero>' + @direccion2.aptoNumero.to_s + '</aptoNumero>
-    <urban>' + @direccion2.urban + '</urban>
-    <ciudad>' + @direccion2.ciudad + '</ciudad>
-    <pais>' + @direccion2.pais + '</pais>
-    <cPostal>' + @direccion2.cPostal + '</cPostal>
-    <lat>' + @direccion2.lat.to_s + '</lat>
-    <lng>' + @direccion2.lng.to_s + '</lng>
-  </direccionentrega>
-  <tarjeta>
-    <nTDC>' + @tdc.nTDC + '</nTDC>
-  </tarjeta>
-  <paquete>
-    <nombre>' + @paquete.nombre + '</nombre>
-    <peso>' + @paquete.peso.to_s + '</peso>
-    <descripcion>' + @paquete.descripcion + '</descripcion>
-  </paquete>
+    @xml = '<solicitud><cliente><tarjeta>123456789012345</tarjeta><nombre_direccion>Ofic</nombre_direccion>
+    <correo>ricardo9588@gmail.com</correo></cliente>
+    <orden>
+<nombre_receptor>' + @orden.nombre + '</nombre_receptor>
+<apellido_receptor>' + @orden.apellido + '</apellido_receptor>
+  <residencia_calle>' + @direccion2.avCalle + '</residencia_calle>
+  <apartamento_num_casa>' + @direccion2.aptoNumero.to_s + '</apartamento_num_casa>
+  <urbanizacion>' + @direccion2.urban + '</urbanizacion>
+  <ciudad>' + @direccion2.ciudad + '</ciudad>
+  <pais>' + @direccion2.pais + '</pais>
+</orden>
+<paquetes>
+<paquete>
+  <peso>' + @paquete.peso.to_s + '</peso>
+  <descripcion>' + @paquete.descripcion + '</descripcion>
+</paquete>
+</paquetes>
 </solicitud>'
+
   end
 
   def enviarpost
@@ -54,17 +44,12 @@ class Giancourier
     headers = { 'Content-Type'=>'application/xml', 'Content-Length'=>@xml.size.to_s }
     post = Net::HTTP::Post.new(uri.path, headers)
     response = http.request post, @xml
-
     xmlresponse = Hash.from_xml(response.body)
     case response
     when Net::HTTPCreated
-      if xmlresponse["Error"]
-        return xmlresponse["Error"]["error"]
-      else
-        @orden.remoto = xmlresponse["Tracking"]["info"]["tracking"]
-        @monto = xmlresponse["Tracking"]["info"]["montoTotal"]
-        @orden.estado = 'Recoleccion Externa'
-        @factura.companias_id = @empresa.id
+      if xmlresponse["respuesta"]
+        @orden.remoto = xmlresponse["respuesta"]["traking"]
+        @monto = xmlresponse["respuesta"]["costo"]
         if @factura.costoTotal < @monto.to_i
           @factura.costoTotal = @monto.to_i
           @orden.notificacion = 'alerta'
@@ -72,15 +57,13 @@ class Giancourier
         @factura.save
         @orden.save
         return 'La orden a pasado a estatus Recoleccion Externa'
+      else
+        return 'error de coneccion'
       end
     when Net::HTTPSuccess
-      if xmlresponse["Error"]
-        return xmlresponse["Error"]["error"]
-      else
-        @orden.remoto = xmlresponse["Tracking"]["info"]["tracking"]
-        @monto = xmlresponse["Tracking"]["info"]["montoTotal"]
-        @orden.estado = 'Recoleccion Externa'
-        @factura.companias_id = @empresa.id
+      if xmlresponse["respuesta"]
+        @orden.remoto = xmlresponse["respuesta"]["traking"]
+        @monto = xmlresponse["respuesta"]["costo"]
         if @factura.costoTotal < @monto.to_i
           @factura.costoTotal = @monto.to_i
           @orden.notificacion = 'alerta'
@@ -88,8 +71,9 @@ class Giancourier
         @factura.save
         @orden.save
         return 'La orden a pasado a estatus Recoleccion Externa'
+      else
+        return 'error de coneccion'
       end
-
     else response.error!
     return 'Error'
     end
@@ -108,25 +92,23 @@ class Giancourier
     when Net::HTTPCreated
       return xmlresponse["Tracking"]["orden"]["Orden"]
     when Net::HTTPSuccess
-      if !(xmlresponse["Tracking"]["movimiento"].nil?)
-        xmlresponse["Tracking"]["movimiento"].each do |admin|
+
+      if !(xmlresponse["seguimiento"]["etapas"]["etapa"].nil?)
+        xmlresponse["seguimiento"]["etapas"]["etapa"].each do |admin|
           if admin['fecha'].nil?
             fecha = Time.now
           else
             fecha = admin['fecha']
           end
-          if admin['desc']!='Entregada'
-            @direccion = Direccion.new(:nombre => admin['nombre'], :avCalle => admin['calle'], :resCasa => admin['casa'], :aptoNumero => admin['numero'], :urban => ['urbanizacion'], :ciudad => admin['ciudad'], :pais => admin['pais'], :cPostal => admin['codigopostal'], :lat => admin ['lat'], :lng => admin['lng'])
-            @direccion.save
-            @historico = Historico.new(:tipo => admin['desc'], :fecha => fecha, :ordens_id=>@orden.id, :direccions_id => @direccion.id)
-          @historico.save
-          else
-            @historico = Historico.where(:tipo => 'Entregada', :ordens_id => @orden.id).first
-          @historico.fecha = fecha
-          @historico.save
-          end
 
+          @direccion = Direccion.new(:nombre => '', :avCalle => '', :resCasa => '', :aptoNumero => 2, :urban => admin['lugar'], :ciudad => 'Caracas', :pais => 'Venezuela', :cPostal => 122, :lat => nil, :lng => nil)
+          @direccion.save
+          @historico = Historico.new(:tipo => admin['descripcion'], :fecha => fecha, :ordens_id=>@orden.id, :direccions_id => @direccion.id)
+          @historico.save
         end
+        @historico = Historico.find( @direccion2.idHistorico)
+        @historico.fecha = Time.now
+        @historico.save
         @orden.estado = 'Entregada'
       @orden.save
       end
@@ -134,6 +116,5 @@ class Giancourier
     return 'Error'
     end
   end
-
 end
 
