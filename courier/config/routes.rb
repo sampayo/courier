@@ -106,6 +106,10 @@ Courier::Application.routes.draw do
   match ':locale/simulacion/', :to => 'despachar#simulacion', :as => "simul"
   
    match ':locale/guardarOrden/:id', :to => 'despachar#guardarOrden' , :as => "guardarOrden"
+   
+    match ':locale/recoleccionExterna', :to => 'despachar#recoleccionExterna' , :as => "recoExter"
+    
+    match ':locale/consultaExterna/:id', :to => 'despachar#consultaExterna' , :as => "consulExter"
 
   # url donde se busca las ordenes para recolectarlas
   match ':locale/recolectar/', :to => 'recolectar#index', :as => "reco"

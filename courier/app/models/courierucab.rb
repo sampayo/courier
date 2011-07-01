@@ -2,9 +2,9 @@ class Courierucab
   attr_accessor :orden, :empresa
   require 'open-uri'
 
-  def initialize(id)
+  def initialize(id,id2)
     @orden = Orden.find(id)
-    @empresa = Companium.find(2)
+    @empresa = Companium.find(id2)
   end
 
   def xml
@@ -48,7 +48,8 @@ class Courierucab
   end
 
   def enviarpost
-    uri = URI.parse("http://192.168.21.74:3000/setorden")
+    xml
+    uri = URI.parse(@empresa.urlset)
     http = Net::HTTP.new(uri.host, uri.port)
     headers = { 'Content-Type'=>'application/xml', 'Content-Length'=>@xml.size.to_s }
     post = Net::HTTP::Post.new(uri.path, headers)
@@ -57,22 +58,36 @@ class Courierucab
     xmlresponse = Hash.from_xml(response.body)
     case response
     when Net::HTTPCreated
-      if xmlresponse["Error"]["error"]
+      if xmlresponse["Error"]
         return xmlresponse["Error"]["error"]
       else
         @orden.remoto = xmlresponse["Tracking"]["info"]["tracking"]
-        @monto = xmlresponse["Tracking"]["info"]["monto"]
+        @monto = xmlresponse["Tracking"]["info"]["montoTotal"]
+        @orden.estado = 'Recoleccion Externa'
+        @factura.companias_id = @empresa.id
+        if @factura.costoTotal < @monto.to_i
+          @factura.costoTotal = @monto.to_i
+          @orden.notificacion = 'alerta'
+        end
+        @factura.save
         @orden.save
-        return 'Se guardo con exito'
+        return 'La orden a pasado a estatus Recoleccion Externa'
       end
     when Net::HTTPSuccess
-      if xmlresponse["Error"]["error"]
+      if xmlresponse["Error"]
         return xmlresponse["Error"]["error"]
       else
         @orden.remoto = xmlresponse["Tracking"]["info"]["tracking"]
-        @monto = xmlresponse["Tracking"]["info"]["monto"]
+        @monto = xmlresponse["Tracking"]["info"]["montoTotal"]
+        @orden.estado = 'Recoleccion Externa'
+        @factura.companias_id = @empresa.id
+        if @factura.costoTotal < @monto.to_i
+          @factura.costoTotal = @monto.to_i
+          @orden.notificacion = 'alerta'
+        end
+        @factura.save
         @orden.save
-        return 'Se guardo con exito'
+        return 'La orden a pasado a estatus Recoleccion Externa'
       end
 
     else response.error!
@@ -82,7 +97,7 @@ class Courierucab
   end
 
   def leerXml
-    uri = URI.parse("http://192.168.23.7:3000/getorden/5")
+    uri = URI.parse(@empresa.urlget + '/' + @orden.remoto.to_s)
     http = Net::HTTP.new(uri.host, uri.port)
     headers = { 'Content-Type'=>'application/xml' }
     post = Net::HTTP::Get.new(uri.path, headers)
@@ -93,7 +108,6 @@ class Courierucab
     when Net::HTTPCreated
       return xmlresponse["Tracking"]["orden"]["Orden"]
     when Net::HTTPSuccess
-      # return xmlresponse["Tracking"]["orden"]["Orden"]
       if !(xmlresponse["Tracking"]["movimiento"].nil?)
         xmlresponse["Tracking"]["movimiento"].each do |admin|
           if admin['fecha'].nil?
@@ -108,15 +122,13 @@ class Courierucab
           @historico.save
           else
             @historico = Historico.where(:tipo => 'Entregada', :ordens_id => @orden.id).first
-            @historico.fecha = fecha
+          @historico.fecha = fecha
           @historico.save
           end
 
         end
-        @orden.estado = 'Recolectada'
+        @orden.estado = 'Entregada'
       @orden.save
-      else
-        return 'sss'
       end
     else response.error!
     return 'Error'

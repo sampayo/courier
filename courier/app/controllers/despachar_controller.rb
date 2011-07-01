@@ -79,15 +79,19 @@ class DespacharController < ApplicationController
     @personas = Persona.find(params["id"])
     @ordenes = Despachar.rutasAsignadas(params["id"])
   end
-  
+
   # Metodo para imprimir todas las ordenes recolectadas para generarles la simulacion
   def simulacion
     @ordenes = Orden.where(:estado => "Recolectada")
   end
-  
+
   def guardarOrden
     $id = params[:id]
     redirect_to compania_url
+  end
+
+  def recoleccionExterna
+    @ordenes = Orden.where(:estado => "Recoleccion Externa")
   end
 
   # Borra las las ordnes a despachar
@@ -104,10 +108,19 @@ class DespacharController < ApplicationController
     @orden.estado = 'Entregada'
     @entregada.save
     @orden.save
-  respond_to do |format|
-  format.html { redirect_to(simul_path, :notice => t('simulacionexitosa')) }
-  format.xml  { head :ok }
+    respond_to do |format|
+      format.html { redirect_to(simul_path, :notice => t('simulacionexitosa')) }
+      format.xml  { head :ok }
+    end
   end
+
+  def consultaExterna
+    @id = params[:id]
+    @orden = Orden.find(@id)
+    @factura = Factura.where(:ordens_id => @orden.id).first
+    @courier = Courierucab.new(@orden.id , @factura.companias_id)
+    @algo = @courier.leerXml
+    redirect_to(recoExter_path, :notice => 'La orden se consulto con exito')
   end
 
 end

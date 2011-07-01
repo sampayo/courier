@@ -81,12 +81,22 @@ class CompaniaController < ApplicationController
   # DELETE /compania/1
   # DELETE /compania/1.xml
   def destroy
-    @companium = Companium.find(params[:id])
-    @companium.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(compania_url) }
-      format.xml  { head :ok }
-    end
+    @id = params[:id]
+    @orden = $id
+    $id = ''
+    
+   @courier = Courierucab.new(@orden, @id) 
+   @notice = @courier.enviarpost
+   flash[:notice] = @notice
+   redirect_to (simul_path)
+   
+    
+    # @companium = Companium.find(params[:id])
+    # @companium.destroy
+# 
+    # respond_to do |format|
+      # format.html { redirect_to(compania_url) }
+      # format.xml  { head :ok }
+    # end
   end
 end

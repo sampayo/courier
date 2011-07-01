@@ -1,0 +1,25 @@
+<h1>Ordenes recoleccion externa</h1>
+
+
+<p id="notice">
+  <%= notice %>
+</p>
+<table width="90%">
+	<tr>
+		<th><%= t('numorden') %></th>
+		<th><%= t('receptor') %></th>
+		<th><%= t('estado') %></th>
+
+		<th></th>
+	</tr>
+	<% @ordenes.each do |orden| %>
+	<tr align="center">
+		<td><%= orden.id %></td>
+		<td><%= orden.nombre + ' ' + orden.apellido %></td>
+		<td><%= orden.estado %></td>	
+		<td><%= link_to 'Consultar', consulExter_path(orden.id) %></td>
+	</tr>
+	<% end %>
+</table>
+<br />
+
