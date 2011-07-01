@@ -142,8 +142,13 @@ en:
   	 validartarjeta: To order must have at least one address and a credit card
   	 disponible: Available
   	 rutaasignada: Assigned routes
-  	 
-  	 
+  	 listadocompanias: Company list
+  	 telefono: Phone
+  	 agregarcompania: Add Company
+  	 urlget: Url get request
+  	 urlapoyo: Url support request
+  	 editarcompania: Company edit
+  	 solicitar: Request
   	 
   	 
   	 

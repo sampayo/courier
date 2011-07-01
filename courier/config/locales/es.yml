@@ -322,8 +322,14 @@
   	 validartarjeta: Para hacer una orden debe tener al menos una direccion y una tarjeta de credito
   	 disponible: Disponible
   	 rutaasignada: Rutas asignadas
+  	 listadocompanias: Listado de Compania
+  	 telefono: Telefono
+  	 agregarcompania: Agregar Compania
+  	 urlget: Url consulta
+  	 urlapoyo: Url solicitud apoyo
+  	 editarcompania: Editar compania
+  	 solicitar: Solicitar
   	 
-  	  
 
 
 

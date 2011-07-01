@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Nombre:</b>
+  <b><%= t('nombrez') %>:</b>
   <%= @companium.nombre %>
 </p>
 
@@ -11,23 +11,23 @@
 </p>
 
 <p>
-  <b>Direccionf:</b>
+  <b><%= t('direcciones') %>:</b>
   <%= @companium.direccionF %>
 </p>
 
 <p>
-  <b>Telefono:</b>
+  <b><%= t('telefono') %>:</b>
   <%= @companium.telefono %>
 </p>
 <p>
-  <b>Url consulta:</b>
+  <b><%= t('urlget') %>:</b>
   <%= @companium.urlget %>
 </p>
 <p>
-  <b>Url apoyo:</b>
+  <b><%= t('urlapoyo') %>:</b>
   <%= @companium.urlset %>
 </p>
 
 
-<%= link_to 'Edit', edit_companium_path(@companium) %> |
-<%= link_to 'Back', compania_path %>
+<%= link_to t('editar'), edit_companium_path(@companium) %> |
+<%= link_to t('regresar'), compania_path %>

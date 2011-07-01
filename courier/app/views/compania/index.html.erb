@@ -1,11 +1,11 @@
-<h1>Listing compania</h1>
+<h1><%= t('listadocompanias') %></h1>
 
 <table width="80%">
 	<tr>
-		<th>Nombre</th>
+		<th><%= t('nombrez') %></th>
 		<th>Rif</th>
-		<th>Direccionf</th>
-		<th>telefono</th>
+		<th><%= t('direcciones') %></th>
+		<th><%= t('telefono') %></th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -16,13 +16,13 @@
 		<td><%= companium.rif %></td>
 		<td><%= companium.direccionF %></td>
 		<td><%= companium.telefono %></td>
-		<td><%= link_to 'Show', companium %></td>
+		<td><%= link_to t('editar'), companium %></td>
 		<td><%= link_to t('editar'), edit_companium_path(companium) %></td>
-		<td><%= link_to 'Solicitar', companium, :method => :delete %></td>
+		<td><%= link_to t('solicitar'), companium, :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Companium', new_companium_path %>
+<%= link_to t('agregarcompania'), new_companium_path %>
