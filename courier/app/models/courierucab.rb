@@ -1,6 +1,7 @@
 class Courierucab
   attr_accessor :orden, :empresa
   require 'open-uri'
+  # require 'net/http'
 
   def initialize(id,id2)
     @orden = Orden.find(id)
@@ -15,14 +16,14 @@ class Courierucab
     @paquete = Paquete.where(:ordens_id => @orden.id).first
     @factura = Factura.where(:ordens_id => @orden.id).first
     @tdc = TipoPago.find(@factura.tipo_pagos_id)
-    @xml = '<solicitud><cliente><email>' + @persona.email + '</email></cliente>
+    @xml = '<solicitud><cliente><email>ricardo9588@gmail.com</email></cliente>
   <orden>
     <nombre>' + @orden.nombre + '</nombre>
     <apellido>' + @orden.apellido + '</apellido>
     <fecha>' + @orden.fecha.to_s + '</fecha>
   </orden>
   <direccionrecoleccion>
-    <nombre>' + @direccion1.nombre + '</nombre>
+    <nombre>Ofic</nombre>
   </direccionrecoleccion>
   <direccionentrega>
     <nombre>' + @direccion2.nombre + '</nombre>
@@ -37,7 +38,7 @@ class Courierucab
     <lng>' + @direccion2.lng.to_s + '</lng>
   </direccionentrega>
   <tarjeta>
-    <nTDC>' + @tdc.nTDC + '</nTDC>
+    <nTDC>123456789012345</nTDC>
   </tarjeta>
   <paquete>
     <nombre>' + @paquete.nombre + '</nombre>

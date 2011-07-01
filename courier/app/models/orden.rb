@@ -123,5 +123,10 @@ class Orden < ActiveRecord::Base
   def self.direcciones(id, nombre)
     return Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='" + nombre + "' and h.ordens_id=" + id.to_s).first
   end
+  
+  # metodo que busca las ordenes que se encuentran pendientes por notificar. Que tengan cargo extra de otra compania
+  def self.notificaciones
+    return Factura.find_by_sql('select o.*, f.costoTotal from ordens o , facturas f where f.ordens_id=o.id and o.notificacion = "alerta"')
+  end
 
 end

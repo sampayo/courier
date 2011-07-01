@@ -1,6 +1,5 @@
 Courier::Application.routes.draw do
 
-
   scope "(:locale)", :locale => /es|en-US|en/ do
     resources :direccions
 
@@ -25,9 +24,9 @@ Courier::Application.routes.draw do
     resources :despachar
 
     resources :recolectar
-    
+
     resources :admin
-    
+
     resources :service
 
   end
@@ -85,9 +84,9 @@ Courier::Application.routes.draw do
   match '/:locale/contenido', :to => 'courier#contenido', :as => "cont"
 
   match '/:locale/seguimiento/', :to => 'courier#seguimiento', :as => "seg"
-  
+
   match '/:locale/empleado/', :to => 'admin#empleados', :as => "emple"
-  
+
   match '/:locale/admin/', :to => 'admin#index', :as => "adm"
 
   # Crea el Url para los paquetes, llamando al metodo paquetes.new, y lo manda como get.
@@ -104,12 +103,16 @@ Courier::Application.routes.draw do
 
   # url donde se muestra las ordenes recolectadas para ejecutar una simulacion de la entrega
   match ':locale/simulacion/', :to => 'despachar#simulacion', :as => "simul"
+
+  match ':locale/guardarOrden/:id', :to => 'despachar#guardarOrden' , :as => "guardarOrden"
+
+  match ':locale/recoleccionExterna', :to => 'despachar#recoleccionExterna' , :as => "recoExter"
+
+  match ':locale/consultaExterna/:id', :to => 'despachar#consultaExterna' , :as => "consulExter"
+
+  match ':locale/notificar', :to => 'ordens#notificar' , :as => "noti"
   
-   match ':locale/guardarOrden/:id', :to => 'despachar#guardarOrden' , :as => "guardarOrden"
-   
-    match ':locale/recoleccionExterna', :to => 'despachar#recoleccionExterna' , :as => "recoExter"
-    
-    match ':locale/consultaExterna/:id', :to => 'despachar#consultaExterna' , :as => "consulExter"
+   match ':locale/nuevanotificacion/:id', :to => 'ordens#nuevanotificacion' , :as => "notis"
 
   # url donde se busca las ordenes para recolectarlas
   match ':locale/recolectar/', :to => 'recolectar#index', :as => "reco"
@@ -119,15 +122,11 @@ Courier::Application.routes.draw do
 
   # Genera el xml de los paquetes.
   match 'tracking/:id', :to => 'enviar#gen_xml', :via => 'get', :as => "genxml"
-  
-  
-  
-#service
-match ':locale/prueba/', :to => 'service#prueba', :as => "prueba"
-match 'getorden/:id', :to => 'service#getorden', :as => "getorden", :via => 'get'
-match 'setorden', :to => 'service#setorden', :as => "setorden", :via => 'post'
 
-  
+  #service
+match ':locale/prueba/', :to => 'service#prueba', :as => "prueba"
+  match 'getorden/:id', :to => 'service#getorden', :as => "getorden", :via => 'get'
+  match 'setorden', :to => 'service#setorden', :as => "setorden", :via => 'post'
 
   # Pagina principal del proyecto.
   root :to => "courier#index"

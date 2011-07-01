@@ -17,6 +17,7 @@
 		<td><%= companium.direccionF %></td>
 		<td><%= companium.telefono %></td>
 		<td><%= link_to 'Show', companium %></td>
+		<td><%= link_to t('editar'), edit_companium_path(companium) %></td>
 		<td><%= link_to 'Solicitar', companium, :method => :delete %></td>
 	</tr>
 	<% end %>

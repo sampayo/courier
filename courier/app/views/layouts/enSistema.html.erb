@@ -15,11 +15,8 @@
 					</h1>
 				</div>
 				<div id="idioma">
-					<h3>
-					<%= link_to 'es', idioma('es') %> |
-					<%= link_to 'en', idioma('en') %>
-
-					</h3>
+					<h3>	<%= link_to 'es', idioma('es') %> |
+					<%= link_to 'en', idioma('en') %></h3>
 				</div>
 			</div>
 			<!-- end #header -->
@@ -31,7 +28,7 @@
 				</ul>
 				<ul>
 					<li id='salir'>
-							<%= link_to t('principal.salir'),  root_url, :action=> :destruir %>
+						<%= link_to t('principal.salir'),  root_url, :action=> :destruir %>
 					</li>
 				</ul>
 			</div>
@@ -82,10 +79,13 @@
 										<li>
 											<%= link_to t('principal.factura'), facturas_path %>
 										</li>
+										<li>
+											<%= link_to 'Notificacion', noti_path %>
+										</li>
 									</ul>
 								</li>
 								<% else %>
-								<% if session[:rol] == 1 %> 
+								<% if session[:rol] == 1 %>
 								<li>
 									<h2><%= t('principal.admin') %></h2>
 									<ul>
@@ -98,7 +98,7 @@
 									</ul>
 								</li>
 								<%end%>
-								<% if session[:rol] == 3 or session[:rol] == 1 %> 
+								<% if session[:rol] == 3 or session[:rol] == 1 %>
 								<li>
 									<h2><%= t('principal.despachar') %></h2>
 									<ul>
@@ -117,7 +117,7 @@
 									</ul>
 								</li>
 								<%end%>
-								<% if session[:rol] == 2 or session[:rol] == 1%>								
+								<% if session[:rol] == 2 or session[:rol] == 1%>
 								<li>
 									<h2><%= t('principal.recolectar') %></h2>
 									<ul>
