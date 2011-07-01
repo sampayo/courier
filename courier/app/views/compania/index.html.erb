@@ -10,6 +10,7 @@
 		<th></th>
 		<th></th>
 	</tr>
+	<h1><%=$id %></h1>
 	<% @compania.each do |companium| %>
 	<tr align="Center">
 		<td><%= companium.nombre %></td>
@@ -17,8 +18,7 @@
 		<td><%= companium.direccionF %></td>
 		<td><%= companium.telefono %></td>
 		<td><%= link_to 'Show', companium %></td>
-		<td><%= link_to 'Edit', edit_companium_path(companium) %></td>
-		<td><%= link_to 'Destroy', companium, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to 'Solicitar', companium, :method => :delete %></td>
 	</tr>
 	<% end %>
 </table>

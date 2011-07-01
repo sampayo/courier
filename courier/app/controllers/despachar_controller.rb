@@ -86,7 +86,7 @@ class DespacharController < ApplicationController
   end
   
   def guardarOrden
-    # $id = params[:id]
+    $id = params[:id]
     redirect_to compania_url
   end
 
