@@ -50,6 +50,8 @@ class Giancourier
       if xmlresponse["respuesta"]
         @orden.remoto = xmlresponse["respuesta"]["traking"]
         @monto = xmlresponse["respuesta"]["costo"]
+        @orden.estado = 'Recoleccion Externa'
+        @factura.companias_id = @empresa.id
         if @factura.costoTotal < @monto.to_i
           @factura.costoTotal = @monto.to_i
           @orden.notificacion = 'alerta'
@@ -58,12 +60,13 @@ class Giancourier
         @orden.save
         return 'La orden a pasado a estatus Recoleccion Externa'
       else
-        return 'error de coneccion'
+        return 'error de conexion'
       end
     when Net::HTTPSuccess
       if xmlresponse["respuesta"]
         @orden.remoto = xmlresponse["respuesta"]["traking"]
         @monto = xmlresponse["respuesta"]["costo"]
+        @orden.estado = 'Recoleccion Externa'
         if @factura.costoTotal < @monto.to_i
           @factura.costoTotal = @monto.to_i
           @orden.notificacion = 'alerta'
@@ -72,7 +75,7 @@ class Giancourier
         @orden.save
         return 'La orden a pasado a estatus Recoleccion Externa'
       else
-        return 'error de coneccion'
+        return 'error de conexion'
       end
     else response.error!
     return 'Error'
@@ -90,28 +93,34 @@ class Giancourier
     xmlresponse = Hash.from_xml(response.body)
     case response
     when Net::HTTPCreated
-      return xmlresponse["Tracking"]["orden"]["Orden"]
-    when Net::HTTPSuccess
-
-      if !(xmlresponse["seguimiento"]["etapas"]["etapa"].nil?)
-        xmlresponse["seguimiento"]["etapas"]["etapa"].each do |admin|
-          if admin['fecha'].nil?
-            fecha = Time.now
-          else
-            fecha = admin['fecha']
-          end
-
-          @direccion = Direccion.new(:nombre => '', :avCalle => '', :resCasa => '', :aptoNumero => 2, :urban => admin['lugar'], :ciudad => 'Caracas', :pais => 'Venezuela', :cPostal => 122, :lat => nil, :lng => nil)
-          @direccion.save
-          @historico = Historico.new(:tipo => admin['descripcion'], :fecha => fecha, :ordens_id=>@orden.id, :direccions_id => @direccion.id)
-          @historico.save
+            # return  xmlresponse["seguimiento"]["orden"]["estatus"]
+        xmlresponse["seguimiento"]["orden"]["etapas"]["etapa"].each do |admin|
+        @direccion = Direccion.new(:nombre => '', :avCalle => 'd', :resCasa => 'd', :aptoNumero => 2, :urban => admin["lugar"], :ciudad => 'Caracas', :pais => 'Venezuela', :cPostal => '122', :lat => 10.2334, :lng => 10.292982)
+        @direccion.save
+        @historico = Historico.new(:tipo => admin['descripcion'], :fecha => admin['fecha'], :ordens_id=>@orden.id, :direccions_id => @direccion.id)
+        @historico.save
         end
         @historico = Historico.find( @direccion2.idHistorico)
         @historico.fecha = Time.now
         @historico.save
         @orden.estado = 'Entregada'
       @orden.save
-      end
+      return 'La orden a pasado a estatus Recoleccion Externa'
+    when Net::HTTPSuccess
+      # return  xmlresponse["seguimiento"]["orden"]["estatus"]
+        xmlresponse["seguimiento"]["orden"]["etapas"]["etapa"].each do |admin|
+        @direccion = Direccion.new(:nombre => 'dfdf', :avCalle => 'd', :resCasa => 'd', :aptoNumero => 2, :urban => 'a', :ciudad => admin["lugar"], :pais => 'Venezuela', :cPostal => '122', :lat => 10.2334, :lng => 10.292982)
+        @direccion.save
+        @historico = Historico.new(:tipo => admin['descripcion'], :fecha => admin['fecha'], :ordens_id=>@orden.id, :direccions_id => @direccion.id)
+        @historico.save
+        end
+        # @historico = Historico.find( @direccion2.idHistorico)
+        # @historico.fecha = Time.now
+        # @historico.save
+        @orden.estado = 'Entregada'
+      @orden.save
+      return 'La orden a pasado a estatus Recoleccion Externa'
+      
     else response.error!
     return 'Error'
     end

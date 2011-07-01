@@ -1,6 +1,5 @@
 class CompaniaController < ApplicationController
   layout "enSistema"
-
   # GET /compania
   # GET /compania.xml
   # Metodo para el index de compa�ia
@@ -83,27 +82,24 @@ class CompaniaController < ApplicationController
   def destroy
     @id = params[:id]
     @orden = $id
-    $id = ''
-   if (@id == 2)
-    @courier = Courierucab.new(@orden, @id) 
-    @notice = @courier.enviarpost
-    flash[:notice] = @notice
-    redirect_to (simul_path)
-   elsif (@id == 3)
-    @courier = Giancourier.new(@orden, @id) 
-    @notice = @courier.enviarpost
-    flash[:notice] = @notice
-    redirect_to (simul_path)
-   end
-     
-   
-    
-    # @companium = Companium.find(params[:id])
-    # @companium.destroy
-# 
-    # respond_to do |format|
-      # format.html { redirect_to(compania_url) }
-      # format.xml  { head :ok }
-    # end
+
+    if @id.to_i == 3
+      @courier = Courierucab.new(@orden, @id)
+      @notice = @courier.enviarpost
+      flash[:notice] = @notice
+      redirect_to simul_path
+    elsif @id.to_i == 4
+      @courier = Giancourier.new(@orden, @id)
+      @notice = @courier.enviarpost
+      flash[:notice] = @notice
+      redirect_to simul_path
+    end
+  # @companium = Companium.find(params[:id])
+  # @companium.destroy
+  #
+  # respond_to do |format|
+  # format.html { redirect_to(compania_url) }
+  # format.xml  { head :ok }
+  # end
   end
 end

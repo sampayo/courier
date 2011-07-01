@@ -118,9 +118,19 @@ class DespacharController < ApplicationController
     @id = params[:id]
     @orden = Orden.find(@id)
     @factura = Factura.where(:ordens_id => @orden.id).first
-    @courier = Courierucab.new(@orden.id , @factura.companias_id)
-    @algo = @courier.leerXml
-    redirect_to(recoExter_path, :notice => 'La orden se consulto con exito')
+        if @factura.companias_id.to_i == 3
+      @courier = Courierucab.new(@id, @factura.companias_id)
+      @notice = @courier.leerXml
+      # flash[:notice] = @notice
+    redirect_to(recoExter_path, :notice => 'Se consulto con exito')
+    elsif @factura.companias_id.to_i == 4
+      @courier = Giancourier.new(@id, @factura.companias_id)
+      @notice = @courier.leerXml
+      # flash[:notice] = @notice
+      redirect_to(recoExter_path, :notice => 'Se consulto con exito')
+    end
+    
+    
   end
 
 end
