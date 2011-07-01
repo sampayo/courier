@@ -1,10 +1,10 @@
 class Despachar < ActiveRecord::Base
-  # retorna las ordenes crecanad a una lat y longitud
+  # retorna las ordenes crecanadas con una lat y longitud 
   def self.ordenesCercanas(id,lat,lng)
     return Orden.find_by_sql('Select o.*, d.lat, d.lng,SQRT(POWER(d.lat- (' + lat.to_s + '), 2)+POWER(d.lng-(' + lng.to_s + '), 2)) as distancia from ordens o, direccions d, historicos h where o.estado="Pendiente por recolectar" and h.direccions_id=d.id and h.ordens_id=o.id and h.tipo="Recolectada"  and o.id <>' + id.to_s)
   end
 
-  # retorna la direccion de una orden en especifico
+  # retorna la direccion de una orden en especifico pasandole un id de la orden.
   def self.orden(id)
     return Orden.find_by_sql('Select o.id, d.lat, d.lng from ordens o, direccions d, historicos h where o.estado="Pendiente por recolectar" and h.direccions_id=d.id and h.ordens_id=o.id and h.tipo="Recolectada" and o.id =' + id.to_s).first
   end
@@ -14,11 +14,12 @@ class Despachar < ActiveRecord::Base
     return Orden.find_by_sql('select DISTINCT * from personas p where p.empleados_id=2 and p.id not in (select o.empleado_id from ordens o where o.empleado_id is not null)')
   end
 
-  # muestra la ruta que tenga asignado
+  # muestra la ruta que tenga asignadas un recolector pasandole el id del recolector.
   def self.rutasAsignadas(id)
     return Orden.find_by_sql('Select o.*, d.ciudad, d.pais, d.avCalle, d.urban, d.resCasa,d.aptoNumero, d.lat, d.lng from ordens o, direccions d, historicos h where o.estado="Asignada para Recoleccion" and h.direccions_id=d.id and h.ordens_id=o.id and h.tipo="Recolectada" and o.empleado_id='+ id.to_s)
   end
- # Metodo que simula 
+ # Metodo que simula una orden agregandole directamente 2 o 3 sitios por donde pasa dicha orden
+ # pasandole el id de la orden la cual queremos simular.
   def self.simular(id)
     @direcciones = Direccion.find_by_sql('select * from direccions d where d.id not in (select h.direccions_id from ordens o, historicos h where h.ordens_id=o.id and o.id=' + id.to_s + ') limit 3')
     if @direcciones.first.nil?

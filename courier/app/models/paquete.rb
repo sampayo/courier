@@ -8,6 +8,9 @@ class Paquete < ActiveRecord::Base
   belongs_to :ordens
   belongs_to :personas
   validate :validate
+  
+  # Metodo el cual valida que el peso del paquete no sea menor o igual a cero,
+  # enviando un error de este llegar a ser negativo.
   def validate()
     errors.add(:peso, "debe ser positivo") if peso < 0
   end

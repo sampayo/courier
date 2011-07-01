@@ -13,7 +13,8 @@ class TipoPago < ActiveRecord::Base
   has_many :facturas
 
   validate :validarTdc
-  # Metodo para verifar las fechas de la tarjetas.
+  # Metodo para verifar las fechas de la tarjetas, y de estar vencida la fecha, 
+  # envia un error.
   def validarTdc
     errors.add('Fecha de vencimiento', " esta vencida") if
     !fVencimiento.blank? and fVencimiento < Date.today

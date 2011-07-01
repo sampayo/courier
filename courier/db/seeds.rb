@@ -8,10 +8,12 @@
 
 #Llenamos una tupla de la tabla compa–ia(Mysql).
 Companium.create! :id => 1,
-                  :nombre => 'compania1',
-                  :rif => 1234567,
-                  :direccionF => 'aqui esta',
-                  :telefono => '5555444'
+                  :nombre => 'CourierUCAB',
+                  :rif => 'J-1234567890',
+                  :direccionF => 'Montalban',
+                  :telefono => '04142051140',
+                  :urlget => '',
+                  :urlset => ''
                  
 Persona.create! :id => 1,
                 :email => 'albertogrespan@gmail.com',
@@ -68,5 +70,13 @@ Direccion.create! :id => 3,
                   :cPostal => '3234',
                   :lat => '10.4303',
                   :lng => '-66.8855',
-                  :personas_id => 3                
+                  :personas_id => 3
                   
+Empleados.create! :id => 1,
+                  :cargo => 'Administrador'
+                  
+Empleados.create! :id => 2,
+                  :cargo => 'Recolector'
+                                          
+Empleados.create! :id => 3,
+                  :cargo => 'Despachador'                  
