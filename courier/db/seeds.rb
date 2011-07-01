@@ -7,19 +7,28 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 #Llenamos una tupla de la tabla compa–ia(Mysql).
+
+Empleados.create! :id => 1,
+                  :cargo => 'Administrador'
+                  
+Empleados.create! :id => 2,
+                  :cargo => 'Recolector'
+                                          
+Empleados.create! :id => 3,
+                  :cargo => 'Despachador' 
+                  
 Companium.create! :id => 1,
                   :nombre => 'CourierUCAB',
                   :rif => 'J-1234567890',
                   :direccionF => 'Montalban',
-                  :telefono => '04142051140',
-                  :urlget => '',
-                  :urlset => ''
+                  :telefono => '04142051140'
                  
 Persona.create! :id => 1,
                 :email => 'albertogrespan@gmail.com',
                 :nombre => 'Alberto',
                 :apellido => 'Grespan',
-                :fNacimiento => '2006-04-26'
+                :fNacimiento => '2006-04-26',
+                :empleados_id => 1
                   
 Persona.create! :id => 2,
                 :email => 'ricardo9588@gmail.com',
@@ -28,10 +37,11 @@ Persona.create! :id => 2,
                 :fNacimiento => '2006-03-26'               
 
 Persona.create! :id => 3,
-                :email => 'dreye88@gmail.com',
+                :email => 'drey.eduardo@gmail.com',
                 :nombre => 'Drey',
                 :apellido => 'Laya',
-                :fNacimiento => '2006-02-26'
+                :fNacimiento => '2006-02-26',
+                :empleados_id => 2
                 
 Direccion.create! :id => 1,
                   :nombre =>'casa',
@@ -71,12 +81,4 @@ Direccion.create! :id => 3,
                   :lat => '10.4303',
                   :lng => '-66.8855',
                   :personas_id => 3
-                  
-Empleados.create! :id => 1,
-                  :cargo => 'Administrador'
-                  
-Empleados.create! :id => 2,
-                  :cargo => 'Recolector'
-                                          
-Empleados.create! :id => 3,
-                  :cargo => 'Despachador'                  
+                                   
