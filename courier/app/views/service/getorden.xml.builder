@@ -11,6 +11,7 @@ xml.Tracking{
 @historico.each do |orden| 
 xml.movimiento do
 		xml.desc(orden.tipo)
+		xml.fecha(orden.fecha)
 		xml.nombre(orden.nombre)
 		xml.calle(orden.avCalle)
 		xml.casa(orden.resCasa)

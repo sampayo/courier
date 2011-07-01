@@ -32,11 +32,11 @@ class Orden < ActiveRecord::Base
   # metodo valida todos los campos cliente
   def self.validarCliente(cliente)
     if cliente[:email].nil?
-    return nil
+      return nil
     else
       @cliente = Persona.where(:email => cliente[:email]).first
       if @cliente.nil?
-      return nil
+        return nil
       else
       return @cliente.id
       end
@@ -73,11 +73,11 @@ class Orden < ActiveRecord::Base
   # metodo valida todos los campos tarjeta
   def self.validartarjeta(tarjeta)
     if tarjeta[:nTDC].nil?
-    return nil
+      return nil
     else
       @cliente = TipoPago.where(:nTDC => tarjeta[:nTDC]).first
       if @cliente.nil?
-      return nil
+        return nil
       else
       return @cliente.id
       end
@@ -86,11 +86,11 @@ class Orden < ActiveRecord::Base
 
   def self.validarrecoleccion(direccion)
     if direccion[:nombre].nil?
-    return nil
+      return nil
     else
       @cliente = Direccion.where(:nombre => direccion[:nombre]).first
       if @cliente.nil?
-      return nil
+        return nil
       else
       return @cliente.id
       end
@@ -103,10 +103,14 @@ class Orden < ActiveRecord::Base
     @tar = validartarjeta(xml[:tarjeta])
     @dir = validarrecoleccion(xml[:direccionrecoleccion])
     if !(@cli.nil?) and validarOrdenRemota(xml[:orden]) and validarPaquete(xml[:paquete]) and validarDireccion(xml[:direccionentrega]) and !(@dir.nil?) and !(@tar.nil?)
-    return [@cli,@tar,@dir]
+      return [@cli,@tar,@dir]
     else
-    return nil
+      return nil
     end
+  end
+
+  def self.direcciones(id, nombre)
+    return Direccion.find_by_sql("select * from historicos h, direccions d where d.id=h.direccions_id and h.tipo='" + nombre + "' and h.ordens_id=" + id.to_s).first
   end
 
 end

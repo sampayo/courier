@@ -4,6 +4,7 @@ class CreateOrdens < ActiveRecord::Migration
 			t.string :nombre
 			t.string :apellido
 			t.string :estado
+			t.string :notificacion
 			t.date :fecha
 			t.integer :remoto
 			t.references :personas

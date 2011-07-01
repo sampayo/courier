@@ -84,6 +84,11 @@ class DespacharController < ApplicationController
   def simulacion
     @ordenes = Orden.where(:estado => "Recolectada")
   end
+  
+  def guardarOrden
+    # $id = params[:id]
+    redirect_to compania_url
+  end
 
   # Borra las las ordnes a despachar
   def destroy

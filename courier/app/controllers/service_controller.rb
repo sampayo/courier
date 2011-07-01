@@ -5,9 +5,16 @@ class ServiceController < ApplicationController
 
   # Utilizamos open-uri para leer los xml
   require 'open-uri'
+  require 'net/http'
 
   def show
     @factura = Factura.find(1)
+    @algo = Courierucab.new(1)
+    # @algo.orden ="aaa"
+    # @algo = @algo.orden.nombre
+    # @algo.xml
+    # @algo = @algo.enviarpost
+    @algo = @algo.leerXml
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @historico }
@@ -78,8 +85,6 @@ class ServiceController < ApplicationController
     else
       render "errorxml"
     end
-
   end
-
 end
 

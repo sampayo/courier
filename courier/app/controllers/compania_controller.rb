@@ -3,9 +3,9 @@ class CompaniaController < ApplicationController
 
   # GET /compania
   # GET /compania.xml
-  # Metodo para el index de compa–ia
+  # Metodo para el index de compaï¿½ia
   def index
-    @compania = Companium.where(:url => nil?)
+    @compania = Companium.where(:urlget => nil?)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class CompaniaController < ApplicationController
 
   # GET /compania/1
   # GET /compania/1.xml
-  # Metodo para mostrar una compa–ia
+  # Metodo para mostrar una compaï¿½ia
   def show
     @companium = Companium.find(params[:id])
 
@@ -27,7 +27,7 @@ class CompaniaController < ApplicationController
 
   # GET /compania/new
   # GET /compania/new.xml
-  # Metodo para crear una compa–ia
+  # Metodo para crear una compaï¿½ia
   def new
     @companium = Companium.new
 
@@ -38,14 +38,14 @@ class CompaniaController < ApplicationController
   end
 
   # GET /compania/1/edit
-  # Metodo para editar una compa–ia
+  # Metodo para editar una compaï¿½ia
   def edit
     @companium = Companium.find(params[:id])
   end
 
   # POST /compania
   # POST /compania.xml
-  # Metodo para crear una compa–ia
+  # Metodo para crear una compaï¿½ia
   def create
     @companium = Companium.new(params[:companium])
 
@@ -63,7 +63,7 @@ class CompaniaController < ApplicationController
 
   # PUT /compania/1
   # PUT /compania/1.xml
-  # Metodo para actualizar una compa–ia
+  # Metodo para actualizar una compaï¿½ia
   def update
     @companium = Companium.find(params[:id])
 

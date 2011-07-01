@@ -104,6 +104,8 @@ Courier::Application.routes.draw do
 
   # url donde se muestra las ordenes recolectadas para ejecutar una simulacion de la entrega
   match ':locale/simulacion/', :to => 'despachar#simulacion', :as => "simul"
+  
+   match ':locale/guardarOrden/:id', :to => 'despachar#guardarOrden' , :as => "guardarOrden"
 
   # url donde se busca las ordenes para recolectarlas
   match ':locale/recolectar/', :to => 'recolectar#index', :as => "reco"

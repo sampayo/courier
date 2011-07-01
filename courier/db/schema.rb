@@ -14,7 +14,8 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
 
   create_table "compania", :force => true do |t|
     t.string   "nombre"
-    t.string   "url"
+    t.string   "urlget"
+    t.string   "urlset"
     t.string   "rif"
     t.string   "direccionF"
     t.string   "telefono"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110422230512) do
     t.string   "nombre"
     t.string   "apellido"
     t.string   "estado"
+    t.string   "notificacion"
     t.date     "fecha"
     t.integer  "remoto"
     t.integer  "personas_id"
